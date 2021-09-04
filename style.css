@@ -1,17 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+@import 'styles/textos.css';
 * {
     margin: 0;
     padding: 0;
 }
 
-html, body {
+html,
+body {
     height: 100%;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
 }
 
-button, a, input {
+button,
+a,
+input {
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -38,14 +42,21 @@ h3 {
 }
 
 .cadastrar {
-    width: 50%,
+    width: 50%;
 }
 
 .tabs .indicator {
     background-color: orangered;
 }
 
-#test1, #test2 {
+#agendamento .indicator {
+    background-color: transparent !important;
+}
+
+#test1,
+#saopaulo,
+#santos,
+#test2 {
     width: 100%;
 }
 

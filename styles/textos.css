@@ -1,0 +1,19 @@
+    .txt-align {
+        text-align: center;
+    }
+    
+    .txt-orange {
+        color: #ffab40 !important;
+    }
+    
+    .margin {
+        border: 10px solid white;
+        background: transparent;
+        margin: 20px;
+        display: block;
+        float: center;
+    }
+    
+    .txt-grey {
+        color: #212121 !important
+    }
