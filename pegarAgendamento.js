@@ -41,7 +41,7 @@ function carregarData() {
     const seila =  agendamentos.data
     console.log(seila)
 
-    const agenda = seila.map(horario => `<li>${horario}</li>`)
+    const agenda = seila.map(horario => `<option value=${horario}>${horario}</option>`)
     calendario.innerHTML += agenda;
 }
 
