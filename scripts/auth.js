@@ -10,10 +10,16 @@ signUpData.addEventListener('submit', (e) => {
         password: signUpData['signup-password'].value
     };
 
-    auth.createUserWithEmailAndPassword(user.email, user.password).then(() => {
-        alert('Usuário cadastrado!')
-        signUpData.reset();
-    });
+    if(user.email.includes("@")){
+        
+        auth.createUserWithEmailAndPassword(user.email, user.password).then(() => {
+            alert('Usuário cadastrado!')
+            signUpData.reset();
+        });
+    } else {
+        console.log("Digite um email válido!")
+    }
+
 });
 
 const loginData = document.querySelector('#login-form');
