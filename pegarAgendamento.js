@@ -1,5 +1,5 @@
 
-
+// Lógica final consumindo o DB do FireBase
 
 // function addData(horario) {
 //     const calendario = horario.map( horario => `<li>${horario.data().text}</li>`)
@@ -18,6 +18,9 @@
 //         })
 //     })
 // }
+
+
+// Utilizando um mock para aplicar a logica de pegar as datas agendadas
 
 {   agendamentos = {
         "data": [
