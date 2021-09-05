@@ -17,7 +17,7 @@ const content = `
     <a href="../agendamento.html" class="remarca">
         <img src="assets/edit_black_24dp.svg" alt="remarcar">
     </a>
-    <a href="#" class="apaga">
+    <a href="#" class="apaga" onclick=" openModal()">
         <img src="assets/delete_black_24dp.svg" alt="apagar">
     </a>
 </div>

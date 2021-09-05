@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modal.css">
     
     <title>Controle de Agendamento</title>
 </head>
@@ -34,7 +35,7 @@
                     <a href="../agendamento.html" class="remarca">
                         <img src="assets/edit_black_24dp.svg" alt="remarcar">
                     </a>
-                    <a href="#" class="apaga">
+                    <a href="#" class="apaga" onclick=" openModal()">
                         <img src="assets/delete_black_24dp.svg" alt="apagar">
                     </a>
                 </div>
@@ -60,7 +61,7 @@
                     <a href="../agendamento.html" class="remarca">
                         <img src="assets/edit_black_24dp.svg" alt="remarcar">
                     </a>
-                    <a href="#" class="apaga">
+                    <a href="#" class="apaga" onclick=" openModal()">
                         <img src="assets/delete_black_24dp.svg" alt="apagar">
                     </a>
                 </div>
@@ -72,23 +73,36 @@
 
     <!-- MODAL -->
 
-    <section class="modal-wrapper">
+    <div class="modal-wrapper">
 
         <div class="modal">
-
             <div class="logo-field">
-                <img src="" alt="blue check">
+                <img src="assets/Recyclebin-icon.png" alt="trash can">
             </div>
 
             <h2>Excluir?</h2>
-            <p>Deseja excluir o agendamento</p>
-            <button onclick="closeBuyingModal()">Ok</button>
+            <p>Deseja excluir o agendamento?</p>
+            <div class="modal-actions">
+                <button onclick="closeModal()">Não</button>
+                <button onclick="closeModal()">Sim</button>
+            </div>
         </div>
 
-    </section>
+    </div>
 
     
 </body>
+
+<!-- FUNÇÕES DA MODAL -->
+<script>
+    function openModal(){
+        document.querySelector(".modal-wrapper").id = "active"
+    }
+    
+    function closeModal(){
+        document.querySelector(".modal-wrapper").id = ""
+    }
+</script>
 
 <!-- Preencher agendamentos -->
 <script src="fillContainer.js"></script>
