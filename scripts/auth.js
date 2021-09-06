@@ -16,6 +16,10 @@ signUpData.addEventListener('submit', (e) => {
     });
 });
 
+function login() {
+    window.location = "agendamento.html";
+}
+
 const loginData = document.querySelector('#login-form');
 
 loginData.addEventListener('submit', (e) => {
@@ -27,6 +31,7 @@ loginData.addEventListener('submit', (e) => {
     };
 
     auth.signInWithEmailAndPassword(user.email, user.password).then(() => {
+        login();
         loginData.reset();
         console.log('user logged in')
     })
