@@ -11,8 +11,6 @@ function mySchedules() {
     window.location = "seeSchedules.html"
 }
 
-const userView = document.querySelector('.user-view');
-
 // ouvindo mudanças de login e logout
 auth.onAuthStateChanged(user => {
     if (user) {
@@ -37,18 +35,19 @@ signUpData.addEventListener('submit', (e) => {
         senha: signUpData['signup-password'].value
     };
 
-    if (!user.email.includes("@fcamara.com.br")) {
+    if (user.email.includes("@fcamara.com.br")) {
+        auth.createUserWithEmailAndPassword(user.email, user.senha).then((cred) => {
+            M.toast({ html: 'Usuário cadastrado com sucesso! Faça seu login.' })
+            signUpData.reset();
+            return db.collection('Usuario').doc(cred.user.uid).set(user);
+        });
 
-        M.toast({ html: 'Digite um endereço de e-mail válido!' })
-
-    } else if (!validateCPF(user.cpf)){
+    } else if (!validateCPF(user.cpf)) {
         M.toast({ html: 'Digite um endereço de CPF válido!' })
+    } else {
+        M.toast({ html: 'Digite um endereço de e-mail válido!' })
     }
-    auth.createUserWithEmailAndPassword(user.email, user.senha).then((cred) => {
-        return db.collection('Usuario').doc(cred.user.uid).set(user);
-    });
-    M.toast({ html: 'Usuário cadastrado com sucesso! Faça seu login.' })
-    signUpData.reset();
+
 });
 
 // logando usuário
