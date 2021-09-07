@@ -1,55 +1,60 @@
 
-// Lógica final consumindo o DB do FireBase
+// Pegando todos os agendamentos
 
-// function addData(horario) {
-//     const calendario = horario.map( horario => `<li>${horario.data().text}</li>`)
-
-//     document.getElementById("calendario").innerHTML += calendario;
-// }
-
-
-// function carregarDatas() {
-//     const datasCollection = firebase.firestore(collection)("agendamentos");
-//     document.getElementById("datas").innerHTML = "Carregando..."
-//     datasCollection.get().then( snap => {
-//         document.getElementById("datas").innerHTML = ""
-//         snap.forEach(data => {
-//             addData(data)
-//         })
-//     })
-// }
-
-
-// Utilizando um mock para aplicar a logica de pegar as datas agendadas
-
-{   agendamentos = {
-        "data": [
-            "31/12/2020",
-            "31/12/2021",
-            "31/12/2022",
-            "31/12/2023",
-            "31/12/2024",
-            "31/12/2025",
-            "31/12/2026",
-            "31/12/2027",
-            "31/12/2028",
-            "31/12/2029"
-]
-}
+function getSchedules() {
+    const datasCollection = db.collection("Agendamentos"); 
+    datasCollection.get().then( item => {
+        item.forEach(data => {
+            
+            console.log("agendamentos",data.data())
+        })
+    })
 }
 
-function carregarData() {
-    const calendario = document.getElementById("datas");
+// Pegando uma informação dentro da tabela de usuário
 
-    const seila =  agendamentos.data
-    console.log(seila)
+function getUser() {
 
-    const agenda = seila.map(horario => `<option value=${horario}>${horario}</option>`)
-    calendario.innerHTML += agenda;
+
+    const users = db.collection("Usuario").doc("lC9klqnuJuUv5ylIwNNU").collection("agendamentos");
+
+
+    users.get().then((function (querySnapshot){
+        querySnapshot.forEach(function(doc){
+            console.log('Usuario', doc.data())
+        })
+    }));
+
+
+    
+
+};
+
+// Pegando apenas uma filial
+
+function getOffice() {
+
+    const docRef = db.collection("Escritorio").doc("1");
+
+    docRef.get().then((doc) => {
+        if (doc.exists) {
+            console.log("dados da filial:", doc.data());
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+    }).catch((error) => {
+        console.log("Error getting document:", error);
+    });
+
 }
 
+getSchedules()
+getUser()
+getOffice()
 
-carregarData()
+
+
 
 
 
