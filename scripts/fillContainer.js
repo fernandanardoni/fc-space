@@ -14,7 +14,7 @@ const content = `
 </div>
 
 <div class="actions">
-    <a href="../agendamento.html" class="remarca">
+    <a href="./createSchedule.html" class="remarca">
         <img src="assets/edit_black_24dp.svg" alt="remarcar">
     </a>
     <a href="#" class="apaga" onclick=" openModal()">
@@ -23,9 +23,9 @@ const content = `
 </div>
 </div>
 `
-var unidadeSaoPaulo = document.getElementById ("sao-paulo");
+var unidadeSaoPaulo = document.getElementById("sao-paulo");
 
-var unidadeSantos = document.getElementById ("santos");
+var unidadeSantos = document.getElementById("santos");
 
 unidadeSaoPaulo.innerHTML += content + content + content + content;
 
