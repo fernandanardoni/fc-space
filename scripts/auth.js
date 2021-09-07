@@ -1,5 +1,6 @@
+// funções de redirecionamento
 function login() {
-    window.location = "agendamento.html";
+    window.location = "createSchedule.html";
 }
 
 function logout() {
@@ -7,7 +8,7 @@ function logout() {
 }
 
 function mySchedules() {
-    window.location = "schedules.html"
+    window.location = "seeSchedules.html"
 }
 
 // coletando dados firestore

@@ -7,27 +7,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/style.css">
     <title>Agendamento FC Space</title>
 </head>
 
 <body>
-
-    <ul id="slide-out" class="sidenav">
-        <li>
-            <div class="user-view">
-                <a href="#name"><span class="black-text name">John Doe</span></a>
-                <a href="#email"><span id="profile-email" class="black-text email">jdandturk@gmail.com</span></a>
-            </div>
-        </li>
-        <li><a href="#!"><i class="material-icons">assignment_ind</i>Meu Perfil</a></li>
-        <li><a href="#!" onclick="mySchedules()"><i class="material-icons">event</i>Meus agendamentos</a></li>
-        <li><a href="#!" id="logout"><i class="material-icons">exit_to_app</i>Sair</a></li>
-
-    </ul>
-    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="small orange-text material-icons">menu</i></a>
-
     <div class="container s12">
+        <ul id="slide-out" class="sidenav">
+            <li>
+                <div class="user-view">
+                    <a href="#name"><span class="black-text name">John Doe</span></a>
+                    <a href="#email"><span id="profile-email" class="black-text email">jdandturk@gmail.com</span></a>
+                </div>
+            </li>
+            <li><a href="#!"><i class="material-icons">assignment_ind</i>Meu Perfil</a></li>
+            <li><a href="./createSchedule.html"><i class="material-icons">assignment_ind</i>Fazer agendamento</a></li>
+            <li><a href="#!" onclick="mySchedules()"><i class="material-icons">event</i>Meus agendamentos</a></li>
+            <li><a href="#!" id="logout"><i class="material-icons">exit_to_app</i>Sair</a></li>
+
+        </ul>
+        <a href="#" data-target="slide-out" class="sidenav-trigger"
+            style="align-self: flex-start;position: absolute;top: 5px;"><i
+                class="small orange-text material-icons">menu</i></a>
         <h3 class="txt-align txt-orange">Agendamento FC Space</h3>
         <p>Selecione uma das unidades abaixo</p>
         <div class="row navigation">
