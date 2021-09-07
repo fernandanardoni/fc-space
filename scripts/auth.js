@@ -43,10 +43,10 @@ signUpData.addEventListener('submit', (e) => {
                 email: user.email
             });
         });
-        alert('Usuário cadastrado!')
+        M.toast({ html: 'Usuário cadastrado com sucesso! Faça seu login.' })
         signUpData.reset();
     } else {
-        console.log("Digite um email válido!")
+        M.toast({ html: 'Digite um endereço de e-mail válido!' })
     }
 });
 
