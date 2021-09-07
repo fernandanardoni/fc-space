@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modal.css">
+    
+    <title>Controle de Agendamento</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1 class="txt-orange">Controle de Agendamento</h1>
+
+        <div class="unidades" id="sao-paulo">
+            <h2>Unidade São Paulo</h2>
+
+            <div class="agendamento-container">
+                <div class="informacoes">
+                    <p class="usuario">Joao Paulo</p>
+                
+                    <div class="dia-do-agendamento">
+                        <p class="data">03/09/21</p>
+                        <p class="hora">13:25h</p>
+                    </div>
+
+                    <p class="setor">Setor Norte</p>
+                </div>
+
+                <div class="actions">
+                    <a href="../agendamento.html" class="remarca">
+                        <img src="assets/edit_black_24dp.svg" alt="remarcar">
+                    </a>
+                    <a href="#" class="apaga" onclick=" openModal()">
+                        <img src="assets/delete_black_24dp.svg" alt="apagar">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="unidades" id="santos">
+            <h2>Unidade Santos</h2>
+
+            <div class="agendamento-container">
+                <div class="informacoes">
+                    <p class="usuario">Ana Maria</p>
+                
+                    <div class="dia-do-agendamento">
+                        <p class="data">03/09/21</p>
+                        <p class="hora">13:25h</p>
+                    </div>
+
+                    <p class="setor">Setor Norte</p>
+                </div>
+
+                <div class="actions">
+                    <a href="../agendamento.html" class="remarca">
+                        <img src="assets/edit_black_24dp.svg" alt="remarcar">
+                    </a>
+                    <a href="#" class="apaga" onclick=" openModal()">
+                        <img src="assets/delete_black_24dp.svg" alt="apagar">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- MODAL -->
+
+    <div class="modal-wrapper">
+
+        <div class="modal">
+            <div class="logo-field">
+                <img src="assets/Recyclebin-icon.png" alt="trash can">
+            </div>
+
+            <h2>Excluir?</h2>
+            <p>Deseja excluir o agendamento?</p>
+            <div class="modal-actions">
+                <button onclick="closeModal()">Não</button>
+                <button onclick="closeModal()">Sim</button>
+            </div>
+        </div>
+
+    </div>
+
+    
+</body>
+
+<!-- FUNÇÕES DA MODAL -->
+<script>
+    function openModal(){
+        document.querySelector(".modal-wrapper").id = "active"
+    }
+    
+    function closeModal(){
+        document.querySelector(".modal-wrapper").id = ""
+    }
+</script>
+
+<!-- Preencher agendamentos -->
+<script src="fillContainer.js"></script>
+
+
+</html>
