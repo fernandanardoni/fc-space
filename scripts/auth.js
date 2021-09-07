@@ -33,22 +33,25 @@ signUpData.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const user = {
-        name: signUpData['first-name'].value,
-        lastName: signUpData['last-name'].value,
-        email: signUpData['signup-email'].value,
-        password: signUpData['signup-password'].value
+        nome: signUpData['name'].value,
+        email: signUpData['email'].value,
+        cpf: signUpData['cpf'].value.replace(/\.|- |,/g, ""),
+        rg: signUpData['rg'].value.replace(/\.|-|,/g, ""),
+        senha: signUpData['password'].value
     };
 
-    if(user.email.includes("@fcamara.com.br")){
-        
-        return auth.createUserWithEmailAndPassword(user.email, user.password).then(() => {
-                alert('Usuário cadastrado!')
-                signUpData.reset();
-        });
-    } else {
-        console.log("Digite um email válido!")
+    if (!user.email.includes("@fcamara.com.br")) {
+
+        return alert("Digite um email válido!");
+
+    } else if (!validateCPF(user.cpf)) {
+        return alert("Digite um cpf válido");
     }
 
+    return auth.createUserWithEmailAndPassword(user.email, user.senha).then(() => {
+        alert('Usuário cadastrado!')
+        signUpData.reset();
+    });
 });
 
 // logando usuário

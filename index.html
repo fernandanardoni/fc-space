@@ -28,24 +28,28 @@
                 <form class="col s12" id="signup-form">
                     <div class="row">
                         <div class="input-field col s6">
-                            <input id="first-name" type="text" class="validate" name="firstName">
-                            <label for="first-name">First Name</label>
+                            <input id="name" type="text" class="validate" name="name">
+                            <label for="name">Nome</label>
                         </div>
                         <div class="input-field col s6">
-                            <input id="last-name" type="text" class="validate" name="lastName">
-                            <label for="last-name">Last Name</label>
+                            <input id="email" type="email" class="validate" name="email">
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="cpf" type="text" class="validate" name="cpf" >
+                            <label for="cpf">CPF</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="rg" type="text" class="validate" name="rg" >
+                            <label for="rg">RG</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="signup-email" type="email" class="validate" name="email">
-                            <label for="signup-email">Email</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="signup-password" type="password" class="validate" name="password">
-                            <label for="signup-password"> Choose a password</label>
+                            <input id="password" type="password" class="validate" name="password">
+                            <label for="password"> Escolha uma senha</label>
                         </div>
                     </div>
                     <div class="row">
@@ -106,6 +110,7 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="./scripts/auth.js"></script>
+    <script src="./scripts/validateCPF.js"></script>
     <script src="./scripts/index.js"></script>
     <script src="./scripts/getSchedule.js"></script>
 </body>
