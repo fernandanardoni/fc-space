@@ -39,10 +39,16 @@ signUpData.addEventListener('submit', (e) => {
         password: signUpData['signup-password'].value
     };
 
-    auth.createUserWithEmailAndPassword(user.email, user.password).then(() => {
-        alert('Usuário cadastrado!')
-        signUpData.reset();
-    });
+    if(user.email.includes("@fcamara.com.br")){
+        
+        return auth.createUserWithEmailAndPassword(user.email, user.password).then(() => {
+                alert('Usuário cadastrado!')
+                signUpData.reset();
+        });
+    } else {
+        console.log("Digite um email válido!")
+    }
+
 });
 
 // logando usuário
