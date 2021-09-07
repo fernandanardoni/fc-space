@@ -11,16 +11,14 @@ function mySchedules() {
     window.location = "seeSchedules.html"
 }
 
-// coletando dados firestore
-db.collection('Agendamentos').get().then(snapshots => {
-    setSchedules(snapshots.docs)
-});
-
+const userView = document.querySelector('.user-view');
 
 // ouvindo mudanças de login e logout
 auth.onAuthStateChanged(user => {
     if (user) {
         console.log('user logged in', user)
+        const userInfo = `<a href="#email"><span id="profile-email" class="black-text email">${user.email}</span></a>`;
+        userView.innerHTML = userInfo;
     } else {
         console.log('user logged out')
     }
@@ -59,14 +57,15 @@ loginData.addEventListener('submit', (e) => {
     auth.signInWithEmailAndPassword(user.email, user.password).then(() => {
         login();
         loginData.reset();
+
     })
 });
 
 // deslogando usuário
-const logOut = document.querySelector('#logout');
+const logOut = document.querySelector('#logout-button');
 
 logOut.addEventListener('click', (e) => {
-    e.preventDefault;
+    // e.preventDefault;
     auth.signOut().then(() => {
         logout();
     })
