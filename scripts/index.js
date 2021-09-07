@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var elem = document.querySelectorAll('.tabs');
-    var instance = M.Tabs.init(elem);
+    var registerTabs = document.querySelectorAll('.tabs');
+    var instance = M.Tabs.init(registerTabs);
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-    var elems = document.querySelectorAll('.sidenav');
-    var instances = M.Sidenav.init(elems);
+    var sideNav = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(sideNav);
 });
