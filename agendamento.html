@@ -21,7 +21,7 @@
             </div>
         </li>
         <li><a href="#!"><i class="material-icons">assignment_ind</i>Meu Perfil</a></li>
-        <li><a href="#!"><i class="material-icons">event</i>Meus agendamentos</a></li>
+        <li><a href="#!" onclick="mySchedules()"><i class="material-icons">event</i>Meus agendamentos</a></li>
         <li><a href="#!" id="logout"><i class="material-icons">exit_to_app</i>Sair</a></li>
 
     </ul>
@@ -42,10 +42,10 @@
         <!-- Agendamento São Paulo -->
         <div style="display: none;" id="saopaulo" class="col s12">
             <div class="row">
-                <form class="col s12" id="signup-form">
+                <form class="col s12" id="schedule-form">
                     <div class="row">
                         <div class="input-field col s12">
-                            <select>
+                            <select id="andar">
                                 <option value="" disabled selected>Selecione</option>
                                 <option value="1">1º Andar</option>
                                 <option value="2">2º Andar</option>
@@ -56,7 +56,7 @@
 
                     <div class="row">
                         <div class="input-field col s12">
-                            <select>
+                            <select id="section">
                                 <option value="" disabled selected>Selecione</option>
                                 <option value="1">Setor norte</option>
                                 <option value="2">Setor sul</option>
@@ -69,11 +69,11 @@
                     <div class="row">
                         <div class="margin txt-align">Escolha a data e hora desejada</div>
                         <div class="input-field col s6">
-                            <input type="text" class="datepicker">
+                            <input type="text" class="datepicker" id="date">
                             <label>Data</label>
                         </div>
                         <div class="input-field col s6">
-                            <input type="text" class="timepicker">
+                            <input type="text" class="timepicker" id="time">
                             <label>Horário</label>
                         </div>
                     </div>
