@@ -11,6 +11,19 @@ function mySchedules() {
     window.location = "seeSchedules.html"
 }
 
+const userView = document.querySelector('.user-view');
+
+// deslogando usuário
+const logOut = document.querySelector('#sair');
+
+logOut.addEventListener('click', (e) =>
+    // e.preventDefault;
+    auth.signOut().then(() => {
+        logout();
+        console.log('user logged out')
+    })
+);
+
 // ouvindo mudanças de login e logout
 auth.onAuthStateChanged(user => {
     if (user) {
@@ -27,6 +40,7 @@ const signUpData = document.querySelector('#signup-form');
 
 signUpData.addEventListener('submit', (e) => {
     e.preventDefault();
+
     const user = {
         nome: signUpData['name'].value,
         email: signUpData['signup-email'].value,
@@ -68,13 +82,5 @@ loginData.addEventListener('submit', (e) => {
     })
 });
 
-// deslogando usuário
-const logOut = document.querySelector('#logout-button');
 
-logOut.addEventListener('click', (e) => {
-    // e.preventDefault;
-    auth.signOut().then(() => {
-        logout();
-    })
-});
 
