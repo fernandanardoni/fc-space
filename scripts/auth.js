@@ -11,16 +11,14 @@ function mySchedules() {
     window.location = "seeSchedules.html"
 }
 
-// coletando dados firestore
-db.collection('Agendamentos').get().then(snapshots => {
-    setSchedules(snapshots.docs)
-});
-
+const userView = document.querySelector('.user-view');
 
 // ouvindo mudanças de login e logout
 auth.onAuthStateChanged(user => {
     if (user) {
         console.log('user logged in', user)
+        const userInfo = `<a href="#email"><span id="profile-email" class="black-text email">${user.email}</span></a>`;
+        userView.innerHTML = userInfo;
     } else {
         console.log('user logged out')
     }
@@ -31,7 +29,6 @@ const signUpData = document.querySelector('#signup-form');
 
 signUpData.addEventListener('submit', (e) => {
     e.preventDefault();
-
     const user = {
         name: signUpData['first-name'].value,
         lastName: signUpData['last-name'].value,
@@ -39,16 +36,18 @@ signUpData.addEventListener('submit', (e) => {
         password: signUpData['signup-password'].value
     };
 
-    if(user.email.includes("@fcamara.com.br")){
-        
-        return auth.createUserWithEmailAndPassword(user.email, user.password).then(() => {
-                alert('Usuário cadastrado!')
-                signUpData.reset();
+    if (user.email.includes("@fcamara.com.br")) {
+        auth.createUserWithEmailAndPassword(user.email, user.password).then((cred) => {
+            return db.collection('Usuario').doc(cred.user.uid).set({
+                name: user.name + " " + user.lastName,
+                email: user.email
+            });
         });
+        alert('Usuário cadastrado!')
+        signUpData.reset();
     } else {
         console.log("Digite um email válido!")
     }
-
 });
 
 // logando usuário
@@ -65,14 +64,15 @@ loginData.addEventListener('submit', (e) => {
     auth.signInWithEmailAndPassword(user.email, user.password).then(() => {
         login();
         loginData.reset();
+
     })
 });
 
 // deslogando usuário
-const logOut = document.querySelector('#logout');
+const logOut = document.querySelector('#logout-button');
 
 logOut.addEventListener('click', (e) => {
-    e.preventDefault;
+    // e.preventDefault;
     auth.signOut().then(() => {
         logout();
     })
