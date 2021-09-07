@@ -29,7 +29,6 @@ const signUpData = document.querySelector('#signup-form');
 
 signUpData.addEventListener('submit', (e) => {
     e.preventDefault();
-
     const user = {
         name: signUpData['first-name'].value,
         lastName: signUpData['last-name'].value,
@@ -37,16 +36,18 @@ signUpData.addEventListener('submit', (e) => {
         password: signUpData['signup-password'].value
     };
 
-    if(user.email.includes("@fcamara.com.br")){
-        
-        return auth.createUserWithEmailAndPassword(user.email, user.password).then(() => {
-                alert('Usuário cadastrado!')
-                signUpData.reset();
+    if (user.email.includes("@fcamara.com.br")) {
+        auth.createUserWithEmailAndPassword(user.email, user.password).then((cred) => {
+            return db.collection('Usuario').doc(cred.user.uid).set({
+                name: user.name + " " + user.lastName,
+                email: user.email
+            });
         });
+        alert('Usuário cadastrado!')
+        signUpData.reset();
     } else {
         console.log("Digite um email válido!")
     }
-
 });
 
 // logando usuário
