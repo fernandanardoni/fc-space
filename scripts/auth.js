@@ -16,6 +16,14 @@ signUpData.addEventListener('submit', (e) => {
     });
 });
 
+function login() {
+    window.location = "agendamento.html";
+}
+
+function logout() {
+    window.location = "index.html";
+}
+
 const loginData = document.querySelector('#login-form');
 
 loginData.addEventListener('submit', (e) => {
@@ -27,7 +35,19 @@ loginData.addEventListener('submit', (e) => {
     };
 
     auth.signInWithEmailAndPassword(user.email, user.password).then(() => {
+        login();
         loginData.reset();
         console.log('user logged in')
     })
 });
+
+const logOut = document.querySelector('#logout');
+
+logOut.addEventListener('click', (e) => {
+    e.preventDefault;
+    auth.signOut().then(() => {
+        console.log('user logged out')
+        logout();
+    })
+});
+

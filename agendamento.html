@@ -6,11 +6,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>Agendamento FC Space</title> 
+    <title>Agendamento FC Space</title>
 </head>
 
 <body>
+
+    <ul id="slide-out" class="sidenav">
+        <li>
+            <div class="user-view">
+                <a href="#name"><span class="black-text name">John Doe</span></a>
+                <a href="#email"><span id="profile-email" class="black-text email">jdandturk@gmail.com</span></a>
+            </div>
+        </li>
+        <li><a href="#!"><i class="material-icons">assignment_ind</i>Meu Perfil</a></li>
+        <li><a href="#!"><i class="material-icons">event</i>Meus agendamentos</a></li>
+        <li><a href="#!" id="logout"><i class="material-icons">exit_to_app</i>Sair</a></li>
+
+    </ul>
+    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="small orange-text material-icons">menu</i></a>
+
     <div class="container s12">
         <h3 class="txt-align txt-orange">Agendamento FC Space</h3>
         <p>Selecione uma das unidades abaixo</p>
@@ -30,9 +46,9 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <select>
-                              <option value="" disabled selected>Selecione</option>
-                              <option value="1">1º Andar</option>
-                              <option value="2">2º Andar</option>
+                                <option value="" disabled selected>Selecione</option>
+                                <option value="1">1º Andar</option>
+                                <option value="2">2º Andar</option>
                             </select>
                             <label>Escolha o andar desejado</label>
                         </div>
@@ -41,11 +57,11 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <select>
-                  <option value="" disabled selected>Selecione</option>
-                  <option value="1">Setor norte</option>
-                  <option value="2">Setor sul</option>
-                  <option value="3">Setor leste</option>
-                  <option value="4">Setor oeste</option>
+                                <option value="" disabled selected>Selecione</option>
+                                <option value="1">Setor norte</option>
+                                <option value="2">Setor sul</option>
+                                <option value="3">Setor leste</option>
+                                <option value="4">Setor oeste</option>
                             </select>
                             <label>Escolha o setor desejado</label>
                         </div>
@@ -54,10 +70,12 @@
                         <div class="margin txt-align">Escolha a data e hora desejada</div>
                         <div class="input-field col s6">
                             <input type="text" class="datepicker">
-                            <label>Data</label> </div>
+                            <label>Data</label>
+                        </div>
                         <div class="input-field col s6">
                             <input type="text" class="timepicker">
-                            <label>Horário</label> </div>
+                            <label>Horário</label>
+                        </div>
                     </div>
 
                     <div class="input-field col s12 submit">
@@ -75,11 +93,11 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <select>
-                  <option value="" disabled selected>Selecione</option>
-                  <option value="1">Setor norte</option>
-                  <option value="2">Setor sul</option>
-                  <option value="3">Setor leste</option>
-                  <option value="4">Setor oeste</option>
+                                <option value="" disabled selected>Selecione</option>
+                                <option value="1">Setor norte</option>
+                                <option value="2">Setor sul</option>
+                                <option value="3">Setor leste</option>
+                                <option value="4">Setor oeste</option>
                             </select>
                             <label>Escolha o setor desejado</label>
                         </div>
@@ -88,14 +106,17 @@
                         <div class="margin txt-align">Escolha a data e hora desejada</div>
                         <div class="input-field col s6">
                             <input type="text" class="datepicker">
-                            <label>Data</label> </div>
+                            <label>Data</label>
+                        </div>
                         <div class="input-field col s6">
                             <input type="text" class="timepicker">
-                            <label>Horário</label> </div>
+                            <label>Horário</label>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12 submit">
-                            <button class="btn waves-effect waves-light orange" type="submit" name="action">Agendar</button>
+                            <button class="btn waves-effect waves-light orange" type="submit"
+                                name="action">Agendar</button>
                         </div>
                     </div>
                 </form>
@@ -103,9 +124,30 @@
         </div>
 
     </div>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCxeGpeH2Xu-JtzUDdpWst8-gF9lNSsaK0",
+            authDomain: "orange-spaces-a7732.firebaseapp.com",
+            projectId: "orange-spaces-a7732",
+            storageBucket: "orange-spaces-a7732.appspot.com",
+            messagingSenderId: "979855871760",
+            appId: "1:979855871760:web:62275ecd885b6c95aa5f95"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+    </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="./scripts/index.js"></script>
     <script src="./scripts/main.js"></script>
+    <script src="./scripts/auth.js"></script>
 </body>
 
 </html>
