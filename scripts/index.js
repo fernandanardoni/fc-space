@@ -8,6 +8,11 @@ document.addEventListener('DOMContentLoaded', function () {
     var instances = M.Sidenav.init(sideNav);
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.tooltipped');
+    var instances = M.Tooltip.init(elems);
+});
+
 const schedulesCollection = document.querySelector('#schedules');
 
 const setSchedules = (data) => {
