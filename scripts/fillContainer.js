@@ -22,12 +22,11 @@ const content = `
     </a>
 </div>
 </div>
-`
-var saoPauloUnit = document.getElementById("sao-paulo");
+`;
+var saoPauloUnit = document.getElementById('sao-paulo');
 
-var santosUnit = document.getElementById("santos");
+var santosUnit = document.getElementById('santos');
 
 saoPauloUnit.innerHTML += content + content + content + content;
 
 santosUnit.innerHTML += content + content + content + content;
-
