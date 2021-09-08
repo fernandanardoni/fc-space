@@ -17,57 +17,56 @@
     <div class="container">
         <ul id="slide-out" class="sidenav">
             <li>
-                <div class="user-view">
-                    <a href="#name"><span class="black-text name">John Doe</span></a>
-                    <a href="#email"><span id="profile-email" class="black-text email">jdandturk@gmail.com</span></a>
-                </div>
+                <div class="user-view"></div>
             </li>
             <li><a href="#!"><i class="material-icons">assignment_ind</i>Meu Perfil</a></li>
-            <li><a href="./createSchedule.html"><i class="material-icons">assignment_ind</i>Fazer agendamento</a></li>
-            <li><a href="#!" onclick="mySchedules()"><i class="material-icons">event</i>Meus agendamentos</a></li>
+            <li><a href="./createSchedule.html"><i class="material-icons">event_note</i>Fazer agendamento</a></li>
+            <li><a href="#!" onclick="mySchedules()"><i class="material-icons">event_available</i>Meus agendamentos</a>
+            </li>
             <li><a href="#!" id="logout"><i class="material-icons">exit_to_app</i>Sair</a></li>
 
         </ul>
-        <a href="#" data-target="slide-out" class="sidenav-trigger" style="align-self: flex-start;"><i
+        <a href="#" data-target="slide-out" class="sidenav-trigger"
+            style="align-self: flex-start;position: absolute;top: 5px; left: 5px;"><i
                 class="small orange-text material-icons">menu</i></a>
         <h1 class="txt-orange">Controle de Agendamento</h1>
-        <div class="unidades" id="sao-paulo">
+        <div class="units" id="sao-paulo">
             <h2>Unidade São Paulo</h2>
-            <div class="agendamento-container">
-                <div class="informacoes">
-                    <p class="usuario">Joao Paulo</p>
-                    <div class="dia-do-agendamento">
-                        <p class="data">03/09/21</p>
+            <div class="schedule-container">
+                <div class="info">
+                    <p class="user">Joao Paulo</p>
+                    <div class="schedule-day">
+                        <p class="date">03/09/21</p>
                         <p class="hora">13:25h</p>
                     </div>
-                    <p class="setor">Setor Norte</p>
+                    <p class="sector">Setor Leste</p>
                 </div>
                 <div class="actions">
                     <a href="./createSchedule.html" class="remarca">
                         <img src="assets/edit_black_24dp.svg" alt="remarcar">
                     </a>
-                    <a href="#" class="apaga" onclick=" openModal()">
+                    <a href="#" class="delete" onclick=" openModal()">
                         <img src="assets/delete_black_24dp.svg" alt="apagar">
                     </a>
                 </div>
             </div>
         </div>
-        <div class="unidades" id="santos">
+        <div class="units" id="santos">
             <h2>Unidade Santos</h2>
-            <div class="agendamento-container">
-                <div class="informacoes">
-                    <p class="usuario">Ana Maria</p>
-                    <div class="dia-do-agendamento">
-                        <p class="data">03/09/21</p>
+            <div class="schedule-container">
+                <div class="info">
+                    <p class="user">João Paulo</p>
+                    <div class="schedule-day">
+                        <p class="date">03/09/21</p>
                         <p class="hora">13:25h</p>
                     </div>
-                    <p class="setor">Setor Norte</p>
+                    <p class="sector">Setor Leste</p>
                 </div>
                 <div class="actions">
                     <a href="./createSchedule.html" class="remarca">
                         <img src="assets/edit_black_24dp.svg" alt="remarcar">
                     </a>
-                    <a href="#" class="apaga" onclick=" openModal()">
+                    <a href="#" class="delete" onclick=" openModal()">
                         <img src="assets/delete_black_24dp.svg" alt="apagar">
                     </a>
                 </div>
@@ -112,8 +111,10 @@
     const db = firebase.firestore();
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="./scripts/logoutAuth.js"></script>
 <script src="./scripts/auth.js"></script>
 <script src="./scripts/index.js"></script>
+<script src="./scripts/main.js"></script>
 
 <!-- FUNÇÕES DA MODAL -->
 <script>
@@ -127,12 +128,8 @@
 </script>
 
 <!-- Preencher agendamentos -->
-<<<<<<< HEAD:seeSchedules.html <script src="scripts/fillContainer.js">
-    </script>
-    =======
-    <script src="fillContainer.js"></script>
-    <script src="./scripts/getSchedule.js"></script>
-    >>>>>>> 43da809556326f4a680c29efc658fbb0b9a366c2:controle-de-agendamento/index.html
 
+<script src="scripts/fillContainer.js"></script>
+<script src="./scripts/getSchedule.js"></script>
 
 </html>
