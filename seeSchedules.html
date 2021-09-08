@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,18 +17,17 @@
     <div class="container">
         <ul id="slide-out" class="sidenav">
             <li>
-                <div class="user-view">
-                    <a href="#name"><span class="black-text name">John Doe</span></a>
-                    <a href="#email"><span id="profile-email" class="black-text email">jdandturk@gmail.com</span></a>
-                </div>
+                <div class="user-view"></div>
             </li>
             <li><a href="#!"><i class="material-icons">assignment_ind</i>Meu Perfil</a></li>
-            <li><a href="./createSchedule.html"><i class="material-icons">assignment_ind</i>Fazer agendamento</a></li>
-            <li><a href="#!" onclick="mySchedules()"><i class="material-icons">event</i>Meus agendamentos</a></li>
+            <li><a href="./createSchedule.html"><i class="material-icons">event_note</i>Fazer agendamento</a></li>
+            <li><a href="#!" onclick="mySchedules()"><i class="material-icons">event_available</i>Meus agendamentos</a>
+            </li>
             <li><a href="#!" id="logout"><i class="material-icons">exit_to_app</i>Sair</a></li>
 
         </ul>
-        <a href="#" data-target="slide-out" class="sidenav-trigger" style="align-self: flex-start;"><i
+        <a href="#" data-target="slide-out" class="sidenav-trigger"
+            style="align-self: flex-start;position: absolute;top: 5px; left: 5px;"><i
                 class="small orange-text material-icons">menu</i></a>
         <h1 class="txt-orange">Controle de Agendamento</h1>
         <div class="units" id="sao-paulo">
@@ -129,8 +129,7 @@
 
 <!-- Preencher agendamentos -->
 
-    <script src="scripts/fillContainer.js"></script>
-    <script src="fillContainer.js"></script>
-    <script src="./scripts/getSchedule.js"></script>
+<script src="scripts/fillContainer.js"></script>
+<script src="./scripts/getSchedule.js"></script>
 
 </html>
