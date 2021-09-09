@@ -1,6 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+        />
+        <link rel="stylesheet" href="styles/seeSchedules.css" />
+        <link rel="stylesheet" href="styles/modal.css" />
+        <title>Controle de Agendamento</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <ul id="slide-out" class="sidenav">
+                <li>
+                    <div class="user-view">
+                        <a href="#name"
+                            ><span class="black-text name">John Doe</span></a
+                        >
+                        <a href="#email"
+                            ><span id="profile-email" class="black-text email"
+                                >jdandturk@gmail.com</span
+                            ></a
+                        >
+
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,94 +70,104 @@
                     <div class="schedule-day">
                         <p class="date">03/09/21</p>
                         <p class="hora">13:25h</p>
+
                     </div>
-                    <p class="sector">Setor Leste</p>
-                </div>
-                <div class="actions">
-                    <a href="./createSchedule.html" class="remarca">
-                        <img src="assets/edit_black_24dp.svg" alt="remarcar">
-                    </a>
-                    <a href="#" class="delete" onclick=" openModal()">
-                        <img src="assets/delete_black_24dp.svg" alt="apagar">
-                    </a>
-                </div>
+                </li>
+                <li>
+                    <a href="#!"
+                        ><i class="material-icons">assignment_ind</i>Meu
+                        Perfil</a
+                    >
+                </li>
+                <li>
+                    <a href="./createSchedule.html"
+                        ><i class="material-icons">assignment_ind</i>Fazer
+                        agendamento</a
+                    >
+                </li>
+                <li>
+                    <a href="#!" onclick="mySchedules()"
+                        ><i class="material-icons">event</i>Meus agendamentos</a
+                    >
+                </li>
+                <li>
+                    <a href="#!" id="logout"
+                        ><i class="material-icons">exit_to_app</i>Sair</a
+                    >
+                </li>
+            </ul>
+            <a
+                href="#"
+                data-target="slide-out"
+                class="sidenav-trigger"
+                style="align-self: flex-start"
+                ><i class="small orange-text material-icons">menu</i></a
+            >
+            <h1 class="txt-orange">Controle de Agendamento</h1>
+            <div class="units" id="sao-paulo">
+                <h2>Unidade São Paulo</h2>
             </div>
-        </div>
-        <div class="units" id="santos">
-            <h2>Unidade Santos</h2>
-            <div class="schedule-container">
-                <div class="info">
-                    <p class="user">João Paulo</p>
-                    <div class="schedule-day">
-                        <p class="date">03/09/21</p>
-                        <p class="hora">13:25h</p>
-                    </div>
-                    <p class="sector">Setor Leste</p>
-                </div>
-                <div class="actions">
-                    <a href="./createSchedule.html" class="remarca">
-                        <img src="assets/edit_black_24dp.svg" alt="remarcar">
-                    </a>
-                    <a href="#" class="delete" onclick=" openModal()">
-                        <img src="assets/delete_black_24dp.svg" alt="apagar">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- MODAL -->
-    <div class="modal-wrapper">
-        <div class="modal">
-            <div class="logo-field">
-                <img src="assets/Recyclebin-icon.png" alt="trash can">
-            </div>
-            <h2>Excluir?</h2>
-            <p>Deseja excluir o agendamento?</p>
-            <div class="modal-actions">
-                <button onclick="closeModal()">Não</button>
-                <button onclick="closeModal()">Sim</button>
+            <div class="units" id="santos">
+                <h2>Unidade Santos</h2>
             </div>
         </div>
 
-    </div>
-</body>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+        <!-- MODAL -->
+        <div class="modal-wrapper">
+            <div class="modal">
+                <div class="logo-field">
+                    <img src="assets/Recyclebin-icon.png" alt="trash can" />
+                </div>
+                <h2>Excluir?</h2>
+                <p>Deseja excluir o agendamento?</p>
+                <div class="modal-actions">
+                    <button onclick="closeModal()">Não</button>
+                    <button onclick="closeModal()">Sim</button>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 
-<script>
-    const firebaseConfig = {
-        apiKey: "AIzaSyCxeGpeH2Xu-JtzUDdpWst8-gF9lNSsaK0",
-        authDomain: "orange-spaces-a7732.firebaseapp.com",
-        projectId: "orange-spaces-a7732",
-        storageBucket: "orange-spaces-a7732.appspot.com",
-        messagingSenderId: "979855871760",
-        appId: "1:979855871760:web:62275ecd885b6c95aa5f95"
-    };
+    <script>
+        const firebaseConfig = {
+            apiKey: 'AIzaSyCxeGpeH2Xu-JtzUDdpWst8-gF9lNSsaK0',
+            authDomain: 'orange-spaces-a7732.firebaseapp.com',
+            projectId: 'orange-spaces-a7732',
+            storageBucket: 'orange-spaces-a7732.appspot.com',
+            messagingSenderId: '979855871760',
+            appId: '1:979855871760:web:62275ecd885b6c95aa5f95',
+        };
 
-    firebase.initializeApp(firebaseConfig);
+        firebase.initializeApp(firebaseConfig);
 
-    const auth = firebase.auth();
-    const db = firebase.firestore();
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="./scripts/logoutAuth.js"></script>
-<script src="./scripts/auth.js"></script>
-<script src="./scripts/index.js"></script>
-<script src="./scripts/main.js"></script>
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="./scripts/logoutAuth.js"></script>
+    <script src="./scripts/auth.js"></script>
+    <script src="./scripts/index.js"></script>
+    <script src="./scripts/main.js"></script>
 
-<!-- FUNÇÕES DA MODAL -->
-<script>
-    function openModal() {
-        document.querySelector(".modal-wrapper").id = "active"
-    }
+    <!-- FUNÇÕES DA MODAL -->
+    <script>
+        function openModal() {
+            document.querySelector('.modal-wrapper').id = 'active';
+        }
 
-    function closeModal() {
-        document.querySelector(".modal-wrapper").id = ""
-    }
-</script>
+        function closeModal() {
+            document.querySelector('.modal-wrapper').id = '';
+        }
+    </script>
+
+
+    <!-- Preencher agendamentos -->
+    <script src="./scripts/getSchedule.js"></script>
+    <script src="./scripts/fillContainer.js"></script>
+</html>
 
 <!-- Preencher agendamentos -->
 
@@ -133,3 +175,4 @@
 <script src="./scripts/getSchedule.js"></script>
 
 </html>
+
