@@ -16,39 +16,35 @@
         <div class="row navigation">
             <div class="col s12">
                 <ul class="tabs">
-                    <li class="tab col s6 cadastrar"><a class="orange-text" href="#test1">Cadastro</a></li>
-                    <li class="tab col s6"><a class="active orange-text" href="#test2">Login</a></li>
+                    <li class="tab col s6 cadastrar"><a class="orange-text" href="#register">Cadastro</a></li>
+                    <li class="tab col s6"><a class="active orange-text" href="#login">Login</a></li>
                 </ul>
             </div>
         </div>
 
         <!-- FORMULÁRIO CADASTRO -->
-        <div id="test1" class="col s12">
+        <div id="register" class="col s12">
             <div class="row">
                 <form class="col s12" id="signup-form">
                     <div class="row">
-                        <div class="input-field col s6">
-                            <input id="name" type="text" class="validate" name="name">
+                        <div class="input-field col s12">
+                            <input id="name" type="text" class="validate" name="name" required>
                             <label for="name">Nome</label>
                         </div>
-                        <div class="input-field col s6">
-                            <input id="signup-email" type="email" class="validate" name="signup-email">
+                    </div>
+                    <div class="row">
+                        <div class="input-field col">
+                            <input id="cpf" type="text" class="validate" name="cpf" required>
+                            <label for="cpf">CPF</label>
+                        </div>
+                        <div class="input-field col">
+                            <input id="signup-email" type="email" class="validate" name="signup-email" required>
                             <label for="signup-email">Email</label>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field col s6">
-                            <input id="cpf" type="text" class="validate" name="cpf">
-                            <label for="cpf">CPF</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input id="rg" type="text" class="validate" name="rg">
-                            <label for="rg">RG</label>
-                        </div>
-                    </div>
-                    <div class="row">
                         <div class="input-field col s12">
-                            <input id="signup-password" type="password" class="validate" name="password">
+                            <input id="signup-password" type="password" class="validate" name="password" required>
                             <label for="signup-password"> Escolha uma senha</label>
                         </div>
                     </div>
@@ -63,7 +59,7 @@
         </div>
 
         <!-- FORMULÁRIO LOGIN -->
-        <div id="test2" class="col s12">
+        <div id="login" class="col s12">
             <div class="row">
                 <form class="col s12" id="login-form">
                     <div class="row">
@@ -114,6 +110,7 @@
     <script src="./scripts/validateCPF.js"></script>
     <script src="./scripts/index.js"></script>
     <script src="./scripts/main.js"></script>
+    <script src="./scripts/createHash.js"></script>
     <script src="./scripts/getSchedule.js"></script>
 </body>
 
