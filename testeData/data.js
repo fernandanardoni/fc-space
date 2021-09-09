@@ -12,10 +12,10 @@ $(".datepicker").pickadate({
     selectMonths: true,
     selectYears: true,
     clear: false,
-    format: 'dddd/mm/yyyy',
+    format: 'dddd - dd/mm/yyyy',
     today: "Hoje",
     close: "X",
-    min: new Date(data.getFullYear() - 1, 0, 1),
+    min: new Date(data.getFullYear() - 0, 0, 3),
     max: new Date(data.getFullYear() + 1, 11, 31),
     closeOnSelect: true
 });
