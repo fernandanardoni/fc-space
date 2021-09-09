@@ -42,21 +42,32 @@ function getUser() {
 // Pegando apenas uma filial
 
 function getOffice() {
-    const docRef = db.collection('Escritorio').doc('1');
 
-    docRef
-        .get()
-        .then((doc) => {
-            if (doc.exists) {
-                console.log('dados da filial:', doc.data());
-            } else {
-                // doc.data() will be undefined in this case
-                console.log('No such document!');
-            }
-        })
-        .catch((error) => {
-            console.log('Error getting document:', error);
+
+    
+        // [START get_all_users]
+        db.collection("Escritorio").get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                console.log(`${doc.id} => ${Object.keys(doc.data())}`);
+            });
         });
+        
+   
+    // const docRef = db.collection('Escritorio').doc("1");
+
+    // docRef
+    //     .get()
+    //     .then((doc) => {
+    //         if (doc.exists) {
+    //             console.log('dados da filial:', doc.data());
+    //         } else {
+    //             // doc.data() will be undefined in this case
+    //             console.log('No such document!');
+    //         }
+    //     })
+    //     .catch((error) => {
+    //         console.log('Error getting document:', error);
+    //     });
 }
 
 getSchedules();
