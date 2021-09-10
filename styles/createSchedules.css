@@ -48,6 +48,15 @@
         font-family: "Roboto", sans-serif;
     }
     
+    .progress {
+        background-color: #FEBBA2;
+        height: 10px;
+    }
+    
+    .determinate {
+        background-color: #FE5517 !important
+    }
+    
     html,
     body {
         height: 100%;
@@ -99,22 +108,22 @@
     }
     
     .input-field label {
-        color: #ffab40;
+        color: #FE4400;
     }
     
     .input-field input {
-        border-bottom: 1px solid #ffab40 !important;
+        border-bottom: 1px solid #FE4400 !important;
     }
     
     .input-field input:focus+label {
-        color: #ffab40 !important;
+        color: #FE4400 !important;
     }
     
     .input-field input:focus {
-        border-bottom: 2px solid #ffab40 !important;
-        box-shadow: 0 1px 0 0 #ffab40;
+        border-bottom: 2px solid #FE4400 !important;
+        box-shadow: 0 1px 0 0 #FE4400;
     }
     
     .tabs .tab a:focus {
-        background-color: #ffac4021 !important;
+        background-color: #febba267 !important;
     }

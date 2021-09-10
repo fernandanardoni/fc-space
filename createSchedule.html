@@ -36,8 +36,8 @@
         <div class="row navigation">
             <div class="col s12">
                 <ul id="agendamento" class="tabs">
-                    <li class="tab col s6"><a class="orange-text" href="#saopaulo">São Paulo</a></li>
-                    <li class="tab col s6"><a class="orange-text" href="#santos">Santos</a></li>
+                    <li class="tab col s6"><a class="txt-orange" href="#saopaulo">São Paulo</a></li>
+                    <li class="tab col s6"><a class="txt-orange" href="#santos">Santos</a></li>
                 </ul>
             </div>
         </div>
@@ -57,24 +57,11 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <select id="section">
-                                <option value="" disabled selected>Selecione</option>
-                                <option value="Norte">Setor norte</option>
-                                <option value="Sul">Setor sul</option>
-                                <option value="Leste">Setor leste</option>
-                                <option value="Oeste">Setor oeste</option>
-                            </select>
-                            <label>Escolha o setor desejado</label>
-                        </div>
-                    </div>
-
                     <!-- ============SELEÇÃO DE DATA============ -->
                     <div class="row navigation">
                         <div class="col s12">
                             <ul id="agendamento" class="tabs">
-                                <li class="tab col s12"><a class="orange-text" href="#data">Escolha a Data</a></li>
+                                <li class="tab col s12"><a class="txt-orange" href="#data">Escolha a Data</a></li>
                             </ul>
                         </div>
                     </div>
@@ -96,8 +83,12 @@
                         </div>
                     </div>-->
 
-                    <div class="input-field col s12 submit">
-                        <button class="btn waves-effect waves-light orange" type="submit" name="action">Agendar</button>
+                    <div class="progress">
+                        <div class="determinate" style="width: 90%"></div>
+                    </div>
+
+                    <div class="input-field col s12 submit ">
+                        <button class="btn waves-effect waves-light " type="submit " name="action ">Agendar</button>
                     </div>
 
                 </form>
@@ -107,29 +98,28 @@
         <!-- Agendamento Santos -->
         <div style="display: none;" id="santos" class="col s12">
             <div class="row">
-                <form class="col s12" id="filialSantos">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <select name="section">
-                                <option value="" disabled selected>Selecione</option>
-                                <option value="Norte">Setor norte</option>
-                                <option value="Sul">Setor sul</option>
-                                <option value="Leste">Setor leste</option>
-                                <option value="Oeste">Setor oeste</option>
-                            </select>
-                            <label>Escolha o setor desejado</label>
+                <form class="col s12" id="login-form">
+
+                    <!-- ============SELEÇÃO DE DATA============ -->
+                    <div class="row navigation">
+                        <div class="col s12">
+                            <ul id="agendamento" class="tabs">
+                                <li class="tab col s12"><a class="txt-orange" href="#data">Escolha a Data</a></li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="margin txt-align">Escolha a data</div>
-                        <div class="input-field col s12">
-                            <input type="text" class="datepicker" name="date">
-                            <label>Data</label>
+                    <div style="display: none;" id="data" class="col s12">
+                        <div class="row">
+
+                            <div class="input-field col s12">
+                                <input type="text" class="datepicker">
+                                <label>Data</label>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12 submit">
-                            <button class="btn waves-effect waves-light orange txt-align" type="submit" name="action">Agendar</button>
+                            <button class="btn waves-effect waves-light orange" type="submit" name="action">Agendar</button>
                         </div>
                     </div>
                 </form>
@@ -137,18 +127,18 @@
         </div>
 
     </div>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js "></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js "></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js "></script>
 
     <script>
         const firebaseConfig = {
-            apiKey: "AIzaSyCxeGpeH2Xu-JtzUDdpWst8-gF9lNSsaK0",
-            authDomain: "orange-spaces-a7732.firebaseapp.com",
-            projectId: "orange-spaces-a7732",
-            storageBucket: "orange-spaces-a7732.appspot.com",
-            messagingSenderId: "979855871760",
-            appId: "1:979855871760:web:62275ecd885b6c95aa5f95"
+            apiKey: "AIzaSyCxeGpeH2Xu-JtzUDdpWst8-gF9lNSsaK0 ",
+            authDomain: "orange-spaces-a7732.firebaseapp.com ",
+            projectId: "orange-spaces-a7732 ",
+            storageBucket: "orange-spaces-a7732.appspot.com ",
+            messagingSenderId: "979855871760 ",
+            appId: "1:979855871760:web:62275ecd885b6c95aa5f95 "
         };
 
         firebase.initializeApp(firebaseConfig);
@@ -157,15 +147,15 @@
         const db = firebase.firestore();
     </script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>-->
-    <script src="./scripts/logoutAuth.js"></script>
-    <script src="./scripts/index.js"></script>
-    <script src="./scripts/main.js"></script>
-    <script src="./scripts/auth.js"></script>
-    <script src="./testeData/data.js"></script>
-    <script src="./scripts/setSchedule.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js "></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js "></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js "></script>-->
+    <script src="./scripts/logoutAuth.js "></script>
+    <script src="./scripts/index.js "></script>
+    <script src="./scripts/main.js "></script>
+    <script src="./scripts/auth.js "></script>
+    <script src="./testeData/data.js "></script>
+    <script src="./scripts/setSchedule.js "></script>
 </body>
 
 </html>
