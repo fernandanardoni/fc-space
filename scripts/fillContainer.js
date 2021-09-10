@@ -27,7 +27,7 @@ function fillScheduleList() {
                 </div>
                 
                 <div class="actions">
-                <button class = "delete" id="${doc.id}" type="submit" onclick="openModal()">
+                <button class = "delete" data-id="${doc.id}" type="submit" onclick="openModal()">
                 Apagar
                 </button>
                 
@@ -66,7 +66,7 @@ function fillScheduleList() {
                 </div>
                 
                 <div class="actions">
-                <button class = "delete" id="${doc.id}" type="submit" onclick="openModal()">
+                <button class = "delete" data-id="${doc.id}" type="submit" onclick="openModal()">
                 Apagar
                 </button>
                 
@@ -87,3 +87,23 @@ function fillScheduleList() {
 }
 
 fillScheduleList();
+
+saoPauloUnit.addEventListener('click', (e) => {
+    let idToDelete = e.target.dataset.id;
+
+    if (idToDelete) {
+        fillCollection.doc(idToDelete).delete();
+        fillScheduleList();
+        console.log('id do agendamento apagado: ', idToDelete);
+    }
+});
+
+santosUnit.addEventListener('click', (e) => {
+    let idToDelete = e.target.dataset.id;
+
+    if (idToDelete) {
+        fillCollection.doc(idToDelete).delete();
+        fillScheduleList();
+        console.log('id do agendamento apagado: ', idToDelete);
+    }
+});
