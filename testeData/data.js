@@ -1,26 +1,5 @@
-var diaSemana = [
-    "Domingo",
-    "Segunda-Feira",
-    "Terca-Feira",
-    "Quarta-Feira",
-    "Quinta-Feira",
-    "Sexta-Feira",
-    "Sabado"
-];
-var mesAno = [
-    "Janeiro",
-    "Fevereiro",
-    "Marco",
-    "Abril",
-    "Maio",
-    "Junho",
-    "Julho",
-    "Agosto",
-    "Setembro",
-    "Outubro",
-    "Novembro",
-    "Dezembro"
-];
+var diaSemana = ["Domingo", "Segunda-Feira", "Terca-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira", "Sabado"];
+var mesAno = ["Janeiro", "Fevereiro", "Marco", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
 var data = new Date();
 var hoje =
     diaSemana[data.getDay()] +
@@ -31,20 +10,7 @@ var hoje =
 document.addEventListener("DOMContentLoaded", function() {
     const options = {
         monthsFull: mesAno,
-        monthsShort: [
-            "Jan",
-            "Fev",
-            "Mar",
-            "Abr",
-            "Mai",
-            "Jun",
-            "Jul",
-            "Ago",
-            "Set",
-            "Out",
-            "Nov",
-            "Dez"
-        ],
+        monthsShort: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
 
         i18n: {
             months: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
