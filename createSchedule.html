@@ -12,7 +12,13 @@
 </head>
 
 <body>
-    <div class="container s12">
+    <header>
+        <a data-target="slide-out" class="sidenav-trigger">
+            <i class="small black-text material-icons">menu</i>
+        </a>
+        <p style="color: #FE4400;">FC Space</p>
+        <i class="medium material-icons"
+            style="color: #404099; margin-left: auto; margin-right: 10px;">account_circle</i>
         <ul id="slide-out" class="sidenav">
             <li>
                 <div class="user-view"></div>
@@ -23,13 +29,10 @@
             </li>
             <li><a href="#!" id="logout"><i class="material-icons">exit_to_app</i>Sair</a></li>
         </ul>
-
-        <a data-target="slide-out" class="sidenav-trigger"
-            style="align-self: flex-start;position: absolute;top: 5px; left: 5px;">
-            <i class="small orange-text material-icons">menu</i>
-        </a>
-        <h5 class="txt-align txt-orange">Agendamento FC Space</h5>
-        <p>Selecione uma das unidades abaixo</p>
+    </header>
+    <div class=" create-schedule container s12">
+        <h5 class="txt-align" style="color: #FE4400;">Agendar ida ao escritório</h5>
+        <p style="font-weight: 400;">Escolha qual escritório:</p>
         <div class="row navigation">
             <div class="col s12">
                 <ul id="agendamento" class="tabs">
