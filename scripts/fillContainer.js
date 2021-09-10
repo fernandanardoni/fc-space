@@ -4,10 +4,10 @@ var saoPauloUnit = document.getElementById('sao-paulo');
 
 var santosUnit = document.getElementById('santos');
 
-const fillCollection = db.collection('Agendamentos');
+const scheduleData = db.collection('Agendamentos');
 
 function fillScheduleList() {
-    fillCollection.get().then((item) => {
+    scheduleData.get().then((item) => {
         santosUnit.innerHTML = '<h2>Unidade Santos</h2>';
 
         const scheduleList = item.docs.reduce((acc, doc) => {
@@ -27,7 +27,7 @@ function fillScheduleList() {
                 </div>
                 
                 <div class="actions">
-                <button class = "delete" data-id="${doc.id}" type="submit" onclick="openModal()">
+                <button class = "delete" id="${doc.id}" type="submit" onclick="deleteSchedule(this.id)">
                 Apagar
                 </button>
                 
@@ -46,7 +46,7 @@ function fillScheduleList() {
         }
     });
 
-    fillCollection.get().then((item) => {
+    scheduleData.get().then((item) => {
         const scheduleList = item.docs.reduce((acc, doc) => {
             saoPauloUnit.innerHTML = '<h2>Unidade São Paulo</h2>';
 
@@ -66,7 +66,7 @@ function fillScheduleList() {
                 </div>
                 
                 <div class="actions">
-                <button class = "delete" data-id="${doc.id}" type="submit" onclick="openModal()">
+                <button class = "delete" id="${doc.id}" type="submit" onclick="deleteSchedule(this.id)">
                 Apagar
                 </button>
                 
@@ -84,27 +84,15 @@ function fillScheduleList() {
             saoPauloUnit.innerHTML += 'Sem agendamentos para esta unidade';
         }
     });
+
+    console.log('Chamou a função de fill content');
 }
 
 fillScheduleList();
 
-//Apagar um agendamento.
-saoPauloUnit.addEventListener('click', (e) => {
-    let idToDelete = e.target.dataset.id;
+function deleteSchedule(idToDelete) {
+    scheduleData.doc(`${idToDelete}`).delete();
+    console.log('Agendamento deletado ID: ', idToDelete);
 
-    if (idToDelete) {
-        fillCollection.doc(idToDelete).delete();
-        fillScheduleList();
-        console.log('id do agendamento apagado: ', idToDelete);
-    }
-});
-
-santosUnit.addEventListener('click', (e) => {
-    let idToDelete = e.target.dataset.id;
-
-    if (idToDelete) {
-        fillCollection.doc(idToDelete).delete();
-        fillScheduleList();
-        console.log('id do agendamento apagado: ', idToDelete);
-    }
-});
+    fillScheduleList();
+}
