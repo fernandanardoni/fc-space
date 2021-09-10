@@ -5,6 +5,9 @@ function login() {
 
 const loginData = document.querySelector('#login-form');
 
+
+
+
 loginData.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -13,9 +16,17 @@ loginData.addEventListener('submit', (e) => {
         password: loginData['login-password'].value,
     };
 
-    auth.signInWithEmailAndPassword(user.email, user.password).then(() => {
-        login();
-        loginData.reset();
+   
+      auth.signInWithEmailAndPassword(user.email, user.password).then((data) => {
 
-    })
+        // const token = {
+        //     id: data.user.uid,
+        //     email: data.user.email,
+        // }
+        setToken([data.user.uid,data.user.email])
+
+         login();
+         loginData.reset();
+    })   
+
 });
