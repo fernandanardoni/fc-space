@@ -5,12 +5,12 @@ const agendamentoSP = document.getElementById("filialSP");
 
 const agendamentoSantos = document.getElementById("filialSantos");
 
-const dados = getToken("token").split(",")
+const userLoggedin = getToken("token").split(",")
 console.log('dados', dados)
 
 let identificador;
 
- db.collection("Usuario").doc(dados[1]).get().then((querySnapshot) => {
+ db.collection("Usuario").doc(token.id).get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => console.log(doc))})
 console.log('variavel', identificador)
 
@@ -21,7 +21,6 @@ agendamentoSP.addEventListener("submit", (event) => {
 
     event.preventDefault();
 
-    
 
 
     const newAgenda = {

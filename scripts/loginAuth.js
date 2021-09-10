@@ -18,7 +18,13 @@ loginData.addEventListener('submit', (e) => {
 
    
       auth.signInWithEmailAndPassword(user.email, user.password).then((data) => {
-          
+
+        const token = {
+            id: data.user.uid,
+            email: data.user.email,
+        }
+        setToken(token)
+
          login();
          loginData.reset();
     })   

@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/createSchedules.css">
+    <link rel="stylesheet" href="testeData/teste.css">
+    <link rel="stylesheet" href="styles/textos.css">
     <title>Agendamento FC Space</title>
 </head>
 
@@ -24,17 +27,17 @@
             <li><a href="#!" id="logout"><i class="material-icons">exit_to_app</i>Sair</a></li>
         </ul>
 
-        <a data-target="slide-out" class="sidenav-trigger"
-            style="align-self: flex-start;position: absolute;top: 5px; left: 5px;">
+        <a data-target="slide-out" class="sidenav-trigger" style="align-self: flex-start;position: absolute;top: 5px; left: 5px;">
             <i class="small orange-text material-icons">menu</i>
         </a>
-        <h5 class="txt-align txt-orange">Agendamento FC Space</h5>
-        <p>Selecione uma das unidades abaixo</p>
+
+        <h1 class="txt-align txt-orange">Agendamento FC Space</h1>
+        <p class="txt-align">Selecione uma das unidades abaixo</p>
         <div class="row navigation">
             <div class="col s12">
                 <ul id="agendamento" class="tabs">
-                    <li class="tab col s6" value="São Paulo"><a class="orange-text" href="#saopaulo">São Paulo</a></li>
-                    <li class="tab col s6" value="Santos"><a class="orange-text" href="#santos">Santos</a></li>
+                    <li class="tab col s6"><a class="orange-text" href="#saopaulo">São Paulo</a></li>
+                    <li class="tab col s6"><a class="orange-text" href="#santos">Santos</a></li>
                 </ul>
             </div>
         </div>
@@ -66,13 +69,32 @@
                             <label>Escolha o setor desejado</label>
                         </div>
                     </div>
-                    <div class="row">
+
+                    <!-- ============SELEÇÃO DE DATA============ -->
+                    <div class="row navigation">
+                        <div class="col s12">
+                            <ul id="agendamento" class="tabs">
+                                <li class="tab col s12"><a class="orange-text" href="#data">Escolha a Data</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="display: none;" id="data" class="col s12">
+                        <div class="row">
+
+                            <div class="input-field col s12">
+                                <input type="text" class="datepicker">
+                                <label>Data</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--  <div class="row">
                         <div class="margin txt-align">Escolha a data</div>
                         <div class="input-field col s12">
                             <input type="text" class="datepicker" name="data">
                             <label>Data</label>
                         </div>
-                    </div>
+                    </div>-->
 
                     <div class="input-field col s12 submit">
                         <button class="btn waves-effect waves-light orange" type="submit" name="action">Agendar</button>
@@ -107,8 +129,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12 submit">
-                            <button class="btn waves-effect waves-light orange" type="submit"
-                                name="action">Agendar</button>
+                            <button class="btn waves-effect waves-light orange txt-align" type="submit" name="action">Agendar</button>
                         </div>
                     </div>
                 </form>
@@ -138,7 +159,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>-->
     <script src="./scripts/logoutAuth.js"></script>
     <script src="./scripts/index.js"></script>
     <script src="./scripts/main.js"></script>
