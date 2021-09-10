@@ -4,75 +4,107 @@ var saoPauloUnit = document.getElementById('sao-paulo');
 
 var santosUnit = document.getElementById('santos');
 
-const scheduleSantos = getSchedulesByFilial('Santos');
-const scheduleSaoPaulo = getSchedulesByFilial('Sao Paulo');
+const fillCollection = db.collection('Agendamentos');
 
-function fillScheduleListSantos() {
-    scheduleSantos.then((unit) => {
-        var contentSantos = '';
-        for (i in unit) {
-            contentSantos += `
-        <div class="schedule-container">
-        <div class="info">
-            <p class="user">${unit[i].funcionario}</p>
-        
-            <div class="schedule-day">
-                <p class="date">${unit[i].data}</p>
-                <p class="hora">13:55h</p>
-            </div>
-        
-            <p class="sector">${unit[i].setor}</p>
-        </div>
-        
-        <div class="actions">
-            <a href="./createSchedule.html" class="remarca">
-                <img src="assets/edit_black_24dp.svg" alt="remarcar">
-            </a>
-            <a href="#" class="delete" onclick=" openModal()">
-                <img src="assets/delete_black_24dp.svg" alt="apagar">
-            </a>
-        </div>
-        </div>
-        `;
+function fillScheduleList() {
+    fillCollection.get().then((item) => {
+        santosUnit.innerHTML = '<h2>Unidade Santos</h2>';
+
+        const scheduleList = item.docs.reduce((acc, doc) => {
+            const { funcionario, data, setor, filial } = doc.data();
+
+            if (filial == 'Santos') {
+                acc += `
+                <div class="schedule-container">
+                <div class="info">
+                <p class="user">${funcionario}</p>
+                
+                <div class="schedule-day">
+                <p class="date">${data}</p>
+                </div>
+                
+                <p class="sector">${filial}</p>
+                </div>
+                
+                <div class="actions">
+                <button class = "delete" data-id="${doc.id}" type="submit" onclick="openModal()">
+                Apagar
+                </button>
+                
+                </div>
+                </div>
+                `;
+            }
+
+            return acc;
+        }, '');
+
+        if (scheduleList) {
+            santosUnit.innerHTML += scheduleList;
+        } else {
+            santosUnit.innerHTML += 'Sem agendamentos para esta unidade';
         }
+    });
 
-        santosUnit.innerHTML += contentSantos;
+    fillCollection.get().then((item) => {
+        const scheduleList = item.docs.reduce((acc, doc) => {
+            saoPauloUnit.innerHTML = '<h2>Unidade São Paulo</h2>';
+
+            const { funcionario, data, setor, filial } = doc.data();
+
+            if (filial == 'São Paulo') {
+                acc += `
+                <div class="schedule-container">
+               <div class="info">
+                <p class="user">${funcionario}</p>
+                
+                <div class="schedule-day">
+                <p class="date">${data}</p>
+                </div>
+                
+                <p class="sector">${filial}</p>
+                </div>
+                
+                <div class="actions">
+                <button class = "delete" data-id="${doc.id}" type="submit" onclick="openModal()">
+                Apagar
+                </button>
+                
+                </div>
+                </div>
+                `;
+            }
+
+            return acc;
+        }, '');
+
+        if (scheduleList) {
+            saoPauloUnit.innerHTML += scheduleList;
+        } else {
+            saoPauloUnit.innerHTML += 'Sem agendamentos para esta unidade';
+        }
     });
 }
 
-fillScheduleListSantos();
+fillScheduleList();
 
-function fillScheduleListSaoPaulo() {
-    scheduleSaoPaulo.then((unit) => {
-        var contentSaoPaulo = '';
-        for (i in unit) {
-            contentSaoPaulo += `
-        <div class="schedule-container">
-        <div class="info">
-            <p class="user">${unit[i].funcionario}</p>
-        
-            <div class="schedule-day">
-                <p class="date">${unit[i].data}</p>
-                <p class="hora">13:55h</p>
-            </div>
-        
-            <p class="sector">${unit[i].setor}</p>
-        </div>
-        
-        <div class="actions">
-            <a href="./createSchedule.html" class="remarca">
-                <img src="assets/edit_black_24dp.svg" alt="remarcar">
-            </a>
-            <a href="#" class="delete" onclick=" openModal()">
-                <img src="assets/delete_black_24dp.svg" alt="apagar">
-            </a>
-        </div>
-        </div>
-        `;
-        }
+//Apagar um agendamento.
+saoPauloUnit.addEventListener('click', (e) => {
+    let idToDelete = e.target.dataset.id;
 
-        saoPauloUnit.innerHTML += contentSaoPaulo;
-    });
-}
+    if (idToDelete) {
+        fillCollection.doc(idToDelete).delete();
+        fillScheduleList();
+        console.log('id do agendamento apagado: ', idToDelete);
+    }
+});
 
-fillScheduleListSaoPaulo();
+santosUnit.addEventListener('click', (e) => {
+    let idToDelete = e.target.dataset.id;
+
+    if (idToDelete) {
+        fillCollection.doc(idToDelete).delete();
+        fillScheduleList();
+        console.log('id do agendamento apagado: ', idToDelete);
+    }
+});
