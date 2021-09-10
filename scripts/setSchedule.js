@@ -7,9 +7,8 @@
 
 // // agendamentoSP.addEventListener("submit", (event) => {
 
-// //     event.preventDefault();
 
-// <<<<<<< branch-fernanda
+// //     event.preventDefault();
 // //     const newAgenda = {
 // //         filial: "São Paulo",
 // //         setor: agendamentoSP["section"].value,
@@ -19,7 +18,6 @@
 // //         // cpf: "00586712003",
 // //         // data: agendamentoSP["data"].value
 // //     }
-// =======
 // const userLoggedin = getToken("token").split(",")
 // console.log('dados', dados)
 
@@ -29,17 +27,13 @@
 //     querySnapshot.forEach((doc) => console.log(doc))})
 // console.log('variavel', identificador)
 
+
 // // login
 // // setToken([data.user.email, data.user.uid]);
 // >>>>>>> master
 
 // //     const userId = db.collection('Usuario').doc(user.uid)
 // //     console.log(userId)
-
-
-// <<<<<<< branch-fernanda
-
-
 // //     // db.collection("Agendamentos").add(newAgenda)
 // //     // .then(() => {
 // //     //     alert("Agendamento adicionado!")
