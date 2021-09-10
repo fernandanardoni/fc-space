@@ -8,14 +8,14 @@ const fillCollection = db.collection('Agendamentos');
 
 function fillScheduleListSantos() {
     fillCollection.get().then((item) => {
-        const scheduleList = item.docs.reduce((acc, doc, id) => {
+        const scheduleList = item.docs.reduce((acc, doc) => {
             const { funcionario, data, setor, filial } = doc.data();
 
             santosUnit.innerHTML = '<h2>Unidade Santos</h2>';
 
             if (filial == 'Santos') {
                 acc += `
-        <div class="schedule-container">
+        <div class="schedule-container" id="${doc.id}">
         <div class="info">
         <p class="user">${funcionario}</p>
         
@@ -30,7 +30,7 @@ function fillScheduleListSantos() {
         <a href="./createSchedule.html" class="remarca">
         <img src="assets/edit_black_24dp.svg" alt="remarcar">
         </a>
-        <a href="#" class="delete" onclick=" openModal()">
+        <a href="#" class="delete" id="${doc.id}" onclick=" openModal()">
         <img src="assets/delete_black_24dp.svg" alt="apagar">
         </a>
         </div>
@@ -48,7 +48,6 @@ function fillScheduleListSantos() {
         }
     });
 }
-
 fillScheduleListSantos();
 
 function fillScheduleListSaoPaulo() {
@@ -60,7 +59,7 @@ function fillScheduleListSaoPaulo() {
 
             if (filial == 'São Paulo') {
                 acc += `
-        <div class="schedule-container">
+        <div class="schedule-container" id="${doc.id}">
         <div class="info">
         <p class="user">${funcionario}</p>
         
@@ -75,7 +74,7 @@ function fillScheduleListSaoPaulo() {
         <a href="./createSchedule.html" class="remarca">
         <img src="assets/edit_black_24dp.svg" alt="remarcar">
         </a>
-        <a href="#" class="delete" onclick=" openModal()">
+        <a href="#" class="delete" id="${doc.id}" onclick=" openModal()">
         <img src="assets/delete_black_24dp.svg" alt="apagar">
         </a>
         </div>
@@ -93,5 +92,8 @@ function fillScheduleListSaoPaulo() {
         }
     });
 }
-
 fillScheduleListSaoPaulo();
+
+function deleteSchedule() {
+    // fillCollection.doc('544').delete();
+}
