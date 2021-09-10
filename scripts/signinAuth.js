@@ -7,7 +7,6 @@ signUpData.addEventListener('submit', (e) => {
         nome: signUpData['name'].value,
         email: signUpData['signup-email'].value,
         cpf: signUpData['cpf'].value.replace(/\.|- |,/g, ""),
-        senha: hashPassword.hash(signUpData['signup-password'].value)
     };
     
     if (!user.email.includes("@fcamara.com.br")) {
