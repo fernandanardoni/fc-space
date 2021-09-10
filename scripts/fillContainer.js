@@ -15,7 +15,7 @@ function fillScheduleList() {
 
             if (filial == 'Santos') {
                 acc += `
-                <div class="schedule-container" id="${doc.id}">
+                <div class="schedule-container">
                 <div class="info">
                 <p class="user">${funcionario}</p>
                 
@@ -47,14 +47,14 @@ function fillScheduleList() {
     });
 
     fillCollection.get().then((item) => {
-        const scheduleList = item.docs.reduce((acc, doc, id) => {
+        const scheduleList = item.docs.reduce((acc, doc) => {
             saoPauloUnit.innerHTML = '<h2>Unidade São Paulo</h2>';
 
             const { funcionario, data, setor, filial } = doc.data();
 
             if (filial == 'São Paulo') {
                 acc += `
-                <div class="schedule-container" id="${doc.id}">
+                <div class="schedule-container">
                <div class="info">
                 <p class="user">${funcionario}</p>
                 
@@ -88,6 +88,7 @@ function fillScheduleList() {
 
 fillScheduleList();
 
+//Apagar um agendamento.
 saoPauloUnit.addEventListener('click', (e) => {
     let idToDelete = e.target.dataset.id;
 
