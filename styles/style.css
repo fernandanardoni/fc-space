@@ -114,6 +114,11 @@ h3 {
     background-color: transparent !important;
 }
 
+
+#data .indicator {
+    background-color: transparent !important;
+}
+
 #test1, #saopaulo, #santos, #test2 {
     width: 100%;
 }
