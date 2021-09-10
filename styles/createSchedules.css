@@ -48,6 +48,10 @@ h1 {
     font-family: "Roboto", sans-serif;
 }
 
+.datepicker-table td.is-selected {
+    background-color: #fe4400;
+}
+
 .progress {
     background-color: #febba2;
     height: 10px;
