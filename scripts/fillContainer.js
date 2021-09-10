@@ -5,7 +5,7 @@ var saoPauloUnit = document.getElementById('sao-paulo');
 var santosUnit = document.getElementById('santos');
 
 const scheduleSantos = getSchedulesByFilial('Santos');
-const scheduleSaoPaulo = getSchedulesByFilial('Sao Paulo');
+const scheduleSaoPaulo = getSchedulesByFilial('São Paulo');
 
 function fillScheduleListSantos() {
     scheduleSantos.then((unit) => {
