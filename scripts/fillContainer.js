@@ -4,74 +4,93 @@ var saoPauloUnit = document.getElementById('sao-paulo');
 
 var santosUnit = document.getElementById('santos');
 
-const scheduleSantos = getSchedulesByFilial('Santos');
-const scheduleSaoPaulo = getSchedulesByFilial('São Paulo');
+const fillCollection = db.collection('Agendamentos');
 
 function fillScheduleListSantos() {
-    scheduleSantos.then((unit) => {
-        var contentSantos = '';
-        for (i in unit) {
-            contentSantos += `
+    fillCollection.get().then((item) => {
+        const scheduleList = item.docs.reduce((acc, doc, id) => {
+            const { funcionario, data, setor, filial } = doc.data();
+
+            santosUnit.innerHTML = '<h2>Unidade Santos</h2>';
+
+            if (filial == 'Santos') {
+                acc += `
         <div class="schedule-container">
         <div class="info">
-            <p class="user">${unit[i].funcionario}</p>
+        <p class="user">${funcionario}</p>
         
-            <div class="schedule-day">
-                <p class="date">${unit[i].data}</p>
-                <p class="hora">13:55h</p>
-            </div>
+        <div class="schedule-day">
+        <p class="date">${data}</p>
+        </div>
         
-            <p class="sector">${unit[i].setor}</p>
+        <p class="sector">${filial}</p>
         </div>
         
         <div class="actions">
-            <a href="./createSchedule.html" class="remarca">
-                <img src="assets/edit_black_24dp.svg" alt="remarcar">
-            </a>
-            <a href="#" class="delete" onclick=" openModal()">
-                <img src="assets/delete_black_24dp.svg" alt="apagar">
-            </a>
+        <a href="./createSchedule.html" class="remarca">
+        <img src="assets/edit_black_24dp.svg" alt="remarcar">
+        </a>
+        <a href="#" class="delete" onclick=" openModal()">
+        <img src="assets/delete_black_24dp.svg" alt="apagar">
+        </a>
         </div>
         </div>
         `;
-        }
+            }
 
-        santosUnit.innerHTML += contentSantos;
+            return acc;
+        }, '');
+
+        if (scheduleList) {
+            santosUnit.innerHTML += scheduleList;
+        } else {
+            santosUnit.innerHTML += 'Sem agendamentos para esta unidade';
+        }
     });
 }
 
 fillScheduleListSantos();
 
 function fillScheduleListSaoPaulo() {
-    scheduleSaoPaulo.then((unit) => {
-        var contentSaoPaulo = '';
-        for (i in unit) {
-            contentSaoPaulo += `
+    fillCollection.get().then((item) => {
+        const scheduleList = item.docs.reduce((acc, doc, id) => {
+            const { funcionario, data, setor, filial } = doc.data();
+
+            saoPauloUnit.innerHTML = '<h2>Unidade São Paulo</h2>';
+
+            if (filial == 'São Paulo') {
+                acc += `
         <div class="schedule-container">
         <div class="info">
-            <p class="user">${unit[i].funcionario}</p>
+        <p class="user">${funcionario}</p>
         
-            <div class="schedule-day">
-                <p class="date">${unit[i].data}</p>
-                <p class="hora">13:55h</p>
-            </div>
+        <div class="schedule-day">
+        <p class="date">${data}</p>
+        </div>
         
-            <p class="sector">${unit[i].setor}</p>
+        <p class="sector">${filial}</p>
         </div>
         
         <div class="actions">
-            <a href="./createSchedule.html" class="remarca">
-                <img src="assets/edit_black_24dp.svg" alt="remarcar">
-            </a>
-            <a href="#" class="delete" onclick=" openModal()">
-                <img src="assets/delete_black_24dp.svg" alt="apagar">
-            </a>
+        <a href="./createSchedule.html" class="remarca">
+        <img src="assets/edit_black_24dp.svg" alt="remarcar">
+        </a>
+        <a href="#" class="delete" onclick=" openModal()">
+        <img src="assets/delete_black_24dp.svg" alt="apagar">
+        </a>
         </div>
         </div>
         `;
-        }
+            }
 
-        saoPauloUnit.innerHTML += contentSaoPaulo;
+            return acc;
+        }, '');
+
+        if (scheduleList) {
+            saoPauloUnit.innerHTML += scheduleList;
+        } else {
+            saoPauloUnit.innerHTML += 'Sem agendamentos para esta unidade';
+        }
     });
 }
 
