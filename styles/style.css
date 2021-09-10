@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 @import 'textos.css';
+/* estilos globais */
+
 * {
     margin: 0;
     padding: 0;
@@ -14,13 +16,7 @@ html, body {
     font-weight: 800;
 }
 
-h5 {
-    font-weight: 800;
-}
-
-button, a, input {
-    font-family: 'Roboto', sans-serif;
-}
+/* estilos da página de login e cadastro */
 
 header {
     height: 10%;
@@ -36,7 +32,26 @@ header p {
     font-size: 24px;
 }
 
-.container {
+.main {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.desktop {
+    background-color: #FE4400;
+    width: 50%;
+    height: 60%;
+    margin-left: 5%;
+    border-radius: 10px;
+}
+
+.enter {
+    width: 50%;
+}
+
+.enter .container {
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -44,12 +59,8 @@ header p {
     justify-content: center;
 }
 
-.create-schedule {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+h5, h3 {
+    font-weight: 800;
 }
 
 h3 {
@@ -57,28 +68,16 @@ h3 {
     font-size: 64px;
 }
 
-.navigation {
-    width: 100%;
-}
-
-.submit {
-    display: flex;
-    align-content: center;
-    justify-content: center;
-}
-
-.submit button {
-    width: 100%;
-    background: #404099;
-    border-radius: 5px;
+button, a, input {
+    font-family: 'Roboto', sans-serif;
 }
 
 .cadastrar {
     width: 50%;
 }
 
-#login, #register {
-    width: 100%
+.navigation {
+    width: 100%;
 }
 
 .tabs .indicator {
@@ -110,19 +109,6 @@ h3 {
     color: #FE4400;
 }
 
-#agendamento .indicator {
-    background-color: transparent !important;
-}
-
-
-#data .indicator {
-    background-color: transparent !important;
-}
-
-#test1, #saopaulo, #santos, #test2 {
-    width: 100%;
-}
-
 .input-field label {
     color: #222222;
 }
@@ -140,4 +126,56 @@ h3 {
     border-bottom: 2px solid #222222 !important;
     box-shadow: none;
     background-color: #33333318;
+}
+
+.submit {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.submit button {
+    width: 100%;
+    background: #404099;
+    border-radius: 5px;
+}
+
+#login, #register {
+    width: 100%
+}
+
+/* estilos da página de agendamento */
+
+.create-schedule {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+#agendamento .indicator {
+    background-color: transparent !important;
+}
+
+#data .indicator {
+    background-color: transparent !important;
+}
+
+#test1, #saopaulo, #santos, #test2 {
+    width: 100%;
+}
+
+/* media queries para desktop */
+
+@media (max-width: 776px) {
+    .main {
+        justify-content: center;
+    }
+    .desktop {
+        display: none;
+    }
+    .enter {
+        width: 100%;
+    }
 }
