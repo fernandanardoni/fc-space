@@ -15,27 +15,25 @@ function fillScheduleList() {
 
             if (filial == 'Santos') {
                 acc += `
-        <div class="schedule-container" id="${doc.id}">
-        <div class="info">
-        <p class="user">${funcionario}</p>
-        
-        <div class="schedule-day">
-        <p class="date">${data}</p>
-        </div>
-        
-        <p class="sector">${filial}</p>
-        </div>
-        
-        <div class="actions">
-        <a href="./createSchedule.html" class="remarca">
-        <img src="assets/edit_black_24dp.svg" alt="remarcar">
-        </a>
-        <a href="#" class="delete" id="${doc.id}" onclick=" openModal()">
-        <img src="assets/delete_black_24dp.svg" alt="apagar">
-        </a>
-        </div>
-        </div>
-        `;
+                <div class="schedule-container" id="${doc.id}">
+                <div class="info">
+                <p class="user">${funcionario}</p>
+                
+                <div class="schedule-day">
+                <p class="date">${data}</p>
+                </div>
+                
+                <p class="sector">${filial}</p>
+                </div>
+                
+                <div class="actions">
+                <button class = "delete" id="${doc.id}" type="submit" onclick="openModal()">
+                Apagar
+                </button>
+                
+                </div>
+                </div>
+                `;
             }
 
             return acc;
@@ -56,27 +54,25 @@ function fillScheduleList() {
 
             if (filial == 'São Paulo') {
                 acc += `
-        <div class="schedule-container" id="${doc.id}">
-        <div class="info">
-        <p class="user">${funcionario}</p>
-        
-        <div class="schedule-day">
-        <p class="date">${data}</p>
-        </div>
-        
-        <p class="sector">${filial}</p>
-        </div>
-        
-        <div class="actions">
-        <a href="./createSchedule.html" class="remarca">
-        <img src="assets/edit_black_24dp.svg" alt="remarcar">
-        </a>
-        <a href="#" class="delete" id="${doc.id}" onclick=" openModal()">
-        <img src="assets/delete_black_24dp.svg" alt="apagar">
-        </a>
-        </div>
-        </div>
-        `;
+                <div class="schedule-container" id="${doc.id}">
+               <div class="info">
+                <p class="user">${funcionario}</p>
+                
+                <div class="schedule-day">
+                <p class="date">${data}</p>
+                </div>
+                
+                <p class="sector">${filial}</p>
+                </div>
+                
+                <div class="actions">
+                <button class = "delete" id="${doc.id}" type="submit" onclick="openModal()">
+                Apagar
+                </button>
+                
+                </div>
+                </div>
+                `;
             }
 
             return acc;
