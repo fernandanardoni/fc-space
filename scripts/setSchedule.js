@@ -5,15 +5,25 @@ const agendamentoSP = document.getElementById("filialSP");
 
 const agendamentoSantos = document.getElementById("filialSantos");
 
-const userLoggedin = getToken("token").split(",")
-console.log('dados', dados)
+const userData = getToken("token").split(",")
 
-let identificador;
+const email = userData[1];
+const userId = userData[0];
 
- db.collection("Usuario").doc(token.id).get().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => console.log(doc))})
-console.log('variavel', identificador)
 
+
+
+
+const identificador = () => db.collection("Usuario")?.doc(userId)?.get().then((doc) => { 
+    if (doc.exists)
+    return doc.data() })
+    
+console.log('identificador', identificador)
+
+ console.log(userId === "410uw96u3SeE1pfLgJlBjWcny2o1") 
+
+
+    // `${Object.keys(doc.data())}`
 // login
 // setToken([data.user.email, data.user.uid]);
 
@@ -27,9 +37,9 @@ agendamentoSP.addEventListener("submit", (event) => {
         filial: "São Paulo",
         setor: agendamentoSP["section"].value,
         andar: agendamentoSP["andar"].value,
-        email: dados[0],
+        email: identificador.email,
         funcionario: "Roger",
-        cpf: "00586712003",
+        cpf: identificador.cpf,
         data: agendamentoSP["data"].value
     }
 
