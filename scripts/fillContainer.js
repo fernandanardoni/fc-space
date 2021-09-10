@@ -6,12 +6,12 @@ var santosUnit = document.getElementById('santos');
 
 const fillCollection = db.collection('Agendamentos');
 
-function fillScheduleListSantos() {
+function fillScheduleList() {
     fillCollection.get().then((item) => {
+        santosUnit.innerHTML = '<h2>Unidade Santos</h2>';
+
         const scheduleList = item.docs.reduce((acc, doc) => {
             const { funcionario, data, setor, filial } = doc.data();
-
-            santosUnit.innerHTML = '<h2>Unidade Santos</h2>';
 
             if (filial == 'Santos') {
                 acc += `
@@ -47,15 +47,12 @@ function fillScheduleListSantos() {
             santosUnit.innerHTML += 'Sem agendamentos para esta unidade';
         }
     });
-}
-fillScheduleListSantos();
 
-function fillScheduleListSaoPaulo() {
     fillCollection.get().then((item) => {
         const scheduleList = item.docs.reduce((acc, doc, id) => {
-            const { funcionario, data, setor, filial } = doc.data();
-
             saoPauloUnit.innerHTML = '<h2>Unidade São Paulo</h2>';
+
+            const { funcionario, data, setor, filial } = doc.data();
 
             if (filial == 'São Paulo') {
                 acc += `
@@ -92,8 +89,5 @@ function fillScheduleListSaoPaulo() {
         }
     });
 }
-fillScheduleListSaoPaulo();
 
-function deleteSchedule() {
-    // fillCollection.doc('544').delete();
-}
+fillScheduleList();
