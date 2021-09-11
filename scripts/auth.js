@@ -18,22 +18,22 @@ auth.onAuthStateChanged(user => {
         });
 
 
-        agendamentoSP.addEventListener("submit", (event) => {
-            event.preventDefault();
+    //     agendamentoSP.addEventListener("submit", (event) => {
+    //         event.preventDefault();
 
-            const newAgenda = {
-                filial: "São Paulo",
-                andar: agendamentoSP["andar"].value,
-                data: agendamentoSP["data"].value,
-                email: user.email,
-            }
+    //         const newAgenda = {
+    //             filial: "São Paulo",
+    //             andar: agendamentoSP["andar"].value,
+    //             data: agendamentoSP["data"].value,
+    //             email: user.email,
+    //         }
 
-            db.collection('Usuario').doc(user.uid).collection('agendamentos').add(newAgenda).then(() =>
-                console.log('agendamento confirmado!')
-            )
+    //         db.collection('Usuario').doc(user.uid).collection('agendamentos').add(newAgenda).then(() =>
+    //             console.log('agendamento confirmado!')
+    //         )
 
-        })
-    } else {
-        console.log('user logged out')
-    }
-});
+    //     })
+    // } else {
+    //     console.log('user logged out')
+    // }
+}});

@@ -1,14 +1,14 @@
 
 
-const agendamentoSP = document.getElementById("filialSP");
+const filialSp = document.getElementById("filialSP");
 
 
-const agendamentoSantos = document.getElementById("filialSantos");
+const filialSantos = document.getElementById("login-form");
 
 
 // Agendamento nas tabelas de agendamento e usuário na filial de São Paulo
 
-agendamentoSP.addEventListener("submit", (event) => {
+filialSp.addEventListener("submit", (event) => {
 
     event.preventDefault();
 
@@ -23,16 +23,16 @@ agendamentoSP.addEventListener("submit", (event) => {
 
         const newAgenda = {
             filial: "São Paulo",
-            andar: agendamentoSP["andar"].value,
+            andar: filialSp["andar"].value,
             email: doc.data().email,
             cpf: doc.data().cpf,
-            data: agendamentoSP["dateSP"].value
+            data: filialSp["dateSP"].value
         }
 
         const newAgendaUser = {
             filial: "São Paulo",
-            andar: agendamentoSP["andar"].value,
-            data: agendamentoSP["dateSP"].value
+            andar: filialSp["andar"].value,
+            data: filialSp["dateSP"].value
         }
 
         db.collection("Agendamentos").add(newAgenda)
@@ -57,7 +57,7 @@ agendamentoSP.addEventListener("submit", (event) => {
 // Agendamento nas tabelas de agendamento e usuário na filial de Santos
 
 
-agendamentoSantos.addEventListener("submit", (event) => {
+filialSantos.addEventListener("submit", (event) => {
 
     event.preventDefault();
 
@@ -73,7 +73,7 @@ agendamentoSantos.addEventListener("submit", (event) => {
             andar: 1,
             email: doc.data().email,
             cpf: doc.data().cpf,
-            data: agendamentoSantos["dateSantos"].value
+            data: filialSantos["dateSantos"].value
         }
 
         const newAgendaUser = {
