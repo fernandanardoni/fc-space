@@ -1,122 +1,82 @@
 
-// comentando todo o arquivo para evitar conflitos 
-
-// // const agendamentoSP = document.getElementById("filialSP");
-
-// // const agendamentoSantos = document.getElementById("filialSantos");
-
-// // agendamentoSP.addEventListener("submit", (event) => {
+const agendamentoSP = document.getElementById("filialSP");
+const agendamentoSantos = document.getElementById("filialSantos");
 
 
-// //     event.preventDefault();
-// //     const newAgenda = {
-// //         filial: "São Paulo",
-// //         setor: agendamentoSP["section"].value,
-// //         andar: agendamentoSP["andar"].value,
-// //         // email: "roger@fcamara.com.br",
-// //         // funcionario: "Roger",
-// //         // cpf: "00586712003",
-// //         // data: agendamentoSP["data"].value
-// //     }
-// const userLoggedin = getToken("token").split(",")
-// console.log('dados', dados)
+auth.onAuthStateChanged(user => {
+    if (user) {
+        db.collection('Usuario').get().then(snapshots => {
+            snapshots.forEach((doc) => {
+                if (doc.id == user.uid) {
+                    console.log(doc.data())
+                };
+            });
+        });
 
-// let identificador;
+        // armazendndo agendamento SP
+        agendamentoSP.addEventListener("submit", (event) => {
+            event.preventDefault();
 
-//  db.collection("Usuario").doc(token.id).get().then((querySnapshot) => {
-//     querySnapshot.forEach((doc) => console.log(doc))})
-// console.log('variavel', identificador)
+            const newSchedule = {
+                filial: "São Paulo",
+                andar: agendamentoSP["andar"].value,
+                data: agendamentoSP["dateSP"].value,
+                email: user.email,
+                cpf: doc.data().cpf,
+            }
 
+            const newUserSchedule = {
+                filial: "São Paulo",
+                andar: agendamentoSP["andar"].value,
+                data: agendamentoSP["dateSP"].value
+            }
 
-// // login
-// // setToken([data.user.email, data.user.uid]);
-// >>>>>>> master
+            db.collection('Usuario').doc(user.uid).collection('agendamentos').add(newUserSchedule)
+                .then(() => {
+                    alert("Agendamento adicionado!")
+                    window.location.href = "seeSchedules.html";
+                })
+                .catch(() => {
+                    console.error("Ocorreu um erro ao adicionar o agendamento: ", error);
+                })
 
-// //     const userId = db.collection('Usuario').doc(user.uid)
-// //     console.log(userId)
-// //     // db.collection("Agendamentos").add(newAgenda)
-// //     // .then(() => {
-// //     //     alert("Agendamento adicionado!")
-// //     //     setTimeout(function() {
-// //     //         window.location.href = "seeSchedules.html";
-// //     //     }, 2000);
-// //     // })
-// //     // .catch((error) => {
-// //     //     console.error("Ocorreu um erro ao adicionar o agendamento: ", error);
-// //     // });
-// =======
-
-
-//     const newAgenda = {
-//         filial: "São Paulo",
-//         setor: agendamentoSP["section"].value,
-//         andar: agendamentoSP["andar"].value,
-//         email: dados[0],
-//         funcionario: "Roger",
-//         cpf: "00586712003",
-//         data: agendamentoSP["data"].value
-//     }
-
-//     console.log('newAgenda', newAgenda)
-
-    
-//     db.collection("Agendamentos").add(newAgenda)
-//     .then(() => {
-//         alert("Agendamento adicionado!")
-//         setTimeout(function() {
-//             window.location.href = "seeSchedules.html";
-//         }, 2000);
-//     })
-//     .catch((error) => {
-//         console.error("Ocorreu um erro ao adicionar o agendamento: ", error);
-//     });
-// >>>>>>> master
-
-// // })
-
-// // agendamentoSantos.addEventListener("submit", (event) => {
-
-// //     event.preventDefault();
-
-// //     const newAgenda = {
-// //         filial: "Santos",
-// //         setor: agendamentoSantos["section"].value,
-// //         andar: 1,
-// //         email: "roger@fcamara.com.br",
-// //         funcionario: "Roger",
-// //         cpf: "00586712003",
-// //         data: agendamentoSantos["date"].value
-// //     }
-
-// <<<<<<< branch-fernanda
-// =======
-//     const dados = getToken("token").split(",")
-
-//     const newAgenda = {
-//         filial: "Santos",
-//         setor: agendamentoSantos["section"].value,
-//         andar: 1,
-//         email: dados[0],
-//         funcionario: "Roger",
-//         cpf: "00586712003",
-//         data: agendamentoSantos["date"].value
-//     }
-// >>>>>>> master
+            db.collection("Agendamentos").add(newSchedule)
 
 
-// //     db.collection("Agendamentos").add(newAgenda)
-// //         .then(() => {
+        });
 
-// //             alert("Agendamento adicionado!")
-// //             setTimeout(function () {
-// //                 window.location.href = "seeSchedules.html";
-// //             }, 2000);
+        // armazenando agendamento Santos
+        agendamentoSantos.addEventListener("submit", (event) => {
+            event.preventDefault();
 
-// //         })
-// //         .catch((error) => {
-// //             console.error("Ocorreu um erro ao adicionar o agendamento: ", error);
-// //         });
+            const newSchedule = {
+                filial: "Santos",
+                andar: agendamentoSantos["andar"].value,
+                data: agendamentoSantos["dateSantos"].value,
+                email: user.email,
+                cpf: doc.data().cpf,
+            }
 
-// // })
+            const newUserSchedule = {
+                filial: "Santos",
+                andar: agendamentoSP["andar"].value,
+                data: agendamentoSP["dateSantos"].value
+            }
 
+            db.collection('Usuario').doc(user.uid).collection('agendamentos').add(newUserSchedule)
+                .then(() => {
+                    alert("Agendamento adicionado!")
+                    window.location.href = "seeSchedules.html";
+                })
+                .catch(() => {
+                    console.error("Ocorreu um erro ao adicionar o agendamento: ", error);
+                })
+
+            db.collection("Agendamentos").add(newSchedule)
+
+        });
+    } else {
+        console.log('user logged out')
+    }
+});
 
