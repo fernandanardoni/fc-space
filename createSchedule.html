@@ -2,21 +2,27 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="styles/style.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/createSchedules.css" />
+    <link rel="stylesheet" href="testeData/teste.css" />
+    <link rel="stylesheet" href="styles/textos.css" />
+
     <title>Agendamento FC Space</title>
 </head>
 
 <body>
     <div class="container s12">
+
         <ul id="slide-out" class="sidenav">
             <li>
                 <div class="user-view"></div>
             </li>
+
             <li><a href="#!"><i class="material-icons">assignment_ind</i>Meu Perfil</a></li>
             <li><a href="./createSchedule.html"><i class="material-icons">event_note</i>Fazer agendamento</a></li>
             <li><a href="#!" onclick="mySchedules()"><i class="material-icons">event_available</i>Meus agendamentos</a>
@@ -39,92 +45,95 @@
                 </ul>
             </div>
         </div>
-
-        <!-- Agendamento São Paulo -->
-        <div style="display: none;" id="saopaulo" class="col s12">
-            <div class="row">
-                <form class="col s12" id="filialSP">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <select id="andar">
-                                <option value="" disabled selected>Selecione</option>
-                                <option value="1">1º Andar</option>
-                                <option value="2">2º Andar</option>
-                            </select>
-                            <label>Escolha o andar desejado</label>
-                        </div>
                     </div>
+                </div>
 
-                    <!-- ============SELEÇÃO DE DATA============ -->
-                    <div class="row navigation">
-                        <div class="col s12">
-                            <ul id="agendamento" class="tabs">
-                                <li class="tab col s12"><a class="txt-orange" href="#data">Escolha a Data</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div style="display: none;" id="data" class="col s12">
+                <!-- Agendamento São Paulo -->
+                <main style="width: 100%">
+                    <div style="display: none" id="saopaulo" class="col s12">
                         <div class="row">
+                            <form class="col s12" id="filialSP">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <select id="andar">
+                    <option value="" disabled selected>Selecione</option>
+                    <option value="1">1º Andar</option>
+                    <option value="2">2º Andar</option>
+                  </select>
+                                        <label>Escolha o andar desejado</label>
+                                    </div>
+                                </div>
 
-                            <div class="input-field col s12">
-                                <input type="text" class="datepicker" id="data">
-                                <label>Data</label>
-                            </div>
+                                <!-- ============SELEÇÃO DE DATA============ -->
+                                <div class="row navigation">
+                                    <div class="col s12">
+                                        <ul id="agendamento" class="tabs">
+                                            <li class="tab col s12">
+                                                <a class="txt-orange" href="#dataSP">Escolha a Data</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div style="display: none" id="dataSP" class="col s12">
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input type="text" class="datepicker" id="data" />
+                                            <label>Data</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 
+                        <div class="progress">
+                            <div class="determinate" style="width: 90%"></div>
+                        </div>
+                        -->
+                                <div class="input-field col s12 submit">
+                                    <button class="btn waves-effect waves-light" type="submit " name="action "> Agendar</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
+                </main>
 
-                    <!--  <div class="row">
-                        <div class="margin txt-align">Escolha a data</div>
-                        <div class="input-field col s12">
-                            <input type="text" class="datepicker" name="data">
-                            <label>Data</label>
-                        </div>
-                    </div>-->
-
-                    <div class="progress">
-                        <div class="determinate" style="width: 90%"></div>
-                    </div>
-
-                    <div class="input-field col s12 submit ">
-                        <button class="btn waves-effect waves-light " type="submit " name="action ">Agendar</button>
-                    </div>
-
-                </form>
-            </div>
-        </div>
-
-        <!-- Agendamento Santos -->
-        <div style="display: none;" id="santos" class="col s12">
-            <div class="row">
-                <form class="col s12" id="login-form">
-
-                    <!-- ============SELEÇÃO DE DATA============ -->
-                    <div class="row navigation">
-                        <div class="col s12">
-                            <ul id="agendamento" class="tabs">
-                                <li class="tab col s12"><a class="txt-orange" href="#data">Escolha a Data</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div style="display: none;" id="data" class="col s12">
+                <!-- Agendamento Santos -->
+                <main style="width: 100%">
+                    <div style="display: none" id="santos" class="col s12">
                         <div class="row">
-
-                            <div class="input-field col s12">
-                                <input type="text" class="datepicker">
-                                <label>Data</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12 submit">
-                            <button class="btn waves-effect waves-light orange" type="submit"
-                                name="action">Agendar</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+                            <form class="col s12" id="login-form">
+                                <!-- ============SELEÇÃO DE DATA============ -->
+                                <div class="row navigation">
+                                    <div class="col s12">
+                                        <ul id="agendamento" class="tabs">
+                                            <li class="tab col s12">
+                                                <a class="txt-orange" href="#dataSantos">Escolha a Data</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div style="display: none" id="dataSantos" class="col s12">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input type="text" class="datepicker" />
+                    <label>Data</label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12 submit">
+                  <button
+                    class="btn waves-effect waves-light"
+                    type="submit"
+                    name="action "
+                  >
+                    Agendar
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
-
+      </main>
     </div>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
@@ -154,6 +163,7 @@
     <script src="./scripts/main.js"></script>
     <script src="./scripts/auth.js"></script>
     <script src="./testeData/data.js"></script>
-</body>
+    <script src="./scripts/setSchedule.js"></script>
+  </body>
 
 </html>
