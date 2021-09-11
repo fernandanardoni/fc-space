@@ -1,110 +1,82 @@
 
-
-const filialSp = document.getElementById("filialSP");
-
-
-const filialSantos = document.getElementById("login-form");
+const agendamentoSP = document.getElementById("filialSP");
+const agendamentoSantos = document.getElementById("filialSantos");
 
 
-// Agendamento nas tabelas de agendamento e usuário na filial de São Paulo
-
-filialSp.addEventListener("submit", (event) => {
-
-    event.preventDefault();
-
-
-    const userData = getToken("token").split(",")
-
-    const userId = userData[0];
-
-
-    db.collection("Usuario").doc(userId).get().then((doc) => {
-
-
-        const newAgenda = {
-            filial: "São Paulo",
-            andar: filialSp["andar"].value,
-            email: doc.data().email,
-            cpf: doc.data().cpf,
-            data: filialSp["dateSP"].value
-        }
-
-        const newAgendaUser = {
-            filial: "São Paulo",
-            andar: filialSp["andar"].value,
-            data: filialSp["dateSP"].value
-        }
-
-        db.collection("Agendamentos").add(newAgenda)
-            .then(() => {
-                alert("Agendamento adicionado!")
-                setTimeout(function () {
-                    window.location.href = "seeSchedules.html";
-                }, 2000);
-            })
-            .catch((error) => {
-                console.error("Ocorreu um erro ao adicionar o agendamento: ", error);
+auth.onAuthStateChanged(user => {
+    if (user) {
+        db.collection('Usuario').get().then(snapshots => {
+            snapshots.forEach((doc) => {
+                if (doc.id == user.uid) {
+                    console.log(doc.data())
+                };
             });
+        });
 
-        db.collection('Usuario').doc(userId).collection('agendamentos').add(newAgendaUser)
+        // armazendndo agendamento SP
+        agendamentoSP.addEventListener("submit", (event) => {
+            event.preventDefault();
 
-    })
+            const newSchedule = {
+                filial: "São Paulo",
+                andar: agendamentoSP["andar"].value,
+                data: agendamentoSP["dateSP"].value,
+                email: user.email,
+                cpf: doc.data().cpf,
+            }
 
+            const newUserSchedule = {
+                filial: "São Paulo",
+                andar: agendamentoSP["andar"].value,
+                data: agendamentoSP["dateSP"].value
+            }
 
-
-})
-
-// Agendamento nas tabelas de agendamento e usuário na filial de Santos
-
-
-filialSantos.addEventListener("submit", (event) => {
-
-    event.preventDefault();
-
-    const dados = getToken("token").split(",")
-
-    const userId = dados[0];
-
-
-    db.collection("Usuario").doc(userId).get().then((doc) => {
-
-        const newAgenda = {
-            filial: "Santos",
-            andar: 1,
-            email: doc.data().email,
-            cpf: doc.data().cpf,
-            data: filialSantos["dateSantos"].value
-        }
-
-        const newAgendaUser = {
-            filial: "Santos",
-            andar: 1,
-            data: "27/09/2021"
-        }
-
-
-
-        db.collection("Agendamentos").add(newAgenda)
-            .then(() => {
-
-                alert("Agendamento adicionado!")
-                setTimeout(function () {
+            db.collection('Usuario').doc(user.uid).collection('agendamentos').add(newUserSchedule)
+                .then(() => {
+                    alert("Agendamento adicionado!")
                     window.location.href = "seeSchedules.html";
-                }, 2000);
+                })
+                .catch(() => {
+                    console.error("Ocorreu um erro ao adicionar o agendamento: ", error);
+                })
 
-            })
-            .catch((error) => {
-                console.error("Ocorreu um erro ao adicionar o agendamento: ", error);
-            });
-
-        db.collection('Usuario').doc(userId).collection('agendamentos').add(newAgendaUser)
+            db.collection("Agendamentos").add(newSchedule)
 
 
-    })
-})
+        });
 
+        // armazenando agendamento Santos
+        agendamentoSantos.addEventListener("submit", (event) => {
+            event.preventDefault();
 
+            const newSchedule = {
+                filial: "Santos",
+                andar: agendamentoSantos["andar"].value,
+                data: agendamentoSantos["dateSantos"].value,
+                email: user.email,
+                cpf: doc.data().cpf,
+            }
 
+            const newUserSchedule = {
+                filial: "Santos",
+                andar: agendamentoSP["andar"].value,
+                data: agendamentoSP["dateSantos"].value
+            }
 
+            db.collection('Usuario').doc(user.uid).collection('agendamentos').add(newUserSchedule)
+                .then(() => {
+                    alert("Agendamento adicionado!")
+                    window.location.href = "seeSchedules.html";
+                })
+                .catch(() => {
+                    console.error("Ocorreu um erro ao adicionar o agendamento: ", error);
+                })
 
+            db.collection("Agendamentos").add(newSchedule)
+
+        });
+    } else {
+        console.log('user logged out')
+    }
+});
 
