@@ -6,8 +6,6 @@ const agendamentoSP = document.getElementById("filialSP");
 const agendamentoSantos = document.getElementById("filialSantos");
 
 
-
-
 // Agendamento nas tabelas de agendamento e usuário na filial de São Paulo
 
 agendamentoSP.addEventListener("submit", (event) => {
@@ -25,18 +23,16 @@ agendamentoSP.addEventListener("submit", (event) => {
 
         const newAgenda = {
             filial: "São Paulo",
-            setor: agendamentoSP["section"].value,
             andar: agendamentoSP["andar"].value,
             email: doc.data().email,
             cpf: doc.data().cpf,
-            data: agendamentoSP["dataSP"].value
+            data: agendamentoSP["dateSP"].value
         }
 
         const newAgendaUser = {
             filial: "São Paulo",
-            setor: agendamentoSP["section"].value,
             andar: agendamentoSP["andar"].value,
-            data: agendamentoSP["dataSP"].value
+            data: agendamentoSP["dateSP"].value
         }
 
         db.collection("Agendamentos").add(newAgenda)
@@ -74,7 +70,6 @@ agendamentoSantos.addEventListener("submit", (event) => {
 
         const newAgenda = {
             filial: "Santos",
-            setor: agendamentoSantos["section"].value,
             andar: 1,
             email: doc.data().email,
             cpf: doc.data().cpf,
@@ -83,7 +78,6 @@ agendamentoSantos.addEventListener("submit", (event) => {
 
         const newAgendaUser = {
             filial: "Santos",
-            setor: agendamentoSantos["section"].value,
             andar: 1,
             data: "27/09/2021"
         }
