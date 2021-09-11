@@ -22,7 +22,7 @@ auth.onAuthStateChanged(user => {
                 andar: agendamentoSP["andar"].value,
                 data: agendamentoSP["dateSP"].value,
                 email: user.email,
-                cpf: doc.data().cpf,
+                // cpf: doc,
             }
 
             const newUserSchedule = {
@@ -54,13 +54,13 @@ auth.onAuthStateChanged(user => {
                 andar: agendamentoSantos["andar"].value,
                 data: agendamentoSantos["dateSantos"].value,
                 email: user.email,
-                cpf: doc.data().cpf,
+                // cpf: doc.data().cpf,
             }
 
             const newUserSchedule = {
                 filial: "Santos",
-                andar: agendamentoSP["andar"].value,
-                data: agendamentoSP["dateSantos"].value
+                andar: agendamentoSantos["andar"].value,
+                data: agendamentoSantos["dateSantos"].value
             }
 
             db.collection('Usuario').doc(user.uid).collection('agendamentos').add(newUserSchedule)

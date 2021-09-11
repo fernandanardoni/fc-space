@@ -1,6 +1,5 @@
 const userView = document.querySelector('.user-view');
-const agendamentoSP = document.getElementById("filialSP");
-const agendamentoSantos = document.getElementById("filialSantos");
+
 
 // ouvindo mudanças de login e logout
 auth.onAuthStateChanged(user => {
