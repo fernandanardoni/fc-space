@@ -1,6 +1,5 @@
 const userView = document.querySelector('.user-view');
-const agendamentoSP = document.getElementById("filialSP");
-const agendamentoSantos = document.getElementById("filialSantos");
+
 
 // ouvindo mudanças de login e logout
 auth.onAuthStateChanged(user => {
@@ -16,24 +15,7 @@ auth.onAuthStateChanged(user => {
                 };
             });
         });
-
-
-    //     agendamentoSP.addEventListener("submit", (event) => {
-    //         event.preventDefault();
-
-    //         const newAgenda = {
-    //             filial: "São Paulo",
-    //             andar: agendamentoSP["andar"].value,
-    //             data: agendamentoSP["data"].value,
-    //             email: user.email,
-    //         }
-
-    //         db.collection('Usuario').doc(user.uid).collection('agendamentos').add(newAgenda).then(() =>
-    //             console.log('agendamento confirmado!')
-    //         )
-
-    //     })
-    // } else {
-    //     console.log('user logged out')
-    // }
-}});
+    } else {
+        console.log('user logged out')
+    }
+});
