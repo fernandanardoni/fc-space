@@ -5,59 +5,60 @@ const agendamentoSP = document.getElementById("filialSP");
 
 const agendamentoSantos = document.getElementById("filialSantos");
 
-const userData = getToken("token").split(",")
-
-const email = userData[1];
-const userId = userData[0];
 
 
 
-
-
-const identificador = () => db.collection("Usuario")?.doc(userId)?.get().then((doc) => { 
-    if (doc.exists)
-    return doc.data() })
-    
-console.log('identificador', identificador)
-
- console.log(userId === "410uw96u3SeE1pfLgJlBjWcny2o1") 
-
-
-    // `${Object.keys(doc.data())}`
-// login
-// setToken([data.user.email, data.user.uid]);
+// Agendamento nas tabelas de agendamento e usuário na filial de São Paulo
 
 agendamentoSP.addEventListener("submit", (event) => {
 
     event.preventDefault();
 
 
+    const userData = getToken("token").split(",")
 
-    const newAgenda = {
-        filial: "São Paulo",
-        setor: agendamentoSP["section"].value,
-        andar: agendamentoSP["andar"].value,
-        email: identificador.email,
-        funcionario: "Roger",
-        cpf: identificador.cpf,
-        data: agendamentoSP["data"].value
-    }
+    const userId = userData[0];
 
-    console.log('newAgenda', newAgenda)
 
-    
-    db.collection("Agendamentos").add(newAgenda)
-    .then(() => {
-        alert("Agendamento adicionado!")
-        setTimeout(function() {
-            window.location.href = "seeSchedules.html";
-        }, 2000);
+    db.collection("Usuario").doc(userId).get().then((doc) => {
+
+
+        const newAgenda = {
+            filial: "São Paulo",
+            setor: agendamentoSP["section"].value,
+            andar: agendamentoSP["andar"].value,
+            email: doc.data().email,
+            cpf: doc.data().cpf,
+            data: agendamentoSP["dataSP"].value
+        }
+
+        const newAgendaUser = {
+            filial: "São Paulo",
+            setor: agendamentoSP["section"].value,
+            andar: agendamentoSP["andar"].value,
+            data: agendamentoSP["dataSP"].value
+        }
+
+        db.collection("Agendamentos").add(newAgenda)
+            .then(() => {
+                alert("Agendamento adicionado!")
+                setTimeout(function () {
+                    window.location.href = "seeSchedules.html";
+                }, 2000);
+            })
+            .catch((error) => {
+                console.error("Ocorreu um erro ao adicionar o agendamento: ", error);
+            });
+
+        db.collection('Usuario').doc(userId).collection('agendamentos').add(newAgendaUser)
+
     })
-    .catch((error) => {
-        console.error("Ocorreu um erro ao adicionar o agendamento: ", error);
-    });
+
+
 
 })
+
+// Agendamento nas tabelas de agendamento e usuário na filial de Santos
 
 
 agendamentoSantos.addEventListener("submit", (event) => {
@@ -66,31 +67,50 @@ agendamentoSantos.addEventListener("submit", (event) => {
 
     const dados = getToken("token").split(",")
 
-    const newAgenda = {
-        filial: "Santos",
-        setor: agendamentoSantos["section"].value,
-        andar: 1,
-        email: dados[0],
-        funcionario: "Roger",
-        cpf: "00586712003",
-        data: agendamentoSantos["date"].value
-    }
+    const userId = dados[0];
 
- 
 
-    db.collection("Agendamentos").add(newAgenda)
-    .then(() => {
+    db.collection("Usuario").doc(userId).get().then((doc) => {
 
-        alert("Agendamento adicionado!")
-        setTimeout(function() {
-            window.location.href = "seeSchedules.html";
-        }, 2000);
+        const newAgenda = {
+            filial: "Santos",
+            setor: agendamentoSantos["section"].value,
+            andar: 1,
+            email: doc.data().email,
+            cpf: doc.data().cpf,
+            data: agendamentoSantos["dateSantos"].value
+        }
+
+        const newAgendaUser = {
+            filial: "Santos",
+            setor: agendamentoSantos["section"].value,
+            andar: 1,
+            data: "27/09/2021"
+        }
+
+
+
+        db.collection("Agendamentos").add(newAgenda)
+            .then(() => {
+
+                alert("Agendamento adicionado!")
+                setTimeout(function () {
+                    window.location.href = "seeSchedules.html";
+                }, 2000);
+
+            })
+            .catch((error) => {
+                console.error("Ocorreu um erro ao adicionar o agendamento: ", error);
+            });
+
+        db.collection('Usuario').doc(userId).collection('agendamentos').add(newAgendaUser)
+
 
     })
-    .catch((error) => {
-        console.error("Ocorreu um erro ao adicionar o agendamento: ", error);
-    });
-
 })
+
+
+
+
 
 
