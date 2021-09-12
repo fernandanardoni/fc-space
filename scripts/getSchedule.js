@@ -131,7 +131,9 @@ function deleteSchedule(idToDelete) {
                 .collection('agendamentos')
                 .doc(idToDelete)
                 .delete();
-            console.log('Usuario deletado:', idToDelete);
+            console.log('Usuario deletado:', idToDelete, user.uid);
         }
     });
+
+    getScheduleByUser();
 }
