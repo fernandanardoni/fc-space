@@ -43,15 +43,12 @@
 
 // function getOffice() {
 
-
-
 //     // [START get_all_users]
 //     db.collection("Escritorio").get().then((querySnapshot) => {
 //         querySnapshot.forEach((doc) => {
 //             console.log(`${doc.id} => ${Object.keys(doc.data())}`);
 //         });
 //     });
-
 
 //     // const docRef = db.collection('Escritorio').doc("1");
 
@@ -77,14 +74,18 @@
 const schedulesList = document.querySelector('#schedules-list');
 
 const getScheduleByUser = () => {
-    auth.onAuthStateChanged(user => {
+    auth.onAuthStateChanged((user) => {
         if (user) {
-            db.collection('Usuario').doc(user.uid).collection('agendamentos').get().then(snapshots => {
-                let html = '';
-                snapshots.forEach((doc) => {
-                    console.log(doc.data())
+            db.collection('Usuario')
+                .doc(user.uid)
+                .collection('agendamentos')
+                .get()
+                .then((snapshots) => {
+                    let html = '';
+                    snapshots.forEach((doc) => {
+                        console.log(doc.data());
 
-                    const scheduleItem = `
+                        const scheduleItem = `
                         <li>
                         <div class="schedule-container">
                 <div class="info">
@@ -97,7 +98,9 @@ const getScheduleByUser = () => {
                  </div>
 
                  <div class="actions">
-                 <button class = "delete" data-id="${doc.id}" type="submit" onclick="openModal()">
+                 <button class = "delete" data-id="${
+                     doc.id
+                 }" type="submit" onclick="openModal()">
                  Apagar
                  </button>
 
@@ -106,17 +109,15 @@ const getScheduleByUser = () => {
                         </li>
                     `;
 
-                    html += scheduleItem;
+                        html += scheduleItem;
 
-                    schedulesList.innerHTML = html;
+                        schedulesList.innerHTML = html;
+                    });
                 });
-            });
-
         } else {
-            
-            console.log('user logged out')
+            console.log('user logged out');
         }
     });
-}
+};
 
 getScheduleByUser();
