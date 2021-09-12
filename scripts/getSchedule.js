@@ -98,9 +98,9 @@ const getScheduleByUser = () => {
                  </div>
 
                  <div class="actions">
-                 <button class = "delete" data-id="${
+                 <button class = "delete" id="${
                      doc.id
-                 }" type="submit" onclick="openModal()">
+                 }" type="submit" onclick="deleteSchedule(this.id)">
                  Apagar
                  </button>
 
@@ -121,3 +121,16 @@ const getScheduleByUser = () => {
 };
 
 getScheduleByUser();
+
+function deleteSchedule(idToDelete) {
+    auth.onAuthStateChanged((user) => {
+        if (user) {
+            db.collection('Usuario')
+                .doc(user.uid)
+                .collection('agendamentos')
+                .doc(idToDelete)
+                .delete();
+            console.log('Usuario deletado:', idToDelete);
+        }
+    });
+}
