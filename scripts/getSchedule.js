@@ -113,6 +113,7 @@ const getScheduleByUser = () => {
             });
 
         } else {
+            
             console.log('user logged out')
         }
     });

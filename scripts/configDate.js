@@ -1,21 +1,27 @@
 
-
-const data = document.getElementById("datasp");
-
-
-const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-
-const monthNumber = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
+// formata a data que vem do banco
 
 
+const configDate = (data) => {
 
-data.addEventListener("change", (event) => {
+    const dataCerta = data.split(" - ")[1]
 
-    const currentDate = event.target.value;
-    const newDate = currentDate.replace(",", " ").split(" ");
-    
-    const date = (newDate[1] + "/" + monthNumber[month.indexOf(newDate[0])] + "/" + newDate[3])
+    return dataCerta;
 
-    return data.value(date);
-})
+
+
+} 
+
+
+// formata da data do dia
+
+
+const todayDate = () => {
+    const today = new Date;
+    const monthNumber = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
+    const mes = monthNumber[today.getMonth()]
+    const todayFormatada = (today.getDate() + "/" + mes + "/" + today.getFullYear())
+    return todayFormatada;
+}
+
 
