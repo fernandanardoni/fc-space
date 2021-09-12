@@ -122,6 +122,7 @@ const getScheduleByUser = () => {
 
 getScheduleByUser();
 
+//função pra excluir um agendamento.
 function deleteSchedule(idToDelete) {
     auth.onAuthStateChanged((user) => {
         if (user) {
