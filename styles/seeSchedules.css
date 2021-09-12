@@ -1,6 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
 @import 'textos.css';
-html, body {
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
     height: 100%;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
@@ -10,88 +18,40 @@ html, body {
 }
 
 .container {
-    margin: auto;
-    width: min(95vw, 950px);
+    margin: 0 auto;
+    width: min(100vw, 950px);
     height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    /* justify-content: center; */
+    align-items: left;
 }
-
-h1 {
-    font-size: 2.92rem;
-    text-align: center;
-    margin-bottom: .5rem;
-}
-
-.units {
+.header {
     width: 100%;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    position: relative;
+    border-bottom: 1px solid#e0e0e0;
 }
 
-h2 {
-    font-size: 1.5rem;
-    margin-top: 11px;
-    margin-bottom: 19px;
+.header h2 {
+    font-size: 26px;
+    margin: 0 0 6px 0;
 }
 
-.schedule-container {
-    border: 4px solid orange;
-    border-radius: .8rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: .5rem .8rem;
-    width: 90%;
-    margin-bottom: .5rem;
+.header img {
+    width: 40px;
+    position: absolute;
+    right: 24px;
 }
 
-.info {
-    display: flex;
-    width: 80%;
-    justify-content: space-between;
-    align-items: center;
+.header .sidenav-trigger {
+    padding: 10.5px;
+    margin: 11px 2px 11px 4px;
 }
 
-.user {
-    width: 45%;
-}
-
-.schedule-day {
-    margin: 0 .5rem;
-    text-align: center;
-}
-
-.schedule-day p {
-    margin: 0;
-}
-
-.actions {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: .5rem;
-    padding: 0;
-}
-
-.remarca, .delete {
-    text-decoration: none;
-    color: black;
-    background-color: #9ad7fa;
-    padding: .3rem .6rem;
-    border-radius: .3rem;
-}
-
-.delete {
-    margin-left: .4rem;
-    background-color: #fa9a9a;
-}
-
-a:hover {
-    transition: .3s;
-    filter: brightness(.9);
-    transform: scale(1.07);
+.page-title {
+    background-color: rgb(219, 219, 219);
+    font-size: 24px;
+    text-align: left;
+    margin: 35px 0px 14px 18px;
 }

@@ -86,7 +86,7 @@ const getScheduleByUser = () => {
                         console.log(doc.data());
 
                         const scheduleItem = `
-                        <li>
+                        <li class="collection-item">
                         <div class="schedule-container">
                 <div class="info">
                  <div class="schedule-day">
