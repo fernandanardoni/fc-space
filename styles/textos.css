@@ -3,7 +3,7 @@
     }
     
     .txt-orange {
-        color: #ffab40 !important;
+        color: #FE4400 !important;
     }
     
     .margin {
@@ -16,4 +16,8 @@
     
     .txt-grey {
         color: #212121 !important
+    }
+    
+    .font {
+        font-family: "Roboto", sans-serif;
     }

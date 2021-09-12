@@ -1,25 +1,57 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 @import 'textos.css';
+/* estilos globais */
+
 * {
     margin: 0;
     padding: 0;
 }
 
-html,
-body {
+html, body {
     height: 100%;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
+    font-weight: 800;
 }
 
-button,
-a,
-input {
-    font-family: 'Montserrat', sans-serif;
+/* estilos da página de login e cadastro */
+
+header {
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    border-bottom: 1px solid #E0E0E0;
+    padding-left: 10px;
 }
 
-.container {
+header p {
+    font-size: 24px;
+}
+
+.main {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.desktop {
+    background-color: #FE4400;
+    width: 50%;
+    height: 60%;
+    margin-left: 5%;
+    border-radius: 10px;
+}
+
+.enter {
+    width: 50%;
+}
+
+.enter .container {
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -27,12 +59,73 @@ input {
     justify-content: center;
 }
 
+h5, h3 {
+    font-weight: 800;
+}
+
 h3 {
-    margin-top: 0;
+    margin-top: 30px;
+    font-size: 64px;
+}
+
+button, a, input {
+    font-family: 'Roboto', sans-serif;
+}
+
+.cadastrar {
+    width: 50%;
 }
 
 .navigation {
     width: 100%;
+}
+
+.tabs .indicator {
+    background-color: transparent;
+}
+
+.tabs {
+    box-shadow: 5px 5px 3px 0px #3f3f4221;
+    gap: 10px;
+    border-radius: 5px;
+}
+
+.tabs .tab a {
+    font-family: Roboto, sans-serif;
+    color: #FEBBA2;
+    font-size: 16px;
+}
+
+.tabs .tab .active {
+    color: #FE4400;
+}
+
+.tabs .tab a:focus {
+    background-color: transparent !important;
+}
+
+.tabs .tab a:hover, .tabs .tab a.active {
+    background-color: transparent;
+    color: #FE4400;
+}
+
+.input-field label {
+    color: #222222;
+}
+
+.input-field input {
+    border-bottom: 1px solid #222222 !important;
+    border-radius: 5px;
+}
+
+.input-field input:focus+label {
+    color: #222222 !important;
+}
+
+.input-field input:focus {
+    border-bottom: 2px solid #222222 !important;
+    box-shadow: none;
+    background-color: #33333318;
 }
 
 .submit {
@@ -41,42 +134,48 @@ h3 {
     justify-content: center;
 }
 
-.cadastrar {
-    width: 50%;
+.submit button {
+    width: 100%;
+    background: #404099;
+    border-radius: 5px;
 }
 
-.tabs .indicator {
-    background-color: orangered;
+#login, #register {
+    width: 100%
+}
+
+/* estilos da página de agendamento */
+
+.create-schedule {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
 }
 
 #agendamento .indicator {
     background-color: transparent !important;
 }
 
-#test1,
-#saopaulo,
-#santos,
-#test2 {
+#data .indicator {
+    background-color: transparent !important;
+}
+
+#test1, #saopaulo, #santos, #test2 {
     width: 100%;
 }
 
-.input-field label {
-    color: #ffab40;
-}
+/* media queries para desktop */
 
-.input-field input {
-    border-bottom: 1px solid #ffab40 !important;
-}
-
-.input-field input:focus+label {
-    color: #ffab40 !important;
-}
-
-.input-field input:focus {
-    border-bottom: 2px solid #ffab40 !important;
-    box-shadow: 0 1px 0 0 #ffab40;
-}
-
-.tabs .tab a:focus {
-    background-color: #ffac4021 !important;
+@media (max-width: 776px) {
+    .main {
+        justify-content: center;
+    }
+    .desktop {
+        display: none;
+    }
+    .enter {
+        width: 100%;
+    }
 }

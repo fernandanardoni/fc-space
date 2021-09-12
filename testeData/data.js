@@ -1,26 +1,64 @@
-var diaSemana = ['Domingo', 'Segunda-Feira', 'Terca-Feira', 'Quarta-Feira', 'Quinta-Feira', 'Sexta-Feira', 'Sabado'];
-var mesAno = ['Janeiro', 'Fevereiro', 'Marco', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+var diaSemana = ["Domingo", "Segunda-Feira", "Terca-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira", "Sabado"];
+var mesAno = ["Janeiro", "Fevereiro", "Marco", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
 var data = new Date();
-var hoje = diaSemana[data.getDay()] + ', ' + mesAno[data.getMonth()] + ' de ' + data.getFullYear();
-$("#dataPesquisa").attr("value", hoje);
-$(".datepicker").pickadate({
-    monthsFull: mesAno,
-    monthsShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-    weekdaysFull: diaSemana,
-    weekdaysShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
-    weekdaysLetter: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
-    selectMonths: true,
-    selectYears: true,
-    clear: false,
-    format: 'dddd/mm/yyyy',
-    today: "Hoje",
-    close: "X",
-    min: new Date(data.getFullYear() - 1, 0, 1),
-    max: new Date(data.getFullYear() + 1, 11, 31),
-    closeOnSelect: true
-});
+var hoje =
+    diaSemana[data.getDay()] +
+    ", " +
+    mesAno[data.getMonth()] +
+    " de " +
+    data.getFullYear();
+document.addEventListener("DOMContentLoaded", function() {
+    const options = {
+        monthsFull: mesAno,
+        monthsShort: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
 
-$("#dataPesquisa").click(function(event) {
-    event.stopPropagation();
-    $(".datepicker").first().pickadate("picker").open();
+        i18n: {
+            months: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+            monthsShort: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
+            weekdays: ["Domingo", "Segunda-Feira", "Terca-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira", "Sabado"],
+            weekdaysShort: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
+            weekdaysAbbrev: ["D", "S", "T", "Q", "Q", "S", "S"],
+            cancel: 'Cancelar',
+            clear: 'Limpar',
+            done: 'OK'
+        },
+        weekdaysFull: diaSemana,
+        weekdaysShort: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
+        weekdaysLetter: ["D", "S", "T", "Q", "Q", "S", "S"],
+        selectMonths: true,
+        selectYears: true,
+        clear: false,
+        format: "dddd - dd/mm/yyyy",
+        today: "Hoje",
+        close: "X",
+        min: new Date(data.getFullYear() - 0, 0, 3),
+        max: new Date(data.getFullYear() + 1, 11, 31),
+        closeOnSelect: true,
+        disableDayFn: (callbackDay) => {
+            const x = new Date("2021,9,15").toDateString();
+            const y = new Date("2021,09,16").toDateString();
+            const z = new Date("2021,09,21").toDateString();
+
+            let disableListDate = [x, y, z];
+
+            if (disableListDate.includes(callbackDay.toDateString())) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    };
+    /* disableDayFn:((callbackDay) => {
+                  if(callbackDay.getDay() != 0 && callbackDay.getDay() !=6) {
+                      return false;
+                  } else {
+                      return true;
+                  }
+              })
+   
+     }*/
+    var elems = document.querySelectorAll(".datepicker");
+    var instances = M.Datepicker.init(elems, options);
+
+
 });
