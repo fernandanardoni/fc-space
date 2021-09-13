@@ -14,7 +14,7 @@
         />
         <link rel="stylesheet" href="styles/seeSchedules.css" />
         <link rel="stylesheet" href="styles/modal.css" />
-        <title>Controle de Agendamento</title>
+        <title>Meus Agendamentos</title>
     </head>
 
     <body>
@@ -70,7 +70,7 @@
                 <img src="assets/recyclebin-icon.svg" alt="trash can" />
                 <p class="orange-txt">Tem certeza que quer excluir o agendamento?</p>
                 <div class="modal-actions">
-                    <button id="blue-button" onclick="closeModal()">SIM, EXCLUIR</button>
+                    <button id="blue-button" onclick="deleteSchedule(scheduleIdToModal)">SIM, EXCLUIR</button>
                     <button id="white-button" onclick="closeModal()">VOLTAR</button>
                 </div>
             </div>
@@ -101,16 +101,6 @@
     <script src="./scripts/index.js"></script>
     <script src="./scripts/main.js"></script>
 
-    <!-- FUNÇÕES DA MODAL -->
-    <script>
-        function openModal() {
-            document.querySelector('.modal-wrapper').id = 'active';
-        }
-
-        function closeModal() {
-            document.querySelector('.modal-wrapper').id = '';
-        }
-    </script>
 
     <!-- Preencher agendamentos -->
     <script src="./scripts/getSchedule.js"></script>

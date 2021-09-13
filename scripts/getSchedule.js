@@ -106,7 +106,7 @@ const getScheduleByUser = () => {
 
 
 
-                 <a href="#" id="${doc.id}" onclick="deleteSchedule(this.id)">
+                 <a href="#" id="${doc.id}" onclick="openModal(this.id)">
                     <img src="assets/delete-icon.svg" alt="delete">
                 </a>
                 <a href="#" id="">
@@ -132,18 +132,30 @@ const getScheduleByUser = () => {
 
 getScheduleByUser();
 
+
+// Funções da modal
+
+var scheduleIdToModal = '';
+
+function openModal(scheduleId) {
+    document.querySelector('.modal-wrapper').id = 'active';
+    scheduleIdToModal = scheduleId;
+}
+
+function closeModal() {
+    document.querySelector('.modal-wrapper').id = '';
+}
+
 //função pra excluir um agendamento.
+
 function deleteSchedule(idToDelete) {
+    
     auth.onAuthStateChanged((user) => {
         if (user) {
-            db.collection('Usuario')
-                .doc(user.uid)
-                .collection('agendamentos')
-                .doc(idToDelete)
-                .delete();
-            console.log('Usuario deletado:', idToDelete, user.uid);
+            db.collection('Usuario').doc(user.uid).collection('agendamentos').doc(idToDelete).delete();
+
         }
     });
-
+    closeModal();
     getScheduleByUser();
 }
