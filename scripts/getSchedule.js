@@ -74,6 +74,14 @@
 const schedulesList = document.querySelector('#schedules-list');
 
 const getScheduleByUser = () => {
+
+    let month = document.querySelector(".month");
+    console.log("mes", month);
+    
+    if (month) {
+        month.innerHTML = ""
+    }
+    
     auth.onAuthStateChanged((user) => {
         if (user) {
             db.collection('Usuario')
