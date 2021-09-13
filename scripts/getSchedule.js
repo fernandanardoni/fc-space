@@ -43,15 +43,12 @@
 
 // function getOffice() {
 
-
-
 //     // [START get_all_users]
 //     db.collection("Escritorio").get().then((querySnapshot) => {
 //         querySnapshot.forEach((doc) => {
 //             console.log(`${doc.id} => ${Object.keys(doc.data())}`);
 //         });
 //     });
-
 
 //     // const docRef = db.collection('Escritorio').doc("1");
 
@@ -77,46 +74,76 @@
 const schedulesList = document.querySelector('#schedules-list');
 
 const getScheduleByUser = () => {
-    auth.onAuthStateChanged(user => {
+
+    let month = document.querySelector(".month");
+    console.log("mes", month);
+    
+    if (month) {
+        month.innerHTML = ""
+    }
+    
+    auth.onAuthStateChanged((user) => {
         if (user) {
-            db.collection('Usuario').doc(user.uid).collection('agendamentos').get().then(snapshots => {
-                let html = '';
-                snapshots.forEach((doc) => {
-                    console.log(doc.data())
+            db.collection('Usuario')
+                .doc(user.uid)
+                .collection('agendamentos')
+                .get()
+                .then((snapshots) => {
+                    let html = '';
+                    snapshots.forEach((doc) => {
+                        console.log(doc.data());
 
-                    const scheduleItem = `
-                        <li>
-                        <div class="schedule-container">
-                <div class="info">
-                 <div class="schedule-day">
-                 <p class="date">${doc.data().data}</p>
-                 </div>
-
-                 <p class="sector">Andar ${doc.data().andar}</p>
+                        const scheduleItem = `
+                        <li class="collection-item">
+                        
                  <p class="sector">${doc.data().filial}</p>
                  </div>
 
-                 <div class="actions">
-                 <button class = "delete" data-id="${doc.id}" type="submit" onclick="openModal()">
-                 Apagar
-                 </button>
+                 <p class="date">${doc.data().data}</p>
+                 </div>
 
-                 </div>
-                 </div>
+                 <div class="actions">
+
+
+
+                 <a href="#" id="${doc.id}" onclick="deleteSchedule(this.id)">
+                    <img src="assets/delete-icon.svg" alt="delete">
+                </a>
+                <a href="#" id="">
+                    <img src="assets/edit-icon.svg" alt="edit">
+                </a>
+                
+                </div>
                         </li>
                     `;
 
-                    html += scheduleItem;
+                        html += scheduleItem;
 
-                    schedulesList.innerHTML = html;
+                        schedulesList.innerHTML = html;
+                    });
+
+                schedulesList.insertAdjacentHTML("beforebegin", `<h2 class="month" >Setembro</h2>`)
                 });
-            });
-
         } else {
-            
-            console.log('user logged out')
+            console.log('user logged out');
         }
     });
-}
+};
 
 getScheduleByUser();
+
+//função pra excluir um agendamento.
+function deleteSchedule(idToDelete) {
+    auth.onAuthStateChanged((user) => {
+        if (user) {
+            db.collection('Usuario')
+                .doc(user.uid)
+                .collection('agendamentos')
+                .doc(idToDelete)
+                .delete();
+            console.log('Usuario deletado:', idToDelete, user.uid);
+        }
+    });
+
+    getScheduleByUser();
+}
