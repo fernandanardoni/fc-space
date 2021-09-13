@@ -114,7 +114,7 @@ const getScheduleByUser = () => {
                         schedulesList.innerHTML = html;
                     });
 
-                // schedulesList.insertAdjacentHTML("beforebegin", `<h2>Setembro</h2>`)
+                schedulesList.insertAdjacentHTML("beforebegin", `<h2 class="month" >Setembro</h2>`)
                 });
         } else {
             console.log('user logged out');
