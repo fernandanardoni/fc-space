@@ -21,6 +21,7 @@ loginData.addEventListener('submit', (e) => {
 
          login();
          loginData.reset();
-    })   
+
+    }).catch(() => M.toast({ html: 'Usuário e/ou senha incorretos!' })) 
 
 });
