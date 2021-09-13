@@ -175,6 +175,11 @@ input {
     width: 100%;
 }
 
+#span-login{
+    font-size: small;
+    color: rgb(185, 184, 184)
+}
+
 /* media queries para desktop */
 
 @media (max-width: 776px) {

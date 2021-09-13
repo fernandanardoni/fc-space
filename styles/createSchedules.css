@@ -150,6 +150,7 @@ h3 {
     width: 100%;
 }
 
+
 .input-field label {
     color: #fe4400;
 }
@@ -171,7 +172,14 @@ h3 {
     background-color: #febba267 !important;
 }
 
-.card.horizontal .card-image img {
+.article-card{
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.card .card-image img {
     border-radius: 2px 0 0 2px;
     max-width: 100%;
     height: 100%;
@@ -186,4 +194,11 @@ h3 {
 
 .card-text {
     font-weight: normal;
+}
+
+.filial-card{
+    align-self: center;
+    height: 30rem;
+    width: 20rem;
+    margin-bottom: 150px;
 }
