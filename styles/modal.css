@@ -90,6 +90,7 @@
 
 .modal button{
     font-family: 'Roboto', sans-serif;
+    cursor: pointer;
     width: min(380px, 90%);
     height: 55px;
     padding: 14px 32px;
