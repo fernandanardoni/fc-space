@@ -1,8 +1,10 @@
-
 const agendamentoSP = document.getElementById("filialSP");
 const agendamentoSantos = document.getElementById("filialSantos");
 
-
+export function retornaPorcentagem() {
+    const num = Math.floor(Math.random() * 111);
+    return num;
+}
 
 
 auth.onAuthStateChanged(user => {
@@ -41,7 +43,7 @@ auth.onAuthStateChanged(user => {
 
 
                             })
-                        }) 
+                        })
 
 
                         getDates().then(
@@ -137,4 +139,3 @@ auth.onAuthStateChanged(user => {
         console.log('user logged out')
     }
 });
-
