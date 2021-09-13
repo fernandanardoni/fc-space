@@ -8,7 +8,8 @@
     padding: 0;
 }
 
-html, body {
+html,
+body {
     height: 100%;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
@@ -24,7 +25,7 @@ header {
     align-items: center;
     justify-content: flex-start;
     gap: 10px;
-    border-bottom: 1px solid #E0E0E0;
+    border-bottom: 1px solid #e0e0e0;
     padding-left: 10px;
 }
 
@@ -40,7 +41,7 @@ header p {
 }
 
 .desktop {
-    background-color: #FE4400;
+    background-color: #fe4400;
     width: 50%;
     height: 60%;
     margin-left: 5%;
@@ -59,7 +60,8 @@ header p {
     justify-content: center;
 }
 
-h5, h3 {
+h5,
+h3 {
     font-weight: 800;
 }
 
@@ -68,7 +70,9 @@ h3 {
     font-size: 64px;
 }
 
-button, a, input {
+button,
+a,
+input {
     font-family: 'Roboto', sans-serif;
 }
 
@@ -92,21 +96,22 @@ button, a, input {
 
 .tabs .tab a {
     font-family: Roboto, sans-serif;
-    color: #FEBBA2;
+    color: #febba2;
     font-size: 16px;
 }
 
 .tabs .tab .active {
-    color: #FE4400;
+    color: #fe4400;
 }
 
 .tabs .tab a:focus {
     background-color: transparent !important;
 }
 
-.tabs .tab a:hover, .tabs .tab a.active {
+.tabs .tab a:hover,
+.tabs .tab a.active {
     background-color: transparent;
-    color: #FE4400;
+    color: #fe4400;
 }
 
 .input-field label {
@@ -118,7 +123,7 @@ button, a, input {
     border-radius: 5px;
 }
 
-.input-field input:focus+label {
+.input-field input:focus + label {
     color: #222222 !important;
 }
 
@@ -140,8 +145,9 @@ button, a, input {
     border-radius: 5px;
 }
 
-#login, #register {
-    width: 100%
+#login,
+#register {
+    width: 100%;
 }
 
 /* estilos da página de agendamento */
@@ -162,7 +168,10 @@ button, a, input {
     background-color: transparent !important;
 }
 
-#test1, #saopaulo, #santos, #test2 {
+#test1,
+#saopaulo,
+#santos,
+#test2 {
     width: 100%;
 }
 

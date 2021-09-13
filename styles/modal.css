@@ -1,14 +1,20 @@
+@import 'textos.css';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap');
 
 /* MODAL */
 
 #active {
     visibility: visible;
     opacity: 1;
+
+    transform: scale(1);
+
 }
 
 .modal-wrapper{
 
-    background: rgba(4, 9, 17, 0.808);
+    background: rgba(4, 9, 17, 0.555);
 
     width: 100%;
     height: 100%;
@@ -21,26 +27,32 @@
     justify-content: center;
     align-items: center;
 
+    transform: scale(1.15);
+
     /* -------SUMIR UM ELEMENTO DA TELA------- */
     visibility: hidden;
     opacity: 0;
+
+    transition: .4s;
 
 }
 
 
 
 .modal{
-    background-color: #E5F2FA;
+    background-color: #ffff;
     
     display: flex;
     justify-content: flex-start;
     align-items: center;
     
-    border-radius: 10px;
+    box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.16);
+    border-radius: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
 
     flex-direction: column;
-    width: min(550px, 90%);
-    height: min(410px, 90%);
+    width: min(420px, 90%);
+    height: min(567px, 90%);
 
     margin-top: -80px;
     
@@ -50,23 +62,52 @@
 }
 
 .modal img{
-    width: 140px;
-    margin-bottom: 24px;
-}
-
-.modal h2{
-    font-size: 30px;
-
-    margin: 0;
+    width: 230px;
+    margin-top: 45px;
+    margin-bottom: 45px;
 }
 
 .modal p{
-    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #fe4400;
+    font-size: 22px;
     text-align: center;
+    line-height: 22px;
+    margin-bottom: 35px;
+    margin-left: 14%;
+    margin-right: 14%;
+}
+
+.modal-actions{
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .modal button{
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    width: min(380px, 90%);
+    height: 55px;
     padding: 14px 32px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 19px;
+    margin-bottom: 13px;
+    border: none;
+}
+
+#blue-button{
+    color: #ffffff;
+    background-color: #404099;
+}
+
+#white-button{
+    background-color: #ffffff;
 }
 
 .modal .logo-field{
