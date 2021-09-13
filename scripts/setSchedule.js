@@ -44,7 +44,7 @@ auth.onAuthStateChanged(user => {
                         function dadosFinal() {
                             dados()
 
-                            if (valor >= 240) {
+                            if (valor = 10) {
                                 M.toast({ html: 'Infelizmente, não tem mais vagas disponíveis na data solicitada. Por favor, escolha uma nova data!' })
                             }
 
@@ -52,7 +52,7 @@ auth.onAuthStateChanged(user => {
                             db.collection('Usuario').doc(user.uid).collection('agendamentos').add(newUserSchedule)
                                 .then(() => {
                                     alert("Agendamento adicionado!")
-                                    window.location.href = "seeSchedules.html";
+                                    // window.location.href = "seeSchedules.html";
                                 })
                                 .catch(() => {
                                     console.error("Ocorreu um erro ao adicionar o agendamento: ", error);
@@ -88,35 +88,64 @@ auth.onAuthStateChanged(user => {
                         let valor = 0
                         const dados = () => db.collection("Agendamentos").get().then(querySnapshot => {
                             querySnapshot.forEach(doc => {
-                                if (doc.data().data == data) {
-                                    return valor++
-                                };
+                                while(valor < 10){
 
+                                    if (doc.data().data == data) {
+    
+                                       return valor++
+                                    };
+                                    
+                                    return valor;
+                                }   
+                                })                              
                             })
-                        })
+                        // })
+                        
 
+                        dados().then(
+                          ()  => {
 
-                        function dadosFinal() {
-                            dados()
-
-                            if (valor >= 40) {
-                                M.toast({ html: 'Infelizmente, não tem mais vagas disponíveis na data solicitada. Por favor, escolha uma nova data!' })
+                              if (valor = 10) {
+                                  M.toast({ html: 'Infelizmente, não tem mais vagas disponíveis na data solicitada. Por favor, escolha uma nova data!' })
+                              }
+      
+                              console.log("ainda tem mais")
                             }
-                            db.collection('Usuario').doc(user.uid).collection('agendamentos').add(newUserSchedule)
-                                .then(() => {
-                                    alert("Agendamento adicionado!")
-                                    window.location.href = "seeSchedules.html";
-                                })
-                                .catch(() => {
-                                    console.error("Ocorreu um erro ao adicionar o agendamento: ", error);
-                                })
-
-                            db.collection("Agendamentos").add(newSchedule)
-
-                        }
+                        )
 
 
-                        dadosFinal();
+
+                        // if (valor.lenght >= 10) {
+                        //     console.log(valor)
+                        //     M.toast({ html: 'Infelizmente, não tem mais vagas disponíveis na data solicitada. Por favor, escolha uma nova data!' })
+                        // }
+
+                        // console.log("ainda tem mais")
+                        
+
+
+                        // function dadosFinal() {
+                        //     dados()
+
+                        //     if (valor = 10) {
+                        //         M.toast({ html: 'Infelizmente, não tem mais vagas disponíveis na data solicitada. Por favor, escolha uma nova data!' })
+                        //     }
+                            // db.collection('Usuario').doc(user.uid).collection('agendamentos').add(newUserSchedule)
+                            //     .then(() => {
+                            //         alert("Agendamento adicionado!")
+                            //         // window.location.href = "seeSchedules.html";
+                            //     })
+                            //     .catch(() => {
+                            //         console.error("Ocorreu um erro ao adicionar o agendamento: ", error);
+                            //     })
+
+                            // db.collection("Agendamentos").add(newSchedule)
+                            // alert("ainda tem mais")
+
+                        // }
+
+
+                        // dadosFinal();
 
 
 
