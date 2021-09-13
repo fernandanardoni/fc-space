@@ -10,7 +10,7 @@ auth.onAuthStateChanged(user => {
         db.collection('Usuario').get().then(snapshots => {
             snapshots.forEach((doc) => {
                 if (doc.id == user.uid) {
-                    
+
                     // armazendndo agendamento SP
                     agendamentoSP.addEventListener("submit", (event) => {
                         event.preventDefault();
@@ -31,23 +31,44 @@ auth.onAuthStateChanged(user => {
                             data: data
                         }
 
-                        
+                        let valor = 0
+                        const getDates = () => db.collection("Agendamentos").get().then(querySnapshot => {
+                            querySnapshot.forEach(doc => {
 
-                        db.collection('Usuario').doc(user.uid).collection('agendamentos').add(newUserSchedule)
-                            .then(() => {
-                                alert("Agendamento adicionado!")
-                                window.location.href = "seeSchedules.html";
+                                if (doc.data().data == data) {
+                                    return valor++
+                                };
+
+
                             })
-                            .catch(() => {
-                                console.error("Ocorreu um erro ao adicionar o agendamento: ", error);
-                            })
-
-                        db.collection("Agendamentos").add(newSchedule)
+                        }) 
 
 
+                        getDates().then(
+                            () => {
+
+                                if (valor >= 240) {
+                                    M.toast({ html: 'Infelizmente, não tem mais vagas disponíveis na data solicitada. Por favor, escolha uma nova data!' })
+
+                                } else {
+                                    db.collection('Usuario').doc(user.uid).collection('agendamentos').add(newUserSchedule)
+                                        .then(() => {
+                                            window.location.href = "seeSchedules.html";
+                                        })
+                                        .catch(() => {
+                                            console.error("Ocorreu um erro ao adicionar o agendamento: ", error);
+                                        })
+
+                                    db.collection("Agendamentos").add(newSchedule)
+                                    return M.toast({ html: 'Agendamento adicionado!' })
+                                }
+
+                            }
+                        );
                     });
 
                     // armazenando agendamento Santos
+
                     agendamentoSantos.addEventListener("submit", (event) => {
                         event.preventDefault();
 
@@ -68,21 +89,42 @@ auth.onAuthStateChanged(user => {
                             data: data
                         }
 
-                    //    const dados = () => db.collection("Agendamentos").where("data", "===", data).then(doc=> console.log(doc.data()))
-                    //    dados()
+                        let valor = 0
+                        const getDates = () => db.collection("Agendamentos").get().then(querySnapshot => {
+                            querySnapshot.forEach(doc => {
 
+                                if (doc.data().data == data) {
+                                    return valor++
+                                };
 
-                    
-                        db.collection('Usuario').doc(user.uid).collection('agendamentos').add(newUserSchedule)
-                            .then(() => {
-                                alert("Agendamento adicionado!")
-                                window.location.href = "seeSchedules.html";
                             })
-                            .catch(() => {
-                                console.error("Ocorreu um erro ao adicionar o agendamento: ", error);
-                            })
+                        });
 
-                        db.collection("Agendamentos").add(newSchedule)
+
+                        getDates().then(
+                            () => {
+
+                                if (valor >= 40) {
+                                    M.toast({ html: 'Infelizmente, não tem mais vagas disponíveis na data solicitada. Por favor, escolha uma nova data!' })
+
+                                } else {
+                                    db.collection('Usuario').doc(user.uid).collection('agendamentos').add(newUserSchedule)
+                                        .then(() => {
+                                            window.location.href = "seeSchedules.html";
+                                        })
+                                        .catch(() => {
+                                            console.error("Ocorreu um erro ao adicionar o agendamento: ", error);
+                                        })
+
+                                    db.collection("Agendamentos").add(newSchedule)
+                                    return M.toast({ html: 'Agendamento adicionado!' })
+                                }
+                            }
+                        );
+
+
+
+
                     });
                 };
             });
