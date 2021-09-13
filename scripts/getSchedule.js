@@ -87,25 +87,25 @@ const getScheduleByUser = () => {
 
                         const scheduleItem = `
                         <li class="collection-item">
-                        <div class="schedule-container">
-                <div class="info">
-                 <div class="schedule-day">
-                 <p class="date">${doc.data().data}</p>
-                 </div>
-
-                 <p class="sector">Andar ${doc.data().andar}</p>
+                        
                  <p class="sector">${doc.data().filial}</p>
                  </div>
 
-                 <div class="actions">
-                 <button class = "delete" id="${
-                     doc.id
-                 }" type="submit" onclick="deleteSchedule(this.id)">
-                 Apagar
-                 </button>
+                 <p class="date">${doc.data().data}</p>
+                 </div>
 
-                 </div>
-                 </div>
+                 <div class="actions">
+
+
+
+                 <a href="#" id="${doc.id}" onclick="deleteSchedule(this.id)">
+                    <img src="assets/delete-icon.svg" alt="delete">
+                </a>
+                <a href="#" id="">
+                    <img src="assets/edit-icon.svg" alt="edit">
+                </a>
+                
+                </div>
                         </li>
                     `;
 
@@ -113,6 +113,8 @@ const getScheduleByUser = () => {
 
                         schedulesList.innerHTML = html;
                     });
+
+                // schedulesList.insertAdjacentHTML("beforebegin", `<h2>Setembro</h2>`)
                 });
         } else {
             console.log('user logged out');
