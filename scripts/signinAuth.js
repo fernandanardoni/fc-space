@@ -18,7 +18,13 @@ signUpData.addEventListener('submit', (e) => {
 
         M.toast({ html: 'Digite um CPF válido!' })
 
-    } else {
+    } else if (!validatePassword(user.senha)){
+
+        M.toast({ html: 'Digite uma senha de no mínimo 6 dígitos!' })
+
+    }  
+    
+    else {
         auth.createUserWithEmailAndPassword(user.email, user.senha).then((cred) => {
             M.toast({ html: 'Usuário cadastrado com sucesso! Faça seu login.' })
             signUpData.reset();
