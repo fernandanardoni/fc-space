@@ -64,9 +64,9 @@ body {
 }
 
 .collection{
+    overflow: visible;
     color: #404099;
     margin: 0 16px 0px 16px;
-
     box-shadow: 4px 4px 5px #d6d6d6;
 
 }
