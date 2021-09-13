@@ -11,6 +11,46 @@ h1 {
     margin-bottom: 0.5rem;
 }
 
+.container {
+    margin: 0 auto;
+    width: min(100vw, 950px);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-bottom: 1px solid#e0e0e0;
+}
+
+.header h2 {
+    font-weight: 700;
+    font-size: 26px;
+    margin: 0 0 6px 0;
+}
+
+.header img {
+    width: 40px;
+    position: absolute;
+    right: 24px;
+}
+
+.header .sidenav-trigger {
+    padding: 10.5px;
+    margin: 11px 2px 11px 4px;
+}
+
+.page-title {
+    font-weight: 700;
+    font-size: 24px;
+    text-align: left;
+    margin: 35px 0px 8px 18px;
+}
 
 .picker__date-display {
     display: none !important;
@@ -131,7 +171,6 @@ h3 {
     background-color: #febba267 !important;
 }
 
-
 .card.horizontal .card-image img {
     border-radius: 2px 0 0 2px;
     max-width: 100%;
@@ -145,6 +184,6 @@ h3 {
     font-weight: bold;
 }
 
-.card-text{
+.card-text {
     font-weight: normal;
 }
