@@ -106,7 +106,7 @@ const getScheduleByUser = () => {
 
 
 
-                 <a href="#" id="${doc.id}" onclick="deleteSchedule(this.id)">
+                 <a href="#" id="${doc.id}" onclick="openModal()">
                     <img src="assets/delete-icon.svg" alt="delete">
                 </a>
                 <a href="#" id="">

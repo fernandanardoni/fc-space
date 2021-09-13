@@ -65,16 +65,13 @@
         </div>
 
         <!-- MODAL -->
-        <div class="modal-wrapper">
+        <div id="active" class="modal-wrapper">
             <div class="modal">
-                <div class="logo-field">
-                    <img src="assets/Recyclebin-icon.png" alt="trash can" />
-                </div>
-                <h2>Excluir?</h2>
-                <p>Deseja excluir o agendamento?</p>
+                <img src="assets/recyclebin-icon.svg" alt="trash can" />
+                <p class="orange-txt">Tem certeza que quer excluir o agendamento?</p>
                 <div class="modal-actions">
-                    <button onclick="closeModal()">Não</button>
-                    <button onclick="closeModal()">Sim</button>
+                    <button id="blue-buttom" onclick="closeModal()">SIM, EXCLUIR</button>
+                    <button id="white-buttom" onclick="closeModal()">VOLTAR</button>
                 </div>
             </div>
         </div>
