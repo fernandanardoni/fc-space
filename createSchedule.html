@@ -69,37 +69,36 @@
             <div class="row">
                 <form class="col s12 margin" id="filialSP">
                     <label>Escolha o andar desejado</label>
-                    <form action="#">
-                        <p>
-                            <label>
-                            <input name="filialSP" type="radio" checked />
+                    <p>
+                        <label>
+                            <input name="andar" type="radio" value="1" checked />
                             <span>1º Andar</span>
-                          </label>
-                        </p>
-                        <p>
-                            <label>
-                            <input name="filialSP" type="radio" />
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="andar" type="radio" value="2"/>
                             <span>2º Andar</span>
-                          </label>
-                        </p>
+                        </label>
+                    </p>
 
-                        <!-- ============SELEÇÃO DE DATA============ -->
-                        <div id="dataSP" class="col s12">
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input type="text" class="datepicker" id="data" name="dateSP" />
-                                    <label>Data</label>
-                                </div>
+                    <!-- ============SELEÇÃO DE DATA============ -->
+                    <div id="dataSP" class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input type="text" class="datepicker" id="data" name="dateSP" />
+                                <label>Data</label>
                             </div>
                         </div>
+                    </div>
 
-                        <div id="progress-bar"></div>
+                    <div id="progress-bar"></div>
 
-                        <section id="confirmacao"> </section>
-                        <div class="input-field col s12 submit">
-                            <button class="btn waves-effect waves-light" type="submit " name="action "> Agendar</button>
-                        </div>
-                    </form>
+                    <section id="confirmacao"> </section>
+                    <div class="input-field col s12 submit">
+                        <button class="btn waves-effect waves-light" type="submit " name="action "> Agendar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </main>
@@ -126,20 +125,22 @@
 
 
                 <!-- ============SELEÇÃO DE DATA============ -->
-                <div id="dataSantos" class="col s12">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input type="text" class="datepicker" id="data" name="dateSantos" />
-                            <label>Data</label>
+                <form id="filialSantos">
+                    <div id="dataSantos" class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input type="text" class="datepicker" id="data" name="dateSantos" />
+                                <label>Data</label>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div id="progress-bar"></div>
+                    <div id="progress-bar"></div>
 
-                <div class="input-field col s12 submit">
-                    <button class="btn waves-effect waves-light" type="submit " name="action " id="button-Santos">Agendar</button>
-                </div>
+                    <div class="input-field col s12 submit">
+                        <button class="btn waves-effect waves-light" type="submit " name="action "
+                            id="button-Santos">Agendar</button>
+                    </div>
                 </form>
             </div>
         </div>

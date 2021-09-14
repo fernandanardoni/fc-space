@@ -1,9 +1,12 @@
 const agendamentoSP = document.getElementById("filialSP");
 const agendamentoSantos = document.getElementById("filialSantos");
 
+
 export function retornaPorcentagem() {
+
     const num = Math.floor(Math.random() * 111);
     return num;
+
 }
 
 
@@ -18,10 +21,11 @@ auth.onAuthStateChanged(user => {
                         event.preventDefault();
 
                         const data = configDate(agendamentoSP["dateSP"].value);
+                        const andar = document.querySelector('input[name="andar"]:checked').value;
 
                         const newSchedule = {
                             filial: "São Paulo",
-                            andar: agendamentoSP["andar"].value,
+                            andar: andar,
                             data: data,
                             email: user.email,
                             cpf: doc.data().cpf,
@@ -29,9 +33,10 @@ auth.onAuthStateChanged(user => {
 
                         const newUserSchedule = {
                             filial: "São Paulo",
-                            andar: agendamentoSP["andar"].value,
+                            andar: andar,
                             data: data
                         }
+
 
                         let valor = 0
                         const getDates = () => db.collection("Agendamentos").get().then(querySnapshot => {
@@ -55,7 +60,9 @@ auth.onAuthStateChanged(user => {
                                 } else {
                                     db.collection('Usuario').doc(user.uid).collection('agendamentos').add(newUserSchedule)
                                         .then(() => {
-                                            window.location.href = "seeSchedules.html";
+                                            setTimeout( () => {
+                                                window.location.href = "seeSchedules.html";
+                                            }, 3000)
                                         })
                                         .catch(() => {
                                             console.error("Ocorreu um erro ao adicionar o agendamento: ", error);
@@ -112,7 +119,9 @@ auth.onAuthStateChanged(user => {
                                 } else {
                                     db.collection('Usuario').doc(user.uid).collection('agendamentos').add(newUserSchedule)
                                         .then(() => {
-                                            window.location.href = "seeSchedules.html";
+                                             setTimeout( () => {
+                                                 window.location.href = "seeSchedules.html";
+                                             }, 3000)
                                         })
                                         .catch(() => {
                                             console.error("Ocorreu um erro ao adicionar o agendamento: ", error);
