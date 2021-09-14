@@ -25,3 +25,19 @@ const todayDate = () => {
 }
 
 
+const getDayofWeek = (item) => {
+
+    const week = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"]
+
+    const splitDate = item.split("/");
+
+    const formattedDate = splitDate[1] + "-" + splitDate[0] + "-" + splitDate[2]
+
+    const date = new Date(formattedDate)
+
+    const day = week[date.getDay()];
+
+    return day;
+}
+
+
