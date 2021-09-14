@@ -102,7 +102,7 @@ const getScheduleByUser = () => {
                     
                     snapshots.forEach((doc) => {
                       
-                            monthSelector(doc.data().data, doc.data().filial, doc.id);
+                            monthSelector(doc.data().data, doc.data().filial, doc.id, doc.data().andar);
                         });
 
                             schedulesList.innerHTML = getFinalHTML();
@@ -151,11 +151,11 @@ function deleteSchedule(idToDelete) {
 }
 
 // Separa os agendamentos por mês
-function monthSelector(date, filial, id) {
+function monthSelector(date, filial, id, floor) {
     
     let content = `
     <li class="collection-item">
-    <p class="sector">${filial}</p>
+    <p class="sector">${filial} - ${floor}º Andar</p>
 
     <p class="date">${getDayofWeek(date)} - ${date}</p>
 
