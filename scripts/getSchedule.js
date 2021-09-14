@@ -97,6 +97,7 @@ const getScheduleByUser = () => {
                         dez: [],
                     }
                     
+                    
                     snapshots.forEach((doc) => {
                             monthSelector(doc.data().data, doc.data().filial, doc.id);
                         });
