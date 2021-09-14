@@ -30,12 +30,14 @@ document.addEventListener("DOMContentLoaded", function() {
         selectMonths: true,
         selectYears: true,
         clear: false,
+        disableWeekends: true,
         format: "dddd - dd/mm/yyyy",
         today: "Hoje",
         close: "X",
         min: new Date(data.getFullYear() - 0, 0, 3),
         max: new Date(data.getFullYear() + 1, 11, 31),
         closeOnSelect: true,
+
         onClose: () => {
 
             document.getElementById("progress-bar").innerHTML = ``;
