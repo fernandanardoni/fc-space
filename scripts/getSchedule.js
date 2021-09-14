@@ -1,3 +1,5 @@
+
+
 // //Pegas os agendamentos no banco de dados e retorna um Array;
 
 // function getSchedulesByFilial(filial) {
@@ -92,6 +94,7 @@ const getScheduleByUser = () => {
                     let html = '';
                     snapshots.forEach((doc) => {
                         console.log(doc.data());
+
 
                         const scheduleItem = `
                         <li class="collection-item">
