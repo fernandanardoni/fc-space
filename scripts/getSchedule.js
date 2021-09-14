@@ -98,14 +98,14 @@ const getScheduleByUser = () => {
                         nov: [],
                         dez: [],
                     }
-                    
-                    
-                    snapshots.forEach((doc) => {
-                      
-                            monthSelector(doc.data().data, doc.data().filial, doc.id, doc.data().andar);
-                        });
 
-                            schedulesList.innerHTML = getFinalHTML();
+
+                    snapshots.forEach((doc) => {
+
+                        monthSelector(doc.data().data, doc.data().filial, doc.id);
+                    });
+
+                    schedulesList.innerHTML = getFinalHTML();
 
                 });
         } else {
@@ -117,7 +117,7 @@ const getScheduleByUser = () => {
 getScheduleByUser();
 
 
-// Funções da modal
+// Funções das modais
 
 var scheduleIdToModal = '';
 
@@ -130,9 +130,21 @@ function closeModal() {
     document.querySelector('.modal-wrapper').id = '';
 }
 
+function closeDeleteModal() {
+    document.querySelector('.delete-modal').id = '';
+}
+
+function openDeleteModal(scheduleId) {
+    document.querySelector('.delete-modal').id = 'active';
+
+    scheduleIdToModal = scheduleId;
+}
+
 //função pra excluir um agendamento.
 
-function deleteSchedule(idToDelete) {
+function deleteSchedule(idToDelete, newPage) {
+
+    console.log("entrou e deletou o ", idToDelete)
 
     auth.onAuthStateChanged((user) => {
         if (user) {
@@ -141,21 +153,32 @@ function deleteSchedule(idToDelete) {
         }
     });
 
-    console.log("id deletado", idToDelete)
     closeModal();
+    closeDeleteModal();
 
-    setTimeout(function(){
-        getScheduleByUser();
+    setTimeout(function () {
+
+        if (newPage) {
+            history.replaceState(null, null, "createSchedule.html");
+            document.location.reload(true);
+
+            console.log("pelo edit")
+        } else {
+            getScheduleByUser();
+
+            console.log("pelo delete")
+        }
+
     }, 350);
 
 }
 
 // Separa os agendamentos por mês
-function monthSelector(date, filial, id, floor) {
-    
+function monthSelector(date, filial, id) {
+
     let content = `
     <li class="collection-item">
-    <p class="sector">${filial} - ${floor}º Andar</p>
+    <p class="sector">${filial}</p>
 
     <p class="date">${getDayofWeek(date)} - ${date}</p>
 
@@ -163,7 +186,7 @@ function monthSelector(date, filial, id, floor) {
         <a href="#" id="${id}" onclick="openModal(this.id)">
             <img src="assets/delete-icon.svg" alt="delete">
         </a>
-        <a href="#" id="">
+        <a href="#" id="${id}" onclick="openDeleteModal(this.id)">
             <img src="assets/edit-icon.svg" alt="edit">
         </a>
 
