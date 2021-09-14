@@ -1,3 +1,5 @@
+
+
 // //Pegas os agendamentos no banco de dados e retorna um Array;
 
 // function getSchedulesByFilial(filial) {
@@ -99,6 +101,7 @@ const getScheduleByUser = () => {
                     
                     
                     snapshots.forEach((doc) => {
+                      
                             monthSelector(doc.data().data, doc.data().filial, doc.id);
                         });
 
