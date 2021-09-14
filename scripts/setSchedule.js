@@ -2,7 +2,7 @@ const agendamentoSP = document.getElementById("filialSP");
 const agendamentoSantos = document.getElementById("filialSantos");
 
 
-export async function retornaPorcentagem() {
+export async function retornaVagasSP() {
 
     // const num = Math.floor(Math.random() * 111);
     // return num;
@@ -14,8 +14,8 @@ export async function retornaPorcentagem() {
         querySnapshot.docs.forEach(doc => {   
             
             if (doc.data().data == data) {
-                value++
-                return  console.log(value);
+                
+                return value++;
             };
 
 
@@ -26,8 +26,37 @@ export async function retornaPorcentagem() {
         return value;
     }).catch(error => console.log(error))
     
-    return  value;
+    const _value = (value / 240) * 100;
+    return  _value;
 }
+
+export async function retornaVagasSantos() {
+
+    // const num = Math.floor(Math.random() * 111);
+    // return num;
+
+    const data = configDate(agendamentoSP["dateSantos"].value);
+    let value = 0
+    await db.collection("Agendamentos").get().then(querySnapshot => {
+        
+        querySnapshot.docs.forEach(doc => {   
+            
+            if (doc.data().data == data) {
+                
+                return value++;
+            };
+
+
+        })
+    })
+    .then(()=> {
+        
+        return value;
+    }).catch(error => console.log(error))
+    const _value = (value / 40) * 100;
+    return  _value;
+}
+
 
 
 auth.onAuthStateChanged(user => {
@@ -42,6 +71,8 @@ auth.onAuthStateChanged(user => {
 
                         const data = configDate(agendamentoSP["dateSP"].value);
                         const andar = document.querySelector('input[name="andar"]:checked').value;
+
+                         filial = "São Paulo";
 
                         const newSchedule = {
                             filial: "São Paulo",
@@ -104,6 +135,8 @@ auth.onAuthStateChanged(user => {
 
 
                         const data = configDate(agendamentoSantos["dateSantos"].value)
+
+                        filial = "Santos";
 
                         const newSchedule = {
                             filial: "Santos",

@@ -1,4 +1,4 @@
-import { retornaPorcentagem } from '../scripts/setSchedule.js';
+import {  retornaVagasSantos, retornaVagasSP } from '../scripts/setSchedule.js';
 
 var diaSemana = ["Domingo", "Segunda-Feira", "Terca-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira", "Sabado"];
 var mesAno = ["Janeiro", "Fevereiro", "Marco", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
@@ -42,18 +42,31 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
             document.getElementById("progress-bar").innerHTML = ``;
-            const _retornaPorcentagem = await retornaPorcentagem();
+            const _retornaPorcentagem = await retornaVagasSP();
+            const retornaValor = await retornaVagasSantos();
 
             const divProgress = document.createElement("div");
             //divProgress.setAttribute("class", "progress");
             const porcentagem = _retornaPorcentagem;
 
-            divProgress.innerHTML = ` 
-                   <p> ${240 - porcentagem} restantes</p>   
-                   <div class="progress" style="width: ${porcentagem}%"></div>
+            if(retornaValor){
+                divProgress.innerHTML = ` 
+                   <p> ${retornaValor}% das vagas já foram preenchidas.</p>   
+                   <div class="progress" style="width: ${retornaValor}%"></div>
                   `;
 
-            document.getElementById("progress-bar").appendChild(divProgress);
+            document.getElementById("progress-bar-santos").appendChild(divProgress);
+
+            } else {
+
+                divProgress.innerHTML = ` 
+                       <p> ${porcentagem}% das vagas já foram preenchidas.</p>   
+                       <div class="progress" style="width: ${porcentagem}%"></div>
+                      `;
+    
+                document.getElementById("progress-bar").appendChild(divProgress);
+            }
+           
 
         },
         disableDayFn: (callbackDay) => {

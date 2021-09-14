@@ -1,5 +1,5 @@
 
-// formata a data que vem do banco
+// formata a data que vem do site
 
 
 const configDate = (data) => {
@@ -7,8 +7,6 @@ const configDate = (data) => {
     const dataCerta = data.split(" - ")[1]
 
     return dataCerta;
-
-
 
 } 
 
