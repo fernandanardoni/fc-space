@@ -23,7 +23,6 @@
                 <div class="user-view"></div>
             </li>
 
-            <li><a href="#!"><i class="material-icons">assignment_ind</i>Meu Perfil</a></li>
             <li><a href="./createSchedule.html"><i class="material-icons">event_note</i>Fazer agendamento</a></li>
             <li><a href="#!" onclick="mySchedules()"><i class="material-icons">event_available</i>Meus agendamentos</a>
             </li>
@@ -35,7 +34,6 @@
             </a>
 
             <h2 class="header-title txt-orange">FC Space</h2>
-            <img src="assets/avatar-icon.svg" alt="icone do avatar" />
 
         </div>
 
@@ -70,45 +68,38 @@
             </article>
             <div class="row">
                 <form class="col s12 margin" id="filialSP">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <select id="andar">
-                                <option value="" disabled selected>Selecione</option>
-                                <option value="1">1º Andar</option>
-                                <option value="2">2º Andar</option>
-                            </select>
-                            <label>Escolha o andar desejado</label>
-                        </div>
-                    </div>
+                    <label>Escolha o andar desejado</label>
+                    <form action="#">
+                        <p>
+                            <label>
+                            <input name="filialSP" type="radio" checked />
+                            <span>1º Andar</span>
+                          </label>
+                        </p>
+                        <p>
+                            <label>
+                            <input name="filialSP" type="radio" />
+                            <span>2º Andar</span>
+                          </label>
+                        </p>
 
-                    <!-- ============SELEÇÃO DE DATA============ -->
-                    <div class="row navigation">
-                        <div class="col s12">
-                            <ul id="agendamento" class="tabs">
-                                <li class="tab col s12">
-                                    <a class="txt-orange" href="#dataSP">Escolha a Data</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div style="display: none" id="dataSP" class="col s12">
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input type="text" class="datepicker" id="data" name="dateSP" />
-                                <label>Data</label>
+                        <!-- ============SELEÇÃO DE DATA============ -->
+                        <div id="dataSP" class="col s12">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" class="datepicker" id="data" name="dateSP" />
+                                    <label>Data</label>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- 
-                        <div class="progress">
-                            <div class="determinate" style="width: 90%"></div>
+
+                        <div id="progress-bar"></div>
+
+                        <section id="confirmacao"> </section>
+                        <div class="input-field col s12 submit">
+                            <button class="btn waves-effect waves-light" type="submit " name="action "> Agendar</button>
                         </div>
-                        -->
-                    <section id="confirmacao"> </section>
-                    <div class="input-field col s12 submit">
-                        <button class="btn waves-effect waves-light" type="submit " name="action "> Agendar</button>
-                    </div>
-                </form>
+                    </form>
             </div>
         </div>
     </main>
@@ -135,17 +126,7 @@
 
 
                 <!-- ============SELEÇÃO DE DATA============ -->
-                <div class="row navigation">
-                    <form id="filialSantos">
-                        <div class="col s12">
-                            <ul id="agendamento" class="tabs">
-                                <li class="tab col s12">
-                                    <a class="txt-orange" href="#dataSantos">Escolha a Data</a>
-                                </li>
-                            </ul>
-                        </div>
-                </div>
-                <div style="display: none" id="dataSantos" class="col s12">
+                <div id="dataSantos" class="col s12">
                     <div class="row">
                         <div class="input-field col s12">
                             <input type="text" class="datepicker" id="data" name="dateSantos" />
@@ -153,9 +134,11 @@
                         </div>
                     </div>
                 </div>
+
+                <div id="progress-bar"></div>
+
                 <div class="input-field col s12 submit">
-                    <button class="btn waves-effect waves-light" type="submit " name="action " id="button-Santos">
-                        Agendar</button>
+                    <button class="btn waves-effect waves-light" type="submit " name="action " id="button-Santos">Agendar</button>
                 </div>
                 </form>
             </div>
@@ -193,6 +176,8 @@
     <script src="./scripts/auth.js"></script>
     <script src="./testeData/data.js"></script>
     <script src="./scripts/setSchedule.js"></script>
+    <script type="module" src="./testeData/data.js"></script>
+    <script type="module" src="./scripts/setSchedule.js"></script>
 </body>
 
 </html>
