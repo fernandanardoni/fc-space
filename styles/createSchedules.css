@@ -43,6 +43,7 @@ h1 {
 .header .sidenav-trigger {
     padding: 10.5px;
     margin: 11px 2px 11px 4px;
+    cursor: pointer;
 }
 
 .page-title {
