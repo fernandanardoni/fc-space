@@ -150,7 +150,6 @@ function deleteSchedule(idToDelete) {
 
 }
 
-
 // Separa os agendamentos por mês
 function monthSelector(date, filial, id) {
     
@@ -158,7 +157,7 @@ function monthSelector(date, filial, id) {
     <li class="collection-item">
     <p class="sector">${filial}</p>
 
-    <p class="date">${date}</p>
+    <p class="date">${getDayofWeek(date)} - ${date}</p>
 
     <div class="actions">
         <a href="#" id="${id}" onclick="openModal(this.id)">
