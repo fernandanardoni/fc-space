@@ -1,3 +1,5 @@
+import { retornaPorcentagem } from '../scripts/setSchedule.js';
+
 var diaSemana = ["Domingo", "Segunda-Feira", "Terca-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira", "Sabado"];
 var mesAno = ["Janeiro", "Fevereiro", "Marco", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
 var data = new Date();
@@ -34,6 +36,23 @@ document.addEventListener("DOMContentLoaded", function() {
         min: new Date(data.getFullYear() - 0, 0, 3),
         max: new Date(data.getFullYear() + 1, 11, 31),
         closeOnSelect: true,
+        onClose: () => {
+
+            document.getElementById("progress-bar").innerHTML = ``;
+            const _retornaPorcentagem = retornaPorcentagem();
+
+            const divProgress = document.createElement("div");
+            //divProgress.setAttribute("class", "progress");
+            const porcentagem = _retornaPorcentagem;
+
+            divProgress.innerHTML = ` 
+                   <p> ${porcentagem}% das estações foram ocupadas</p>   
+                   <div class="progress" style="width: ${porcentagem}%"></div>
+                  `;
+
+            document.getElementById("progress-bar").appendChild(divProgress);
+
+        },
         disableDayFn: (callbackDay) => {
             const x = new Date("2021,9,15").toDateString();
             const y = new Date("2021,09,16").toDateString();
