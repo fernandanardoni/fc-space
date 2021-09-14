@@ -49,7 +49,7 @@ header p {
 }
 
 .enter {
-    width: 50%;
+    width: 100%;
 }
 
 .enter .container {
@@ -189,7 +189,5 @@ input {
     .desktop {
         display: none;
     }
-    .enter {
-        width: 100%;
-    }
+    
 }
