@@ -51,20 +51,22 @@ document.addEventListener("DOMContentLoaded", function() {
 
             if(retornaValor){
                 divProgress.innerHTML = ` 
-                   <p> ${240 - porcentagem} restantes</p>   
-                   <div class="progress" style="width: ${porcentagem}%"></div>
+                   <p> ${retornaValor}% das vagas já foram preenchidas.</p>   
+                   <div class="progress" style="width: ${retornaValor}%"></div>
                   `;
 
             document.getElementById("progress-bar-santos").appendChild(divProgress);
 
+            } else {
+
+                divProgress.innerHTML = ` 
+                       <p> ${porcentagem}% das vagas já foram preenchidas.</p>   
+                       <div class="progress" style="width: ${porcentagem}%"></div>
+                      `;
+    
+                document.getElementById("progress-bar").appendChild(divProgress);
             }
            
-            divProgress.innerHTML = ` 
-                   <p> ${240 - porcentagem} restantes</p>   
-                   <div class="progress" style="width: ${porcentagem}%"></div>
-                  `;
-
-            document.getElementById("progress-bar").appendChild(divProgress);
 
         },
         disableDayFn: (callbackDay) => {

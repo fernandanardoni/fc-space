@@ -26,7 +26,8 @@ export async function retornaVagasSP() {
         return value;
     }).catch(error => console.log(error))
     
-    return  value;
+    const _value = (value / 240) * 100;
+    return  _value;
 }
 
 export async function retornaVagasSantos() {
@@ -52,8 +53,8 @@ export async function retornaVagasSantos() {
         
         return value;
     }).catch(error => console.log(error))
-    
-    return  value;
+    const _value = (value / 40) * 100;
+    return  _value;
 }
 
 
