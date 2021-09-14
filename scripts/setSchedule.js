@@ -2,11 +2,31 @@ const agendamentoSP = document.getElementById("filialSP");
 const agendamentoSantos = document.getElementById("filialSantos");
 
 
-export function retornaPorcentagem() {
+export async function retornaPorcentagem() {
 
-    const num = Math.floor(Math.random() * 111);
-    return num;
+    // const num = Math.floor(Math.random() * 111);
+    // return num;
 
+    const data = configDate(agendamentoSP["dateSP"].value);
+    let value = 0
+    await db.collection("Agendamentos").get().then(querySnapshot => {
+        
+        querySnapshot.docs.forEach(doc => {   
+            
+            if (doc.data().data == data) {
+                value++
+                return  console.log(value);
+            };
+
+
+        })
+    })
+    .then(()=> {
+        
+        return value;
+    }).catch(error => console.log(error))
+    
+    return  value;
 }
 
 
@@ -60,9 +80,10 @@ auth.onAuthStateChanged(user => {
                                 } else {
                                     db.collection('Usuario').doc(user.uid).collection('agendamentos').add(newUserSchedule)
                                         .then(() => {
-                                            setTimeout( () => {
-                                                window.location.href = "seeSchedules.html";
-                                            }, 3000)
+                                            // setTimeout( () => {
+                                            //     window.location.href = "seeSchedules.html";
+                                            // }, 3000)
+
                                         })
                                         .catch(() => {
                                             console.error("Ocorreu um erro ao adicionar o agendamento: ", error);
@@ -119,9 +140,10 @@ auth.onAuthStateChanged(user => {
                                 } else {
                                     db.collection('Usuario').doc(user.uid).collection('agendamentos').add(newUserSchedule)
                                         .then(() => {
-                                             setTimeout( () => {
-                                                 window.location.href = "seeSchedules.html";
-                                             }, 3000)
+                                            //  setTimeout( () => {
+                                            //      window.location.href = "seeSchedules.html";
+                                            //  }, 3000)
+                                            agendamentoSantos.reset();
                                         })
                                         .catch(() => {
                                             console.error("Ocorreu um erro ao adicionar o agendamento: ", error);

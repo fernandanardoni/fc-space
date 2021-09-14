@@ -38,17 +38,18 @@ document.addEventListener("DOMContentLoaded", function() {
         max: new Date(data.getFullYear() + 1, 11, 31),
         closeOnSelect: true,
 
-        onClose: () => {
+        onClose: async () => {
+
 
             document.getElementById("progress-bar").innerHTML = ``;
-            const _retornaPorcentagem = retornaPorcentagem();
+            const _retornaPorcentagem = await retornaPorcentagem();
 
             const divProgress = document.createElement("div");
             //divProgress.setAttribute("class", "progress");
             const porcentagem = _retornaPorcentagem;
 
             divProgress.innerHTML = ` 
-                   <p> ${porcentagem}% das estações foram ocupadas</p>   
+                   <p> ${240 - porcentagem} restantes</p>   
                    <div class="progress" style="width: ${porcentagem}%"></div>
                   `;
 
