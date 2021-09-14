@@ -150,7 +150,6 @@ h3 {
     width: 100%;
 }
 
-
 .input-field label {
     color: #fe4400;
 }
@@ -172,12 +171,10 @@ h3 {
     background-color: #febba267 !important;
 }
 
-.article-card{
+.article-card {
     display: flex;
     justify-content: center;
 }
-
-
 
 .card .card-image img {
     border-radius: 2px 0 0 2px;
@@ -196,9 +193,20 @@ h3 {
     font-weight: normal;
 }
 
-.filial-card{
+.filial-card {
     align-self: center;
     height: 30rem;
     width: 20rem;
     margin-bottom: 150px;
+}
+
+[type="radio"]:checked+span::after,
+[type="radio"].with-gap:checked+span::after {
+    background-color: #fe5517;
+}
+
+[type="radio"]:checked+span::after,
+[type="radio"].with-gap:checked+span::before,
+[type="radio"].with-gap:checked+span::after {
+    border-color: #fe5517;
 }
