@@ -28,7 +28,7 @@ const getScheduleByUser = () => {
                         
                         if(doc.data().cpf == item.data().cpf){ 
 
-                            monthSelector(doc.data().data, doc.data().filial, doc.id, doc.data().cpf);
+                            monthSelector(doc.data().data, doc.data().filial, doc.id, doc.data().andar);
 
                         }
                     });
