@@ -77,7 +77,6 @@ auth.onAuthStateChanged(user => {
                         const data = agendamentoSP["dateSP"].value.split(" - ")[1];
                         const andar = document.querySelector('input[name="andar"]:checked').value;
 
-
                         const newSchedule = {
                             filial: "São Paulo",
                             andar: andar,
@@ -92,7 +91,6 @@ auth.onAuthStateChanged(user => {
                             data: data
                         }
 
-
                         let valor = 0
                         const getDates = () => db.collection("Agendamentos").get().then(querySnapshot => {
                             querySnapshot.forEach(doc => {
@@ -100,11 +98,8 @@ auth.onAuthStateChanged(user => {
                                 if (doc.data().data == data) {
                                     return valor++
                                 };
-
-
                             })
                         })
-
 
                         getDates().then(
                             () => {
@@ -115,9 +110,7 @@ auth.onAuthStateChanged(user => {
                                 } else {
                                     db.collection('Usuario').doc(user.uid).collection('agendamentos').add(newUserSchedule)
                                         .then(() => {
-                                            // setTimeout( () => {
-                                            //     window.location.href = "seeSchedules.html";
-                                            // }, 3000)
+                                            agendamentoSP.reset();
 
                                         })
                                         .catch(() => {
@@ -176,9 +169,7 @@ auth.onAuthStateChanged(user => {
                                 } else {
                                     db.collection('Usuario').doc(user.uid).collection('agendamentos').add(newUserSchedule)
                                         .then(() => {
-                                            //  setTimeout( () => {
-                                            //      window.location.href = "seeSchedules.html";
-                                            //  }, 3000)
+                                            
                                             agendamentoSantos.reset();
                                         })
                                         .catch(() => {
