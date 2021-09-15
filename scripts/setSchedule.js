@@ -74,10 +74,9 @@ auth.onAuthStateChanged(user => {
                     agendamentoSP.addEventListener("submit", (event) => {
                         event.preventDefault();
 
-                        const data = configDate(agendamentoSP["dateSP"].value);
+                        const data = agendamentoSP["dateSP"].value.split(" - ")[1];
                         const andar = document.querySelector('input[name="andar"]:checked').value;
 
-                         filial = "São Paulo";
 
                         const newSchedule = {
                             filial: "São Paulo",
@@ -139,9 +138,8 @@ auth.onAuthStateChanged(user => {
                         event.preventDefault();
 
 
-                        const data = configDate(agendamentoSantos["dateSantos"].value)
+                        const data = agendamentoSantos["dateSantos"].value.split(" - ")[1]
 
-                        filial = "Santos";
 
                         const newSchedule = {
                             filial: "Santos",
