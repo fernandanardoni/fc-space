@@ -7,45 +7,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/seeSchedules.css" />
     <link rel="stylesheet" href="styles/modal.css" />
     <title>Meus Agendamentos</title>
 </head>
 
 <body>
+    <nav>
+        <div class="nav-wrapper">
+            <span class="brand-logo left">FC Space</span>
+            <a data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a>Meu Perfil</a></li>
+                <li><a href="./createSchedule.html">Fazer agendamento</a></li>
+                <li><a href="./seeSchedules.html">Meus agendamentos</a></li>
+                <li><a href="./index.html" id="logout">Sair</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <!-- Sidenav -->
-
-    <ul id="slide-out" class="sidenav">
+    <ul class="sidenav" id="mobile-demo">
         <li>
             <div class="user-view"></div>
         </li>
-        <li>
-            <a href="./createSchedule.html"><i class="material-icons">event_note</i>Fazer
-                agendamento</a>
-        </li>
-        <li>
-            <a href="#!" onclick="mySchedules()"><i class="material-icons">event_available</i>Meus
-                agendamentos</a>
-        </li>
-        <li>
-            <a href="#!" id="logout"><i class="material-icons">exit_to_app</i>Sair</a>
-        </li>
+        <li><a href="#!"><i class="material-icons">assignment_ind</i>Meu Perfil</a></li>
+        <li><a href="./createSchedule.html"><i class="material-icons">event_note</i>Fazer agendamento</a></li>
+        <li><a href="./seeSchedules.html"><i class="material-icons">event_available</i>Meus agendamentos</a></li>
+        <li><a href="./index.html" id="logout"><i class="material-icons">exit_to_app</i>Sair</a></li>
     </ul>
 
-    <!-- Header -->
-    <div class="header">
-        <a data-target="slide-out" class="sidenav-trigger">
-            <i style="color: black" class="small material-icons">menu</i>
-        </a>
-
-        <h2 class="header-title txt-orange">FC Space</h2>
-    </div>
     <div class="container">
 
         <h1 class="page-title txt-orange">Meus Agendamentos</h1>
-
-
 
         <div class="schedule-content"></div>
 
