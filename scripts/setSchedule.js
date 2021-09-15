@@ -110,8 +110,9 @@ auth.onAuthStateChanged(user => {
                                 } else {
                                     db.collection('Usuario').doc(user.uid).collection('agendamentos').add(newUserSchedule)
                                         .then(() => {
-                                            agendamentoSP.reset();
-
+                                            setTimeout( () => {
+                                                window.location.href = "seeSchedules.html";
+                                            }, 3000)
                                         })
                                         .catch(() => {
                                             console.error("Ocorreu um erro ao adicionar o agendamento: ", error);
@@ -169,8 +170,9 @@ auth.onAuthStateChanged(user => {
                                 } else {
                                     db.collection('Usuario').doc(user.uid).collection('agendamentos').add(newUserSchedule)
                                         .then(() => {
-                                            
-                                            agendamentoSantos.reset();
+                                            setTimeout( () => {
+                                                window.location.href = "seeSchedules.html";
+                                            }, 3000)
                                         })
                                         .catch(() => {
                                             console.error("Ocorreu um erro ao adicionar o agendamento: ", error);
