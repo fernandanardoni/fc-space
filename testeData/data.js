@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             if(retornaValor){
                 divProgress.innerHTML = ` 
-                   <p> ${retornaValor}% das vagas já foram preenchidas.</p>   
+                   <p> ${40 - retornaValor} vagas restantes.</p>   
                    <div class="progress" style="width: ${retornaValor}%"></div>
                   `;
 
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
             } else {
 
                 divProgress.innerHTML = ` 
-                       <p> ${porcentagem}% das vagas já foram preenchidas.</p>   
+                       <p> ${240 - porcentagem} vagas restantes.</p>   
                        <div class="progress" style="width: ${porcentagem}%"></div>
                       `;
     
