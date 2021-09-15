@@ -8,8 +8,7 @@
     padding: 0;
 }
 
-html,
-body {
+html, body {
     height: 100%;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
@@ -60,8 +59,7 @@ header p {
     justify-content: center;
 }
 
-h5,
-h3 {
+h5, h3 {
     font-weight: 800;
 }
 
@@ -70,9 +68,7 @@ h3 {
     font-size: 64px;
 }
 
-button,
-a,
-input {
+button, a, input {
     font-family: 'Roboto', sans-serif;
 }
 
@@ -108,8 +104,7 @@ input {
     background-color: transparent !important;
 }
 
-.tabs .tab a:hover,
-.tabs .tab a.active {
+.tabs .tab a:hover, .tabs .tab a.active {
     background-color: transparent;
     color: #fe4400;
 }
@@ -123,7 +118,7 @@ input {
     border-radius: 5px;
 }
 
-.input-field input:focus + label {
+.input-field input:focus+label {
     color: #222222 !important;
 }
 
@@ -145,8 +140,7 @@ input {
     border-radius: 5px;
 }
 
-#login,
-#register {
+#login, #register {
     width: 100%;
 }
 
@@ -168,16 +162,33 @@ input {
     background-color: transparent !important;
 }
 
-#test1,
-#saopaulo,
-#santos,
-#test2 {
+#test1, #saopaulo, #santos, #test2 {
     width: 100%;
 }
 
-#span-login{
+#span-login {
     font-size: small;
     color: rgb(185, 184, 184)
+}
+
+/* estilo da barra de navegação */
+
+nav {
+    background-color: transparent;
+}
+
+nav .nav-wrapper .brand-logo {
+    color: #fe4400;
+    padding-left: 10px;
+    margin-left: 30px;
+}
+
+nav .nav-wrapper .sidenav-trigger {
+    color: black;
+}
+
+.hide-on-med-and-down li a, .sidenav li a {
+    color: black;
 }
 
 /* media queries para desktop */
@@ -189,5 +200,4 @@ input {
     .desktop {
         display: none;
     }
-    
 }
