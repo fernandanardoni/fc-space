@@ -4,11 +4,11 @@ const getScheduleByUser = () => {
 
     auth.onAuthStateChanged((user) => {
         if (user) {
-            db.collection('Usuario')
-                .doc(user.uid)
-                .collection('agendamentos')
-                .get()
-                .then((snapshots) => {
+
+            db.collection('Usuario').doc(user.uid).get().then(item => {
+                           
+                db.collection('Agendamentos').get().then((snapshots) => {
+
                     months = {
                         jan: [],
                         fev: [],
@@ -23,20 +23,27 @@ const getScheduleByUser = () => {
                         nov: [],
                         dez: [],
                     }
-
-
-                    snapshots.forEach((doc) => {
-
-                        monthSelector(doc.data().data, doc.data().filial, doc.id, doc.data().andar);
-                    });
-
-                    // schedulesList.innerHTML = getFinalHTML();
-
-                    schedulesList.innerHTML = getFinalHTML()? getFinalHTML() : '<h2 style = "margin-left: 16px; ; margin-top: 10px; font-size: 20px">Sem Agendamentos</h2>';
-
                     
+                    snapshots.forEach((doc) => {
+                        
+                        if(doc.data().cpf == item.data().cpf){ 
 
+                            monthSelector(doc.data().data, doc.data().filial, doc.id, doc.data().cpf);
+
+                        }
+                    });
+                    
+                    
+                    schedulesList.innerHTML = getFinalHTML()? getFinalHTML() : '<h2 style = "margin-left: 16px; ; margin-top: 10px; font-size: 20px">Sem Agendamentos</h2>';
+                    
+                    
+                    
                 });
+                
+            })
+
+
+
         } else {
             console.log('user logged out');
         }
@@ -75,12 +82,7 @@ function deleteSchedule(idToDelete, newPage) {
 
     console.log("entrou e deletou o ", idToDelete)
 
-    auth.onAuthStateChanged((user) => {
-        if (user) {
-            db.collection('Usuario').doc(user.uid).collection('agendamentos').doc(idToDelete).delete();
-
-        }
-    });
+    db.collection('Agendamentos').doc(idToDelete).delete();
 
     closeModal();
     closeDeleteModal();
