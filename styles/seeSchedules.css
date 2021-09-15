@@ -1,14 +1,12 @@
 @import 'textos.css';
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;600;700&display=swap');
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html,
-body {
+html, body {
     height: 100%;
     max-width: 100%;
     overflow-x: hidden;
@@ -20,7 +18,7 @@ body {
 }
 
 .container {
-    margin: 80px auto 15px auto;
+    margin: 0 auto 15px auto;
     width: min(100vw, 950px);
     display: flex;
     flex-direction: column;
@@ -30,8 +28,8 @@ body {
 .header {
     width: 100%;
     position: absolute;
-    top:0;
-    z-index:1;
+    top: 0;
+    z-index: 1;
     background-color: #fff;
     display: flex;
     align-items: center;
@@ -63,43 +61,45 @@ body {
     margin: 35px 0px 8px 18px;
 }
 
-.month{
+.month {
     font-weight: 700;
     font-size: 20px;
     margin: 6px 0px 12px 18px;
 }
 
-.collection{
+.collection {
     overflow: visible;
     color: #404099;
     margin: 0 16px 16px 16px;
     box-shadow: 4px 4px 5px #d6d6d6;
-
 }
 
-.collection-item{
+.collection-item {
     position: relative;
 }
 
-.collection-item .sector{
+.collection-item .sector {
     margin-top: 4px;
     margin-bottom: 3px;
     font-weight: 400;
 }
 
-.collection-item .date{
+.collection-item .date {
     font-weight: 700;
     margin-bottom: 4px;
 }
 
-.actions{
+.actions {
     position: absolute;
     right: 18px;
     bottom: 10px;
     padding: 0;
 }
 
-.actions a{
-    margin-left: 10px; 
+.actions a {
+    margin-left: 10px;
 }
 
+button, a, input {
+    font-family: 'Montserrat', sans-serif;
+}

@@ -16,26 +16,28 @@
 </head>
 
 <body>
+    <nav>
+        <div class="nav-wrapper">
+            <span class="brand-logo left">FC Space</span>
+            <a data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a>Meu Perfil</a></li>
+                <li><a href="./createSchedule.html">Fazer agendamento</a></li>
+                <li><a href="./seeSchedules.html">Meus agendamentos</a></li>
+                <li><a href="./index.html" id="logout">Sair</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <div class="header" style="align-self: flex-start;position: absolute;top: 5px; left: 5px;">
-        <a data-target="slide-out" class="sidenav-trigger">
-            <i style="color: black" class="small material-icons">menu</i>
-        </a>
-
-        <ul id="slide-out" class="sidenav">
-            <li>
-                <div class="user-view"></div>
-            </li>
-
-            <li><a href="./createSchedule.html"><i class="material-icons">event_note</i>Fazer agendamento</a></li>
-            <li><a href="#!" onclick="mySchedules()"><i class="material-icons">event_available</i>Meus agendamentos</a>
-            </li>
-            <li><a href="#!" id="logout"><i class="material-icons">exit_to_app</i>Sair</a></li>
-        </ul>
-
-        <h2 class="header-title txt-orange">FC Space</h2>
-
-    </div>
+    <ul class="sidenav" id="mobile-demo">
+        <li>
+            <div class="user-view"></div>
+        </li>
+        <li><a href="#!"><i class="material-icons">assignment_ind</i>Meu Perfil</a></li>
+        <li><a href="./createSchedule.html"><i class="material-icons">event_note</i>Fazer agendamento</a></li>
+        <li><a href="./seeSchedules.html"><i class="material-icons">event_available</i>Meus agendamentos</a></li>
+        <li><a href="./index.html" id="logout"><i class="material-icons">exit_to_app</i>Sair</a></li>
+    </ul>
 
     <div class="container s12">
 
@@ -74,13 +76,13 @@
                     <label>Escolha o andar desejado</label>
                     <p>
                         <label>
-                            <input name="andar" type="radio" value="1"/>
+                            <input name="andar" type="radio" value="1" />
                             <span>1º Andar</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                            <input name="andar" type="radio" value="2"/>
+                            <input name="andar" type="radio" value="2" />
                             <span>2º Andar</span>
                         </label>
                     </p>
