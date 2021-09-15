@@ -7,14 +7,17 @@ export async function retornaVagasSP() {
     // const num = Math.floor(Math.random() * 111);
     // return num;
 
-    const data = configDate(agendamentoSP["dateSP"].value);
+    const dataSelecionada = document.getElementById("data");
+    const _dataSelecionada = dataSelecionada.value.split(" - ")[1];
+    const data =  _dataSelecionada ? _dataSelecionada : "";
+
     let value = 0
+
     await db.collection("Agendamentos").get().then(querySnapshot => {
         
         querySnapshot.docs.forEach(doc => {   
             
             if (doc.data().data == data) {
-                
                 return value++;
             };
 
@@ -26,16 +29,18 @@ export async function retornaVagasSP() {
         return value;
     }).catch(error => console.log(error))
     
-    const _value = (value / 240) * 100;
-    return  _value;
+     
+    return  value;
 }
 
 export async function retornaVagasSantos() {
 
     // const num = Math.floor(Math.random() * 111);
     // return num;
-
-    const data = configDate(agendamentoSP["dateSantos"].value);
+    const dataSelecionada = document.getElementById("data2");
+    const _dataSelecionada = dataSelecionada.value.split(" - ")[1];
+    const data = await _dataSelecionada ? _dataSelecionada : "";
+    
     let value = 0
     await db.collection("Agendamentos").get().then(querySnapshot => {
         
@@ -53,8 +58,8 @@ export async function retornaVagasSantos() {
         
         return value;
     }).catch(error => console.log(error))
-    const _value = (value / 40) * 100;
-    return  _value;
+   
+    return  value;
 }
 
 

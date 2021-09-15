@@ -2,9 +2,9 @@
 // formata a data que vem do site
 
 
-const configDate = (data) => {
+const configDate = async (data) => {
 
-    const dataCerta = data.split(" - ")[1]
+    const dataCerta = await data.split(" - ")[1]
 
     return dataCerta;
 
