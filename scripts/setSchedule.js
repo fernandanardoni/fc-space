@@ -74,10 +74,8 @@ auth.onAuthStateChanged(user => {
                     agendamentoSP.addEventListener("submit", (event) => {
                         event.preventDefault();
 
-                        const data = configDate(agendamentoSP["dateSP"].value);
+                        const data = agendamentoSP["dateSP"].value.split(" - ")[1];
                         const andar = document.querySelector('input[name="andar"]:checked').value;
-
-                         filial = "São Paulo";
 
                         const newSchedule = {
                             filial: "São Paulo",
@@ -93,7 +91,6 @@ auth.onAuthStateChanged(user => {
                             data: data
                         }
 
-
                         let valor = 0
                         const getDates = () => db.collection("Agendamentos").get().then(querySnapshot => {
                             querySnapshot.forEach(doc => {
@@ -101,11 +98,8 @@ auth.onAuthStateChanged(user => {
                                 if (doc.data().data == data) {
                                     return valor++
                                 };
-
-
                             })
                         })
-
 
                         getDates().then(
                             () => {
@@ -116,9 +110,7 @@ auth.onAuthStateChanged(user => {
                                 } else {
                                     db.collection('Usuario').doc(user.uid).collection('agendamentos').add(newUserSchedule)
                                         .then(() => {
-                                            // setTimeout( () => {
-                                            //     window.location.href = "seeSchedules.html";
-                                            // }, 3000)
+                                            agendamentoSP.reset();
 
                                         })
                                         .catch(() => {
@@ -139,9 +131,8 @@ auth.onAuthStateChanged(user => {
                         event.preventDefault();
 
 
-                        const data = configDate(agendamentoSantos["dateSantos"].value)
+                        const data = agendamentoSantos["dateSantos"].value.split(" - ")[1]
 
-                        filial = "Santos";
 
                         const newSchedule = {
                             filial: "Santos",
@@ -178,9 +169,7 @@ auth.onAuthStateChanged(user => {
                                 } else {
                                     db.collection('Usuario').doc(user.uid).collection('agendamentos').add(newUserSchedule)
                                         .then(() => {
-                                            //  setTimeout( () => {
-                                            //      window.location.href = "seeSchedules.html";
-                                            //  }, 3000)
+                                            
                                             agendamentoSantos.reset();
                                         })
                                         .catch(() => {
