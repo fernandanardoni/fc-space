@@ -27,7 +27,7 @@ export async function retornaVagasSP() {
     .then(()=> {
         
         return value;
-    }).catch(error => console.log(error))
+    }).catch(error => alert("Ocorreu um erro: ", error))
     
      
     return  value;
@@ -57,7 +57,7 @@ export async function retornaVagasSantos() {
     .then(()=> {
         
         return value;
-    }).catch(error => console.log(error))
+    }).catch(error => alert("Ocorreu um erro: ", error))
    
     return  value;
 }
@@ -112,7 +112,7 @@ auth.onAuthStateChanged(user => {
                                         .then(() => {
                                             setTimeout( () => {
                                                 window.location.href = "seeSchedules.html";
-                                            }, 3000)
+                                            }, 2000)
                                         })
                                         .catch(() => {
                                             console.error("Ocorreu um erro ao adicionar o agendamento: ", error);
@@ -172,7 +172,7 @@ auth.onAuthStateChanged(user => {
                                         .then(() => {
                                             setTimeout( () => {
                                                 window.location.href = "seeSchedules.html";
-                                            }, 3000)
+                                            }, 2000)
                                         })
                                         .catch(() => {
                                             console.error("Ocorreu um erro ao adicionar o agendamento: ", error);
@@ -196,6 +196,5 @@ auth.onAuthStateChanged(user => {
 
     } else {
         window.location = "index.html";
-        console.log('user logged out')
     }
 });
