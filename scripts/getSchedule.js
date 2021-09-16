@@ -6,7 +6,7 @@ const getScheduleByUser = () => {
         if (user) {
 
             db.collection('Usuario').doc(user.uid).get().then(item => {
-                           
+
                 db.collection('Agendamentos').get().then((snapshots) => {
 
                     months = {
@@ -23,28 +23,29 @@ const getScheduleByUser = () => {
                         nov: [],
                         dez: [],
                     }
-                    
-                    snapshots.forEach((doc) => {
-                        
-                        if(doc.data().cpf == item.data().cpf){ 
 
-                            monthSelector(doc.data().data, doc.data().filial, doc.id, doc.data().andar);
+                    snapshots.forEach((doc) => {
+                        const day = todayDate()
+
+                        if (doc.data().cpf == item.data().cpf && day <= doc.data().data) {
+
+                            return monthSelector(doc.data().data, doc.data().filial, doc.id, doc.data().andar);
 
                         }
                     });
-                    
-                    
-                    schedulesList.innerHTML = getFinalHTML()? getFinalHTML() : '<h2 style = "margin-left: 16px; ; margin-top: 10px; font-size: 20px">Sem Agendamentos</h2>';
-                    
-                    
-                    
+
+
+                    schedulesList.innerHTML = getFinalHTML() ? getFinalHTML() : '<h2 style = "margin-left: 16px; ; margin-top: 10px; font-size: 20px">Sem Agendamentos</h2>';
+
+
+
                 });
-                
+
             })
 
 
 
-        } 
+        }
     });
 };
 
@@ -78,7 +79,7 @@ function openDeleteModal(scheduleId) {
 
 function deleteSchedule(idToDelete, newPage) {
 
-    
+
 
     db.collection('Agendamentos').doc(idToDelete).delete();
 
@@ -90,7 +91,7 @@ function deleteSchedule(idToDelete, newPage) {
         if (newPage) {
             history.replaceState(null, null, "createSchedule.html");
             document.location.reload(true);
-           
+
         } else {
             getScheduleByUser();
 
