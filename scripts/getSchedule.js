@@ -44,9 +44,7 @@ const getScheduleByUser = () => {
 
 
 
-        } else {
-            console.log('user logged out');
-        }
+        } 
     });
 };
 
@@ -80,7 +78,7 @@ function openDeleteModal(scheduleId) {
 
 function deleteSchedule(idToDelete, newPage) {
 
-    console.log("entrou e deletou o ", idToDelete)
+    
 
     db.collection('Agendamentos').doc(idToDelete).delete();
 
@@ -92,12 +90,10 @@ function deleteSchedule(idToDelete, newPage) {
         if (newPage) {
             history.replaceState(null, null, "createSchedule.html");
             document.location.reload(true);
-
-            console.log("pelo edit")
+           
         } else {
             getScheduleByUser();
 
-            console.log("pelo delete")
         }
 
     }, 350);
