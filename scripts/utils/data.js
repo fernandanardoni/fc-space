@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (retornaValor) {
                 divProgress.innerHTML = ` 
                    <p> ${40 - retornaValor} vagas restantes.</p>   
-                   <div class="progress" style="width: ${retornaValor}%"></div>
+                   <div class="progress" style="width: ${(retornaValor / 0.4)}%"></div>
                   `;
 
                 document.getElementById("progress-bar-santos").appendChild(divProgress);
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 divProgress.innerHTML = ` 
                        <p> ${240 - porcentagem} vagas restantes.</p>   
-                       <div class="progress" style="width: ${porcentagem}%"></div>
+                       <div class="progress" style="width: ${(porcentagem / 2.4 )}%"></div>
                       `;
 
                 document.getElementById("progress-bar").appendChild(divProgress);
