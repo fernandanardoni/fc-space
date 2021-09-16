@@ -1,13 +1,13 @@
 const schedulesList = document.querySelector('.schedule-content');
 
-const getScheduleByUser = () => {
+const getScheduleByUser =  () => {
 
-    auth.onAuthStateChanged((user) => {
+    auth.onAuthStateChanged( async (user) => {
         if (user) {
 
-            db.collection('Usuario').doc(user.uid).get().then(item => {
+            await  db.collection('Usuario').doc(user.uid).get().then(item => {
 
-                db.collection('Agendamentos').get().then((snapshots) => {
+                  db.collection('Agendamentos').get().then((snapshots) => {
 
                     months = {
                         jan: [],
@@ -24,10 +24,13 @@ const getScheduleByUser = () => {
                         dez: [],
                     }
 
-                    snapshots.forEach((doc) => {
-                        const day = todayDate()
+                    snapshots.forEach(async (doc) => {
+                        const day = new Date();
 
-                        if (doc.data().cpf == item.data().cpf && day <= doc.data().data) {
+                        const data = doc.data().data;
+                        const formatedDate = transformDate(data)
+
+                        if (doc.data().cpf == item.data().cpf && day.getTime() < formatedDate.getTime() ) {
 
                             return monthSelector(doc.data().data, doc.data().filial, doc.id, doc.data().andar);
 
