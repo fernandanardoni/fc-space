@@ -17,7 +17,7 @@ export async function retornaVagasSP() {
 
         querySnapshot.docs.forEach(doc => {
 
-            if (doc.data().data == data) {
+            if (doc.data().data == data && doc.data().filial == "São Paulo") {
                 return value++;
             };
 
@@ -46,7 +46,7 @@ export async function retornaVagasSantos() {
 
         querySnapshot.docs.forEach(doc => {
 
-            if (doc.data().data == data) {
+            if (doc.data().data == data && doc.data().filial == "Santos") {
 
                 return value++;
             };
@@ -95,7 +95,8 @@ auth.onAuthStateChanged(user => {
                         const getDates = () => db.collection("Agendamentos").get().then(querySnapshot => {
                             querySnapshot.forEach(doc => {
 
-                                if (doc.data().data == data) {
+                                if (doc.data().data == data && doc.data().filial == "São Paulo") {
+                                    console.log('doc.data().filial', doc.data().filial)
                                     return valor++
                                 };
                             })
@@ -151,7 +152,7 @@ auth.onAuthStateChanged(user => {
                         const getDates = () => db.collection("Agendamentos").get().then(querySnapshot => {
                             querySnapshot.forEach(doc => {
 
-                                if (doc.data().data == data) {
+                                if (doc.data().data == data && doc.data().filial == "Santos") {
                                     return valor++
                                 };
 
