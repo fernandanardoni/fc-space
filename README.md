@@ -24,4 +24,4 @@ Tendo em vista o MVP sugerido pelo programa, desenvolvemos uma aplicação web r
 
 <h3> Designer </h3>
 
-<a hredf="https://www.linkedin.com/in/ronicampos/"> Roni Campos </a>
+🔸 <a href="https://www.linkedin.com/in/ronicampos/"> Roni Campos </a>
