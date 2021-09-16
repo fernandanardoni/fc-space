@@ -8,7 +8,7 @@ const configDate = async (data) => {
 
     return dataCerta;
 
-} 
+}
 
 
 // formata da data do dia

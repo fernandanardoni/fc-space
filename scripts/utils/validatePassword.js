@@ -1,8 +1,8 @@
 
 
-function validatePassword(item){
+function validatePassword(item) {
 
-    if(item.length < 6){
+    if (item.length < 6) {
         return false;
     }
     return true;
