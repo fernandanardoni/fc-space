@@ -23,6 +23,13 @@ const todayDate = () => {
 }
 
 
+const transformDate =  (data) => {
+    const date =   data.split("/");
+    const newDate = new Date(date[2], date[1] -1 , date[0]);
+    return newDate;
+}
+
+
 const getDayofWeek = (item) => {
 
     const week = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"]
