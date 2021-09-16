@@ -9,7 +9,7 @@ var hoje =
     mesAno[data.getMonth()] +
     " de " +
     data.getFullYear();
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const options = {
         monthsFull: mesAno,
         monthsShort: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
         max: new Date(data.getFullYear() + 1, 11, 31),
         closeOnSelect: true,
 
-        onClose: async() => {
+        onClose: async () => {
 
 
             document.getElementById("progress-bar").innerHTML = ``;

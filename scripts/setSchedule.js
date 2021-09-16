@@ -9,14 +9,14 @@ export async function retornaVagasSP() {
 
     const dataSelecionada = document.getElementById("data");
     const _dataSelecionada = dataSelecionada.value.split(" - ")[1];
-    const data =  _dataSelecionada ? _dataSelecionada : "";
+    const data = _dataSelecionada ? _dataSelecionada : "";
 
     let value = 0
 
     await db.collection("Agendamentos").get().then(querySnapshot => {
-        
-        querySnapshot.docs.forEach(doc => {   
-            
+
+        querySnapshot.docs.forEach(doc => {
+
             if (doc.data().data == data) {
                 return value++;
             };
@@ -24,13 +24,13 @@ export async function retornaVagasSP() {
 
         })
     })
-    .then(()=> {
-        
-        return value;
-    }).catch(error => alert("Ocorreu um erro: ", error))
-    
-     
-    return  value;
+        .then(() => {
+
+            return value;
+        }).catch(error => alert("Ocorreu um erro: ", error))
+
+
+    return value;
 }
 
 export async function retornaVagasSantos() {
@@ -40,26 +40,26 @@ export async function retornaVagasSantos() {
     const dataSelecionada = document.getElementById("data2");
     const _dataSelecionada = dataSelecionada.value.split(" - ")[1];
     const data = await _dataSelecionada ? _dataSelecionada : "";
-    
+
     let value = 0
     await db.collection("Agendamentos").get().then(querySnapshot => {
-        
-        querySnapshot.docs.forEach(doc => {   
-            
+
+        querySnapshot.docs.forEach(doc => {
+
             if (doc.data().data == data) {
-                
+
                 return value++;
             };
 
 
         })
     })
-    .then(()=> {
-        
-        return value;
-    }).catch(error => alert("Ocorreu um erro: ", error))
-   
-    return  value;
+        .then(() => {
+
+            return value;
+        }).catch(error => alert("Ocorreu um erro: ", error))
+
+    return value;
 }
 
 
@@ -108,17 +108,15 @@ auth.onAuthStateChanged(user => {
                                     M.toast({ html: 'Infelizmente, não tem mais vagas disponíveis na data solicitada. Por favor, escolha uma nova data!' })
 
                                 } else {
-                                    db.collection('Usuario').doc(user.uid).collection('agendamentos').add(newUserSchedule)
+                                    db.collection("Agendamentos").add(newSchedule)
                                         .then(() => {
-                                            setTimeout( () => {
+                                            setTimeout(() => {
                                                 window.location.href = "seeSchedules.html";
                                             }, 2000)
                                         })
                                         .catch(() => {
                                             console.error("Ocorreu um erro ao adicionar o agendamento: ", error);
                                         })
-
-                                    db.collection("Agendamentos").add(newSchedule)
                                     return M.toast({ html: 'Agendamento adicionado!' })
                                 }
 
@@ -168,9 +166,9 @@ auth.onAuthStateChanged(user => {
                                     M.toast({ html: 'Infelizmente, não tem mais vagas disponíveis na data solicitada. Por favor, escolha uma nova data!' })
 
                                 } else {
-                                    db.collection('Usuario').doc(user.uid).collection('agendamentos').add(newUserSchedule)
+                                    db.collection("Agendamentos").add(newSchedule)
                                         .then(() => {
-                                            setTimeout( () => {
+                                            setTimeout(() => {
                                                 window.location.href = "seeSchedules.html";
                                             }, 2000)
                                         })
@@ -178,7 +176,6 @@ auth.onAuthStateChanged(user => {
                                             console.error("Ocorreu um erro ao adicionar o agendamento: ", error);
                                         })
 
-                                    db.collection("Agendamentos").add(newSchedule)
                                     return M.toast({ html: 'Agendamento adicionado!' })
                                 }
                             }
